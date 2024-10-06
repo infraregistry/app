@@ -20,7 +20,7 @@
   </div>
 </div>
 
-<div class="flex flex-wrap gap-4">
+<div class="mt-4 flex flex-wrap gap-4">
   <Item />
   <Item />
   <Item />
