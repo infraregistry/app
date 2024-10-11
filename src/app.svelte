@@ -13,6 +13,7 @@
   import { sessions } from "$lib/sessions/sessions.svelte";
 
   sessions.init();
+
   $effect(() => {
     console.log("is logged in", sessions.isLoggedIn);
   });
@@ -25,6 +26,7 @@
     function handleKeydown(e: KeyboardEvent) {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
+        console.log("open search");
         openSearch();
       }
     }
