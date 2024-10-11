@@ -8,7 +8,7 @@
   import { push } from "svelte-spa-router";
   import { writable } from "svelte/store";
   import Depedencies from "./dependencies/depedencies.svelte";
-  import Panel from "./panel.svelte";
+  import Feed from "./feed.svelte";
   import Settings from "./settings/settings.svelte";
 
   // openCreateProperty();
@@ -56,6 +56,7 @@
     </Button>
   </div>
 </div>
+d
 <div class="flex gap-3">
   <div class="flex flex-1 flex-col gap-3">
     <Tabs.Root
@@ -81,6 +82,7 @@
     {/if}
   </div>
   <div class="w-[375px]">
-    <Panel />
+    <!-- <Panel /> -->
+    <Feed />
   </div>
 </div>
