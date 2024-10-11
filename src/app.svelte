@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { run } from 'svelte/legacy';
+  import { run } from "svelte/legacy";
 
   import { openSearch } from "$lib/components/search/search";
   import { onMount } from "svelte";
@@ -12,6 +12,7 @@
   import { Toaster } from "svelte-sonner";
   import Router from "svelte-spa-router";
   import { routes } from "./pages/routes";
+  import MainNav from "$lib/nav/main-nav.svelte";
 
   run(() => {
     confettiStore;
@@ -36,7 +37,7 @@
 <ModeWatcher />
 
 <div class="bg-muted/25 absolute bottom-0 left-0 right-0 top-0 flex h-full w-full flex-col">
-  <VerticalNav />
+  <MainNav />
   <div class="flex flex-col gap-2 pl-14">
     <div class="m-3 h-full">
       <Router {routes} />
