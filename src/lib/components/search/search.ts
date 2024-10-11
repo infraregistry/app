@@ -5,6 +5,6 @@ import Search from "./search.svelte";
 export const openSearch = () => {
   modalManager.open({
     id: "search",
-    component: mount(Search, { target: document.getElementById("app") })
+    component: Search
   });
 };
