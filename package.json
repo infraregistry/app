@@ -41,13 +41,14 @@
     "@tiptap/extension-text-style": "^2.0.4",
     "@tiptap/extension-underline": "^2.0.4",
     "@tiptap/pm": "^2.1.7",
-    "tiptap-markdown": "^0.8.2",
     "@tiptap/starter-kit": "^2.1.7",
     "@tiptap/suggestion": "^2.0.4",
     "@xyflow/svelte": "^0.1.20",
     "bits-ui": "^0.21.16",
     "clsx": "^2.1.1",
     "cmdk-sv": "^0.0.18",
+    "dayjs": "^1.11.13",
+    "jwt-decode": "^4.0.0",
     "lucide-svelte": "^0.447.0",
     "mode-watcher": "^0.4.1",
     "prettier": "^3.3.3",
@@ -58,8 +59,9 @@
     "svelte-radix": "^1.1.1",
     "svelte-sonner": "^0.3.28",
     "svelte-spa-router": "^4.0.1",
-    "tailwindcss-animate": "^1.0.7",
     "tailwind-merge": "^2.5.3",
-    "tailwind-variants": "^0.2.1"
+    "tailwind-variants": "^0.2.1",
+    "tailwindcss-animate": "^1.0.7",
+    "tiptap-markdown": "^0.8.2"
   }
 }

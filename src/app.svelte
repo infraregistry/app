@@ -1,19 +1,24 @@
 <script lang="ts">
-  import { run } from 'svelte/legacy';
-
   import { openSearch } from "$lib/components/search/search";
   import { onMount } from "svelte";
   import "./app.css";
 
-  import VerticalNav from "$lib/nav/vertical-nav.svelte";
   import { confettiStore } from "$lib/shared/effects/confetti-store";
   import { ModeWatcher } from "mode-watcher";
   import { Confetti } from "svelte-confetti";
   import { Toaster } from "svelte-sonner";
   import Router from "svelte-spa-router";
   import { routes } from "./pages/routes";
+  import MainNav from "$lib/nav/main-nav.svelte";
+  import { sessions } from "$lib/sessions/sessions.svelte";
 
-  run(() => {
+  sessions.init();
+
+  $effect(() => {
+    console.log("is logged in", sessions.isLoggedIn);
+  });
+
+  $effect.pre(() => {
     confettiStore;
   });
 
@@ -21,6 +26,7 @@
     function handleKeydown(e: KeyboardEvent) {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
+        console.log("open search");
         openSearch();
       }
     }
@@ -36,7 +42,7 @@
 <ModeWatcher />
 
 <div class="bg-muted/25 absolute bottom-0 left-0 right-0 top-0 flex h-full w-full flex-col">
-  <VerticalNav />
+  <MainNav />
   <div class="flex flex-col gap-2 pl-14">
     <div class="m-3 h-full">
       <Router {routes} />
