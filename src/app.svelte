@@ -1,11 +1,8 @@
 <script lang="ts">
-  import { run } from "svelte/legacy";
-
   import { openSearch } from "$lib/components/search/search";
   import { onMount } from "svelte";
   import "./app.css";
 
-  import VerticalNav from "$lib/nav/vertical-nav.svelte";
   import { confettiStore } from "$lib/shared/effects/confetti-store";
   import { ModeWatcher } from "mode-watcher";
   import { Confetti } from "svelte-confetti";
@@ -13,8 +10,14 @@
   import Router from "svelte-spa-router";
   import { routes } from "./pages/routes";
   import MainNav from "$lib/nav/main-nav.svelte";
+  import { sessions } from "$lib/sessions/sessions.svelte";
 
-  run(() => {
+  sessions.init();
+  $effect(() => {
+    console.log("is logged in", sessions.isLoggedIn);
+  });
+
+  $effect.pre(() => {
     confettiStore;
   });
 

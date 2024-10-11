@@ -5,6 +5,7 @@
   import { LoaderCircleIcon, GithubIcon } from "lucide-svelte";
   import { FormContext } from "./sessions.type";
   import { link } from "svelte-spa-router";
+  import { sessions } from "$lib/sessions/sessions.svelte";
 
   export let context: FormContext;
 
@@ -12,7 +13,12 @@
 
   async function onSubmit() {
     isLoading = true;
-    await new Promise((resolve) => setTimeout(resolve, 2000)).finally(() => {
+    await new Promise<void>((resolve) => {
+      setTimeout(() => {
+        // sessions.register("token")
+        resolve();
+      }, 2000);
+    }).finally(() => {
       isLoading = false;
     });
   }
