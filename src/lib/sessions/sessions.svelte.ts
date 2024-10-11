@@ -51,7 +51,7 @@ class Session {
       const decodedToken = jwtDecode(newToken);
       const expiration = dayjs(decodedToken.exp * 1000);
 
-      // if (!expiration.isValid()) return false;
+      if (!expiration.isValid()) return false;
 
       const now = dayjs();
 
