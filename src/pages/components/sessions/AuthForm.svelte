@@ -15,7 +15,7 @@
     isLoading = true;
     await new Promise<void>((resolve) => {
       setTimeout(() => {
-        sessions.register("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c");
+        // sessions.register("token");
         resolve();
       }, 2000);
     }).finally(() => {
