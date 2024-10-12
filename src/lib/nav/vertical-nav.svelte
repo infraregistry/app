@@ -5,8 +5,12 @@
   import { Button } from "$lib/components/ui/button";
   import * as Sheet from "$lib/components/ui/sheet";
   import * as Tooltip from "$lib/components/ui/tooltip/index.js";
-  import { PanelLeft, Search } from "lucide-svelte";
+  import { PanelLeft, Search, LogOutIcon, UserCircle } from "lucide-svelte";
   import { link } from "svelte-spa-router";
+  import { DropdownMenu, DropdownMenuTrigger } from "$lib/components/ui/dropdown-menu";
+  import DropdownMenuContent from "$lib/components/ui/dropdown-menu/dropdown-menu-content.svelte";
+  import DropdownMenuItem from "$lib/components/ui/dropdown-menu/dropdown-menu-item.svelte";
+  import { sessions } from "$lib/sessions/sessions.svelte";
 </script>
 
 <aside class="bg-background fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r sm:flex">
@@ -17,7 +21,7 @@
     </a>
     <Tooltip.Root on:click={openSearch}>
       <Tooltip.Trigger asChild let:builder>
-        <div href="##" class="text-muted-foreground hover:text-foreground flex h-9 w-9 items-center justify-center rounded-lg transition-colors md:h-8 md:w-8" use:builder.action {...builder}>
+        <div class="text-muted-foreground hover:text-foreground flex h-9 w-9 items-center justify-center rounded-lg transition-colors md:h-8 md:w-8" use:builder.action {...builder}>
           <Search class="h-5 w-5" />
         </div>
       </Tooltip.Trigger>
@@ -72,10 +76,24 @@
   <nav class="mt-auto flex flex-col items-center gap-4 px-2 py-4">
     <Tooltip.Root>
       <Tooltip.Trigger asChild let:builder>
-        <a href="##" class="text-muted-foreground hover:text-foreground flex h-9 w-9 items-center justify-center rounded-lg transition-colors md:h-8 md:w-8" use:builder.action {...builder}>
-          <Settings class="h-5 w-5" />
-          <span class="sr-only">Settings</span>
-        </a>
+        <DropdownMenu>
+          <DropdownMenuTrigger>
+            <Button variant="ghost" class="text-muted-foreground rounded-full border px-2 py-2">
+              <UserCircle size={16} />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuItem
+              onclick={() => {
+                sessions.logout();
+              }}>
+              <div class="flex flex-row items-center gap-2">
+                <LogOutIcon size={12} />
+                <span class="text-muted-foreground text-xs">Logout</span>
+              </div>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </Tooltip.Trigger>
       <Tooltip.Content side="right">Settings</Tooltip.Content>
     </Tooltip.Root>
@@ -111,10 +129,24 @@
         <UsersRound class="h-5 w-5" />
         Customers
       </a>
-      <a href="##" class="text-muted-foreground hover:text-foreground flex items-center gap-4 px-2.5">
-        <LineChart class="h-5 w-5" />
-        Settings
-      </a>
+      <DropdownMenu>
+        <DropdownMenuTrigger>
+          <Button variant="ghost" class="text-muted-foreground rounded-full border px-2 py-2">
+            <UserCircle size={16} />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <DropdownMenuItem
+            onclick={() => {
+              sessions.logout();
+            }}>
+            <div class="flex flex-row items-center gap-2">
+              <LogOutIcon size={12} />
+              <span class="text-muted-foreground text-xs">Logout</span>
+            </div>
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
     </nav>
   </Sheet.Content>
 </Sheet.Root>
