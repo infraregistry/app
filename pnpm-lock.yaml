@@ -8,69 +8,85 @@ importers:
 
   .:
     dependencies:
+      '@mateothegreat/svelte5-modal-manager':
+        specifier: ^0.0.5
+        version: 0.0.5
+      paneforge:
+        specifier: ^0.0.6
+        version: 0.0.6(svelte@5.0.0-next.264)
+    devDependencies:
       '@iconify/svelte':
         specifier: ^4.0.2
         version: 4.0.2(svelte@5.0.0-next.264)
       '@mateothegreat/svelte5-table':
-        specifier: ^1.0.6
-        version: 1.0.6(svelte@5.0.0-next.264)
-      '@svelte.codes/form-manager':
-        specifier: ^0.7.1
-        version: 0.7.1(svelte@5.0.0-next.264)
+        specifier: ^1.0.7
+        version: 1.0.7(svelte@5.0.0-next.264)
       '@svelte.codes/forms':
         specifier: ^0.0.26
         version: 0.0.26(svelte@5.0.0-next.264)
-      '@svelte.codes/modal-manager':
-        specifier: ^0.0.25
-        version: 0.0.25
+      '@sveltejs/vite-plugin-svelte':
+        specifier: ^4.0.0-next.0
+        version: 4.0.0-next.8(svelte@5.0.0-next.264)(vite@5.4.8(@types/node@22.7.5)(sass@1.79.5))
+      '@tailwindcss/typography':
+        specifier: ^0.5.15
+        version: 0.5.15(tailwindcss@3.4.13)
       '@tiptap/core':
-        specifier: ^2.1.7
+        specifier: ^2.8.0
         version: 2.8.0(@tiptap/pm@2.8.0)
       '@tiptap/extension-bubble-menu':
-        specifier: ^2.1.7
+        specifier: ^2.8.0
         version: 2.8.0(@tiptap/core@2.8.0(@tiptap/pm@2.8.0))(@tiptap/pm@2.8.0)
       '@tiptap/extension-color':
-        specifier: ^2.0.4
+        specifier: ^2.8.0
         version: 2.8.0(@tiptap/core@2.8.0(@tiptap/pm@2.8.0))(@tiptap/extension-text-style@2.8.0(@tiptap/core@2.8.0(@tiptap/pm@2.8.0)))
       '@tiptap/extension-highlight':
-        specifier: ^2.0.4
+        specifier: ^2.8.0
         version: 2.8.0(@tiptap/core@2.8.0(@tiptap/pm@2.8.0))
       '@tiptap/extension-horizontal-rule':
-        specifier: ^2.0.4
+        specifier: ^2.8.0
         version: 2.8.0(@tiptap/core@2.8.0(@tiptap/pm@2.8.0))(@tiptap/pm@2.8.0)
       '@tiptap/extension-image':
-        specifier: ^2.0.4
+        specifier: ^2.8.0
         version: 2.8.0(@tiptap/core@2.8.0(@tiptap/pm@2.8.0))
       '@tiptap/extension-link':
-        specifier: ^2.0.4
+        specifier: ^2.8.0
         version: 2.8.0(@tiptap/core@2.8.0(@tiptap/pm@2.8.0))(@tiptap/pm@2.8.0)
       '@tiptap/extension-placeholder':
-        specifier: 2.0.3
-        version: 2.0.3(@tiptap/core@2.8.0(@tiptap/pm@2.8.0))(@tiptap/pm@2.8.0)
+        specifier: 2.8.0
+        version: 2.8.0(@tiptap/core@2.8.0(@tiptap/pm@2.8.0))(@tiptap/pm@2.8.0)
       '@tiptap/extension-task-item':
-        specifier: ^2.0.4
+        specifier: ^2.8.0
         version: 2.8.0(@tiptap/core@2.8.0(@tiptap/pm@2.8.0))(@tiptap/pm@2.8.0)
       '@tiptap/extension-task-list':
-        specifier: ^2.0.4
+        specifier: ^2.8.0
         version: 2.8.0(@tiptap/core@2.8.0(@tiptap/pm@2.8.0))
       '@tiptap/extension-text-style':
-        specifier: ^2.0.4
+        specifier: ^2.8.0
         version: 2.8.0(@tiptap/core@2.8.0(@tiptap/pm@2.8.0))
       '@tiptap/extension-underline':
-        specifier: ^2.0.4
+        specifier: ^2.8.0
         version: 2.8.0(@tiptap/core@2.8.0(@tiptap/pm@2.8.0))
       '@tiptap/pm':
-        specifier: ^2.1.7
+        specifier: ^2.8.0
         version: 2.8.0
       '@tiptap/starter-kit':
-        specifier: ^2.1.7
+        specifier: ^2.8.0
         version: 2.8.0(@tiptap/extension-text-style@2.8.0(@tiptap/core@2.8.0(@tiptap/pm@2.8.0)))
       '@tiptap/suggestion':
-        specifier: ^2.0.4
+        specifier: ^2.8.0
         version: 2.8.0(@tiptap/core@2.8.0(@tiptap/pm@2.8.0))(@tiptap/pm@2.8.0)
+      '@tsconfig/svelte':
+        specifier: ^5.0.4
+        version: 5.0.4
+      '@types/node':
+        specifier: ^22.7.5
+        version: 22.7.5
       '@xyflow/svelte':
-        specifier: ^0.1.20
+        specifier: ^0.1.21
         version: 0.1.21(svelte@5.0.0-next.264)
+      autoprefixer:
+        specifier: ^10.4.20
+        version: 10.4.20(postcss@8.4.47)
       bits-ui:
         specifier: ^0.21.16
         version: 0.21.16(svelte@5.0.0-next.264)
@@ -87,11 +103,14 @@ importers:
         specifier: ^4.0.0
         version: 4.0.0
       lucide-svelte:
-        specifier: ^0.447.0
-        version: 0.447.0(svelte@5.0.0-next.264)
+        specifier: ^0.452.0
+        version: 0.452.0(svelte@5.0.0-next.264)
       mode-watcher:
         specifier: ^0.4.1
         version: 0.4.1(svelte@5.0.0-next.264)
+      postcss:
+        specifier: ^8.4.47
+        version: 8.4.47
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -104,6 +123,15 @@ importers:
       rxjs:
         specifier: ^7.8.1
         version: 7.8.1
+      sass:
+        specifier: ^1.79.5
+        version: 1.79.5
+      svelte:
+        specifier: ^5.0.0-next.264
+        version: 5.0.0-next.264
+      svelte-check:
+        specifier: ^4.0.5
+        version: 4.0.5(svelte@5.0.0-next.264)(typescript@5.6.3)
       svelte-confetti:
         specifier: ^2.1.2
         version: 2.1.2(svelte@5.0.0-next.264)
@@ -122,48 +150,20 @@ importers:
       tailwind-variants:
         specifier: ^0.2.1
         version: 0.2.1(tailwindcss@3.4.13)
+      tailwindcss:
+        specifier: ^3.4.13
+        version: 3.4.13
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.13)
       tiptap-markdown:
-        specifier: ^0.8.2
+        specifier: ^0.8.10
         version: 0.8.10(@tiptap/core@2.8.0(@tiptap/pm@2.8.0))
-    devDependencies:
-      '@sveltejs/vite-plugin-svelte':
-        specifier: ^4.0.0-next.0
-        version: 4.0.0-next.8(svelte@5.0.0-next.264)(vite@5.4.8(@types/node@22.7.5)(sass@1.79.5))
-      '@tailwindcss/typography':
-        specifier: ^0.5.15
-        version: 0.5.15(tailwindcss@3.4.13)
-      '@tsconfig/svelte':
-        specifier: ^5.0.4
-        version: 5.0.4
-      '@types/node':
-        specifier: ^22.7.4
-        version: 22.7.5
-      autoprefixer:
-        specifier: ^10.4.20
-        version: 10.4.20(postcss@8.4.47)
-      postcss:
-        specifier: ^8.4.47
-        version: 8.4.47
-      sass:
-        specifier: ^1.79.4
-        version: 1.79.5
-      svelte:
-        specifier: ^5.0.0-next.262
-        version: 5.0.0-next.264
-      svelte-check:
-        specifier: ^4.0.4
-        version: 4.0.4(svelte@5.0.0-next.264)(typescript@5.6.3)
-      tailwindcss:
-        specifier: ^3.4.13
-        version: 3.4.13
       tslib:
         specifier: ^2.7.0
         version: 2.7.0
       typescript:
-        specifier: ^5.6.2
+        specifier: ^5.6.3
         version: 5.6.3
       vite:
         specifier: ^5.4.8
@@ -359,10 +359,13 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@mateothegreat/svelte5-table@1.0.6':
-    resolution: {integrity: sha512-hzA0WVfFR1AW6wJXVVPUavztEKA1i35V8fR+JS00yg9zfnOcmq0/bHKCLMooWpp2kXiCZJx1GDyrZiNs/jtrdw==}
+  '@mateothegreat/svelte5-modal-manager@0.0.5':
+    resolution: {integrity: sha512-odUKsI2vmB0PTIm+i8VXyna/Tk4F9Vt2e2yGc+vBJHWEn2QktBdMPn9O1JDY4mjmK+YTDXhrVUd5hDZLFSC8Xw==}
+
+  '@mateothegreat/svelte5-table@1.0.7':
+    resolution: {integrity: sha512-R/qVBaYA7QpYVwVq3E2wIuaVw/WrzJRGi6v96GKUPvnhbbYdmaXFND7Zy1/+kqeOl2tJDpGG7wb3st9OjbBexA==}
     peerDependencies:
-      svelte: ^5.0.0-next.262
+      svelte: ^5.0.0
 
   '@melt-ui/svelte@0.65.2':
     resolution: {integrity: sha512-BpsSl9Bjp1++8U3+LaDOFUoX/PFQ9N7QWFhlFdUEZduhrbVyU70v9A459SKrQ+esFSjvh1AvqJYkMAUJXJlAmQ==}
@@ -557,14 +560,8 @@ packages:
     peerDependencies:
       svelte: ^3.55.0 || ^4.0.0 || ^5.0.0
 
-  '@svelte.codes/form-manager@0.7.1':
-    resolution: {integrity: sha512-3ggXejqbfqHy6H4t1iLlOf+Gec077scLWmMbYdTS/xG8/GlMgYu4OupljnoqP3738tDyz/CD9kkPSWP9id/YPA==}
-
   '@svelte.codes/forms@0.0.26':
     resolution: {integrity: sha512-FSDNC1fVhMJnl8QlzaXfEv2buKoJk4PqMGUcrG2RAbOSVFOtToD9WwyOmrE44tHCcRHeIexnhVaOWbSIQ8GIag==}
-
-  '@svelte.codes/modal-manager@0.0.25':
-    resolution: {integrity: sha512-EDyiX80q+RB9x/rmDhrDvnyXc7C6vLmixdTpkprYmNbHDHU0g/8WmHZERTlhi7EJTlZkhqulw/rwcsDE0qpQ8A==}
 
   '@sveltejs/vite-plugin-svelte-inspector@3.0.0-next.3':
     resolution: {integrity: sha512-kuGJ2CZ5lAw3gKF8Kw0AfKtUJWbwdlDHY14K413B0MCyrzvQvsKTorwmwZcky0+QqY6RnVIZ/5FttB9bQmkLXg==}
@@ -711,11 +708,11 @@ packages:
     peerDependencies:
       '@tiptap/core': ^2.7.0
 
-  '@tiptap/extension-placeholder@2.0.3':
-    resolution: {integrity: sha512-Z42jo0termRAf0S0L8oxrts94IWX5waU4isS2CUw8xCUigYyCFslkhQXkWATO1qRbjNFLKN2C9qvCgGf4UeBrw==}
+  '@tiptap/extension-placeholder@2.8.0':
+    resolution: {integrity: sha512-BMqv/C9Tcjd7L1/OphUAJTZhWfpWs0rTQJ0bs3RRGsC8L+K20Fg+li45vw7M0teojpfrw57zwJogJd/m23Zr1Q==}
     peerDependencies:
-      '@tiptap/core': ^2.0.0
-      '@tiptap/pm': ^2.0.0
+      '@tiptap/core': ^2.7.0
+      '@tiptap/pm': ^2.7.0
 
   '@tiptap/extension-strike@2.8.0':
     resolution: {integrity: sha512-ezkDiXxQ3ME/dDMMM7tAMkKRi6UWw7tIu+Mx7Os0z8HCGpVBk1gFhLlhEd8I5rJaPZr4tK1wtSehMA9bscFGQw==}
@@ -1183,8 +1180,8 @@ packages:
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
 
-  lucide-svelte@0.447.0:
-    resolution: {integrity: sha512-DDCVy79q9H1IAGmrbGDG4GZmCZK+5elK3Fxzu0RzbHKr2Khg7EMc8S6C12bzWcnfW263raqo3grthEjB5gxAjw==}
+  lucide-svelte@0.452.0:
+    resolution: {integrity: sha512-Nnt+8ljOyQ1P/k+lWKUAS13tT0hn2vVtgE7/zbVI8tiorY/aaeIkhRzY0MdVHogwEavr9VNEpQUGVBEFVicPzA==}
     peerDependencies:
       svelte: ^3 || ^4 || ^5.0.0-next.42
 
@@ -1274,6 +1271,11 @@ packages:
 
   package-json-from-dist@1.0.1:
     resolution: {integrity: sha512-UEZIS3/by4OC8vL3P2dTXRETpebLI2NiI5vIrjaD/5UtrkFX/tNbwjTSRAGC/+7CAo2pIcBaRgWmcBBHcsaCIw==}
+
+  paneforge@0.0.6:
+    resolution: {integrity: sha512-jYeN/wdREihja5c6nK3S5jritDQ+EbCqC5NrDo97qCZzZ9GkmEcN5C0ZCjF4nmhBwkDKr6tLIgz4QUKWxLXjAw==}
+    peerDependencies:
+      svelte: ^4.0.0 || ^5.0.0-next.1
 
   path-key@3.1.1:
     resolution: {integrity: sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==}
@@ -1564,8 +1566,8 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  svelte-check@4.0.4:
-    resolution: {integrity: sha512-AcHWIPuZb1mh/jKoIrww0ebBPpAvwWd1bfXCnwC2dx4OkydNMaiG//+Xnry91RJMHFH7CiE+6Y2p332DRIaOXQ==}
+  svelte-check@4.0.5:
+    resolution: {integrity: sha512-icBTBZ3ibBaywbXUat3cK6hB5Du+Kq9Z8CRuyLmm64XIe2/r+lQcbuBx/IQgsbrC+kT2jQ0weVpZSSRIPwB6jQ==}
     engines: {node: '>= 18.0.0'}
     hasBin: true
     peerDependencies:
@@ -1850,7 +1852,9 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@mateothegreat/svelte5-table@1.0.6(svelte@5.0.0-next.264)':
+  '@mateothegreat/svelte5-modal-manager@0.0.5': {}
+
+  '@mateothegreat/svelte5-table@1.0.7(svelte@5.0.0-next.264)':
     dependencies:
       svelte: 5.0.0-next.264
 
@@ -2001,14 +2005,6 @@ snapshots:
     dependencies:
       svelte: 5.0.0-next.264
 
-  '@svelte.codes/form-manager@0.7.1(svelte@5.0.0-next.264)':
-    dependencies:
-      bits-ui: 0.11.8(svelte@5.0.0-next.264)
-      rxjs: 7.8.1
-      tailwind-merge: 2.5.3
-    transitivePeerDependencies:
-      - svelte
-
   '@svelte.codes/forms@0.0.26(svelte@5.0.0-next.264)':
     dependencies:
       bits-ui: 0.11.8(svelte@5.0.0-next.264)
@@ -2016,8 +2012,6 @@ snapshots:
       tailwind-merge: 2.5.3
     transitivePeerDependencies:
       - svelte
-
-  '@svelte.codes/modal-manager@0.0.25': {}
 
   '@sveltejs/vite-plugin-svelte-inspector@3.0.0-next.3(@sveltejs/vite-plugin-svelte@4.0.0-next.8(svelte@5.0.0-next.264)(vite@5.4.8(@types/node@22.7.5)(sass@1.79.5)))(svelte@5.0.0-next.264)(vite@5.4.8(@types/node@22.7.5)(sass@1.79.5))':
     dependencies:
@@ -2155,7 +2149,7 @@ snapshots:
     dependencies:
       '@tiptap/core': 2.8.0(@tiptap/pm@2.8.0)
 
-  '@tiptap/extension-placeholder@2.0.3(@tiptap/core@2.8.0(@tiptap/pm@2.8.0))(@tiptap/pm@2.8.0)':
+  '@tiptap/extension-placeholder@2.8.0(@tiptap/core@2.8.0(@tiptap/pm@2.8.0))(@tiptap/pm@2.8.0)':
     dependencies:
       '@tiptap/core': 2.8.0(@tiptap/pm@2.8.0)
       '@tiptap/pm': 2.8.0
@@ -2636,7 +2630,7 @@ snapshots:
 
   lru-cache@10.4.3: {}
 
-  lucide-svelte@0.447.0(svelte@5.0.0-next.264):
+  lucide-svelte@0.452.0(svelte@5.0.0-next.264):
     dependencies:
       svelte: 5.0.0-next.264
 
@@ -2705,6 +2699,11 @@ snapshots:
   orderedmap@2.1.1: {}
 
   package-json-from-dist@1.0.1: {}
+
+  paneforge@0.0.6(svelte@5.0.0-next.264):
+    dependencies:
+      nanoid: 5.0.7
+      svelte: 5.0.0-next.264
 
   path-key@3.1.1: {}
 
@@ -2990,7 +2989,7 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  svelte-check@4.0.4(svelte@5.0.0-next.264)(typescript@5.6.3):
+  svelte-check@4.0.5(svelte@5.0.0-next.264)(typescript@5.6.3):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       chokidar: 4.0.1

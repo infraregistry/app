@@ -2,7 +2,6 @@
   import { Badge } from "$lib/components/ui/badge";
   import { Button } from "$lib/components/ui/button/index.js";
   import * as Card from "$lib/components/ui/card";
-  import { openAddConnectorModal } from "$lib/connectors/add-connector";
   import { Cog } from "lucide-svelte";
 
   const links = [
@@ -10,8 +9,6 @@
     { name: "Users", count: 1 },
     { name: "Settings", count: 0 }
   ];
-
-  openAddConnectorModal();
 </script>
 
 <div class="flex h-full gap-4">
@@ -25,10 +22,10 @@
     <div class="flex flex-1">
       <nav class="w-48">
         {#each links as link}
-          <a href="##" class="hover:text-primary flex items-center justify-between gap-3 rounded-lg px-1 py-1.5 text-sm text-slate-400 transition-all">
+          <a href="##" class="flex items-center justify-between gap-3 rounded-lg px-1 py-1.5 text-sm text-slate-400 transition-all hover:text-primary">
             <span>{link.name}</span>
             {#if link.count > 0}
-              <Badge variant="outline" class="bg-secondary ml-auto">{link.count}</Badge>
+              <Badge variant="outline" class="ml-auto bg-secondary">{link.count}</Badge>
             {/if}
           </a>
         {/each}
@@ -55,7 +52,7 @@
       <div class="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm">
         <div class="flex flex-col items-center gap-1 text-center">
           <h3 class="text-2xl font-bold tracking-tight text-indigo-500">You have no connections..</h3>
-          <p class="text-muted-foreground text-sm">Add a connection to start tracking your change data and catalog things!</p>
+          <p class="text-sm text-muted-foreground">Add a connection to start tracking your change data and catalog things!</p>
           <Button class="mt-4" variant="success">Add Connection</Button>
         </div>
       </div>
