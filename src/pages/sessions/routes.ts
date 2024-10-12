@@ -3,5 +3,6 @@ import Register from "./register/register.svelte";
 
 export const routes = {
   "/login": Login,
-  "/register": Register
+  "/register": Register,
+  "*": Login
 };

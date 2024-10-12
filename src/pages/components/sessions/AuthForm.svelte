@@ -15,7 +15,7 @@
     isLoading = true;
     await new Promise<void>((resolve) => {
       setTimeout(() => {
-        // sessions.register("token");
+        sessions.register("token");
         resolve();
       }, 2000);
     }).finally(() => {

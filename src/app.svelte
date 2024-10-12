@@ -1,6 +1,7 @@
 <script lang="ts">
   import { openSearch } from "$lib/components/search/search";
   import { onMount } from "svelte";
+  import { push } from "svelte-spa-router";
   import "./app.css";
 
   import MainNav from "$lib/nav/main-nav.svelte";
@@ -12,6 +13,7 @@
   import Router from "svelte-spa-router";
   import { openCreateModal } from "./pages/components/create/create";
   import { routes } from "./pages/routes";
+  import Sessions from "./pages/sessions/Sessions.svelte";
 
   sessions.init();
 
@@ -44,16 +46,20 @@
 
 <ModeWatcher />
 
-<div class="absolute bottom-0 left-0 right-0 top-0 flex h-full w-full flex-col bg-muted/25">
-  <MainNav />
-  <div class="flex flex-col gap-2 pl-14">
-    <div class="m-3 h-full">
-      <Router {routes} />
+{#if sessions.isLoggedIn}
+  <div class="bg-muted/25 absolute bottom-0 left-0 right-0 top-0 flex h-full w-full flex-col">
+    <MainNav />
+    <div class="flex flex-col gap-2 pl-14">
+      <div class="m-3 h-full">
+        <Router {routes} />
+      </div>
     </div>
   </div>
-</div>
-{#if $confettiStore}
-  <Confetti x={[0.25, 1]} y={[0.75, 3]} amount={200} delay={[0, 2000]} />
+  {#if $confettiStore}
+    <Confetti x={[0.25, 1]} y={[0.75, 3]} amount={200} delay={[0, 2000]} />
+  {/if}
+{:else}
+  <Sessions />
 {/if}
+
 <Toaster />
-<Confetti amount={200} delay={[0, 2000]} />
