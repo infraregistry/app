@@ -3,16 +3,15 @@
   import { onMount } from "svelte";
   import "./app.css";
 
+  import VerticalNav from "$lib/nav/vertical-nav.svelte";
   import { sessions } from "$lib/sessions/sessions.svelte";
   import { confettiStore } from "$lib/shared/effects/confetti-store";
   import { ModeWatcher } from "mode-watcher";
   import { Confetti } from "svelte-confetti";
   import { Toaster } from "svelte-sonner";
   import Router from "svelte-spa-router";
-  import { openCreateModal } from "./pages/components/create/create";
   import { routes } from "./pages/routes";
   import Sessions from "./pages/sessions/Sessions.svelte";
-  import VerticalNav from "$lib/nav/vertical-nav.svelte";
 
   sessions.init();
 
@@ -39,8 +38,6 @@
       document.removeEventListener("keydown", handleKeydown);
     };
   });
-
-  openCreateModal();
 </script>
 
 <ModeWatcher />
