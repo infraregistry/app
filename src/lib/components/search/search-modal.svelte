@@ -1,16 +1,18 @@
-<script lang="ts" generics="T">
+<script lang="ts" generics="T extends SearchItem<T>">
   import { Checkbox } from "$lib/components/ui/checkbox";
   import * as CommandPalette from "@mateothegreat/svelte5-command-palette";
-  import { writable, type Writable } from "svelte/store";
-  import type { SearchConfig } from "./search";
+  import type { SearchConfig, SearchItem } from "./search.svelte";
 
-  export let config: SearchConfig<T>;
+  const { data }: SearchConfig<T> = $props();
 
-  $: data = config.data;
+  const selected = $state<T[]>([]);
 
-  const selected: Writable<T[]> = writable([]);
+  $effect(() => {
+    console.log("data", data);
+  });
 </script>
 
+{JSON.stringify(data)}
 {#snippet search()}
   <Checkbox id="terms" onCheckedChange={() => console.log("checked")} />
 {/snippet}
@@ -18,7 +20,8 @@
 <CommandPalette.Root onclose={() => console.log("close")}>
   <div class="w-[900px] border-4 border-red-500 bg-black">
     <CommandPalette.Section title="Recent searches">
-      {#each $data as item}
+      asdf
+      <!-- {#each instance.data as item}
         <CommandPalette.Item>
           <div class="text-sm text-slate-400">
             <div class="group flex cursor-default select-none items-center rounded-md px-3 py-2">
@@ -30,7 +33,7 @@
             </div>
           </div>
         </CommandPalette.Item>
-      {/each}
+      {/each} -->
     </CommandPalette.Section>
   </div>
 </CommandPalette.Root>

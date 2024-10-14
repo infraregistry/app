@@ -1,10 +1,9 @@
 import { modalManager } from "$lib/shared/modals";
-import type { Writable } from "svelte/store";
-import Search from "./search.svelte";
+import Search from "./search-modal.svelte";
 
-export interface SearchConfig<T> {
+export type SearchConfig<T> = {
   title?: string;
-  data: Writable<SearchItem<T>[]>;
+  data: T[];
 }
 
 export interface SearchItem<T> {

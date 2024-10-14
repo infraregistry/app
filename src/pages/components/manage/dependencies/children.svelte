@@ -5,6 +5,7 @@
   import { Table } from "@mateothegreat/svelte5-table";
   import { PartyPopper } from "lucide-svelte";
   import { components } from "../../components";
+  import { openRelateModal } from "./relate/relate.svelte";
 
   type Props = {
     icon: string;
@@ -14,6 +15,8 @@
   };
 
   let { icon, iconClass, title, description }: Props = $props();
+
+  openRelateModal();
 </script>
 
 <Card.Root>

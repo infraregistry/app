@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { openSearch } from "$lib/components/search/search";
   import { onMount } from "svelte";
   import "./app.css";
 
+  import { openSearch } from "$lib/components/search/search.svelte";
   import VerticalNav from "$lib/nav/vertical-nav.svelte";
   import { sessions } from "$lib/sessions/sessions.svelte";
   import { confettiStore } from "$lib/shared/effects/confetti-store";
@@ -28,7 +28,7 @@
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
         console.log("open search");
-        openSearch();
+        openSearch({ data: [] });
       }
     }
 
@@ -43,7 +43,7 @@
 <ModeWatcher />
 
 {#if sessions.isLoggedIn}
-  <div class="bg-muted/25 absolute bottom-0 left-0 right-0 top-0 flex h-full w-full flex-col">
+  <div class="absolute bottom-0 left-0 right-0 top-0 flex h-full w-full flex-col bg-muted/25">
     <VerticalNav />
     <div class="flex flex-col gap-2 pl-14">
       <div class="m-3 h-full">

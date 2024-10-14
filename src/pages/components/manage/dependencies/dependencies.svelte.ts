@@ -1,4 +1,3 @@
-import { writable, type Writable } from "svelte/store";
 
 export interface Dependency {
   id: string;
@@ -6,10 +5,10 @@ export interface Dependency {
   description: string;
 }
 
-export const dependencies: Writable<Dependency[]> = writable([]);
+let dependencies = $state<Dependency[]>([]);
 
-export const getDependencies = (id: string): void => {
-  dependencies.set([
+export const getDependencies = (id: string): Dependency[] => {
+  dependencies = [
     {
       id: "a",
       name: "A",
@@ -30,5 +29,7 @@ export const getDependencies = (id: string): void => {
       name: "D",
       description: "D",
     },
-  ]);
+  ];
+
+  return dependencies;
 };
