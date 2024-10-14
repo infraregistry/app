@@ -8,6 +8,6 @@ export const openRelateModal = (id: string) => {
   }));
 
   openSearch({
-    data: data,
+    data,
   });
 };

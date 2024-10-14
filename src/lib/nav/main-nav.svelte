@@ -18,7 +18,7 @@
   </div>
   <div class="flex flex-row items-center gap-2">
     {#if sessions.isLoggedIn}
-      <Button onclick={openSearch} variant="ghost" class="gap-20 border text-muted-foreground">
+      <Button onclick={() => openSearch({ data: [] })} variant="ghost" class="gap-20 border text-muted-foreground">
         <span>Search here...</span>
         <div class="flex items-center gap-1 text-xs">
           <CommandIcon size={12} />

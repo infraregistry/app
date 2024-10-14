@@ -5,18 +5,18 @@
   import { Table } from "@mateothegreat/svelte5-table";
   import { PartyPopper } from "lucide-svelte";
   import { components } from "../../components";
-  import { openRelateModal } from "./relate/relate.svelte";
+  import { openRelateModal } from "./relate/relate.svelte.ts";
 
   type Props = {
+    id: string;
     icon: string;
     title: string;
     description: string;
     iconClass: string;
+    type: "Parent" | "Child";
   };
 
-  let { icon, iconClass, title, description }: Props = $props();
-
-  openRelateModal();
+  let { icon, iconClass, title, description, id, type }: Props = $props();
 </script>
 
 <Card.Root>
@@ -33,8 +33,10 @@
       </div>
     </div>
     <div class="flex items-center gap-2">
-      <Button variant="outline">Add Child</Button>
-      <Button variant="outline">Add Child</Button>
+      <Button variant="outline" onclick={() => openRelateModal(id)} class="flex items-center gap-1 text-blue-400">
+        <p>Add {type}</p>
+        <Icon class="h-5 w-5" icon="material-symbols:add-link" />
+      </Button>
     </div>
   </Card.Header>
   <Card.Content>

@@ -15,6 +15,5 @@ export const openSearch = <T>(config: SearchConfig<T>) => {
   modalManager.open({
     id: "search",
     component: Search,
-    data: config
-  });
+  }, { config });
 };

@@ -2,7 +2,6 @@
   import { onMount } from "svelte";
   import "./app.css";
 
-  import { openSearch } from "$lib/components/search/search.svelte";
   import VerticalNav from "$lib/nav/vertical-nav.svelte";
   import { sessions } from "$lib/sessions/sessions.svelte";
   import { confettiStore } from "$lib/shared/effects/confetti-store";
@@ -27,8 +26,7 @@
     function handleKeydown(e: KeyboardEvent) {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
-        console.log("open search");
-        openSearch({ data: [] });
+        // openSearch({ data: [] });
       }
     }
 

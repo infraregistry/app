@@ -53,18 +53,18 @@
     "svelte-radix": "^1.1.1",
     "svelte-sonner": "^0.3.28",
     "svelte-spa-router": "^4.0.1",
-    "tailwind-merge": "^2.5.3",
+    "tailwind-merge": "^2.5.4",
     "tailwind-variants": "^0.2.1",
     "tailwindcss": "^3.4.13",
     "tailwindcss-animate": "^1.0.7",
     "tiptap-markdown": "^0.8.10",
     "tslib": "^2.7.0",
     "typescript": "^5.6.3",
-    "vite": "^5.4.8"
+    "vite": "^5.4.9"
   },
   "dependencies": {
-    "@mateothegreat/svelte5-command-palette": "^0.0.5",
-    "@mateothegreat/svelte5-modal-manager": "^0.0.11",
+    "@mateothegreat/svelte5-command-palette": "^0.0.6",
+    "@mateothegreat/svelte5-modal-manager": "^0.0.12",
     "paneforge": "^0.0.6"
   }
 }
