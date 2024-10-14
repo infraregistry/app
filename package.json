@@ -63,7 +63,7 @@
     "vite": "^5.4.8"
   },
   "dependencies": {
-    "@mateothegreat/svelte5-command-palette": "^0.0.4",
+    "@mateothegreat/svelte5-command-palette": "^0.0.5",
     "@mateothegreat/svelte5-modal-manager": "^0.0.11",
     "paneforge": "^0.0.6"
   }
