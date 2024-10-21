@@ -37,7 +37,7 @@
           <Card.Title class="text-4xl">$1329</Card.Title>
         </Card.Header>
         <Card.Content>
-          <div class="text-muted-foreground text-xs">+25% from last week</div>
+          <div class="text-xs text-muted-foreground">+25% from last week</div>
         </Card.Content>
         <Card.Footer>
           <Progress value={25} aria-label="25% increase" />
@@ -49,7 +49,7 @@
           <Card.Title class="text-3xl">$5,329</Card.Title>
         </Card.Header>
         <Card.Content>
-          <div class="text-muted-foreground text-xs">+10% from last month</div>
+          <div class="text-xs text-muted-foreground">+10% from last month</div>
         </Card.Content>
         <Card.Footer>
           <Progress value={12} aria-label="12% increase" />
@@ -106,7 +106,7 @@
                 <Table.Row class="bg-accent">
                   <Table.Cell>
                     <div class="font-medium">Liam Johnson</div>
-                    <div class="text-muted-foreground hidden text-sm md:inline">liam@example.com</div>
+                    <div class="hidden text-sm text-muted-foreground md:inline">liam@example.com</div>
                   </Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">Sale</Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">
@@ -118,7 +118,7 @@
                 <Table.Row>
                   <Table.Cell>
                     <div class="font-medium">Olivia Smith</div>
-                    <div class="text-muted-foreground hidden text-sm md:inline">olivia@example.com</div>
+                    <div class="hidden text-sm text-muted-foreground md:inline">olivia@example.com</div>
                   </Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">Refund</Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">
@@ -130,7 +130,7 @@
                 <Table.Row>
                   <Table.Cell>
                     <div class="font-medium">Liam Johnson</div>
-                    <div class="text-muted-foreground hidden text-sm md:inline">liam@example.com</div>
+                    <div class="hidden text-sm text-muted-foreground md:inline">liam@example.com</div>
                   </Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">Sale</Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">
@@ -142,7 +142,7 @@
                 <Table.Row>
                   <Table.Cell>
                     <div class="font-medium">Noah Williams</div>
-                    <div class="text-muted-foreground hidden text-sm md:inline">noah@example.com</div>
+                    <div class="hidden text-sm text-muted-foreground md:inline">noah@example.com</div>
                   </Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">Subscription</Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">
@@ -154,7 +154,7 @@
                 <Table.Row>
                   <Table.Cell>
                     <div class="font-medium">Emma Brown</div>
-                    <div class="text-muted-foreground hidden text-sm md:inline">emma@example.com</div>
+                    <div class="hidden text-sm text-muted-foreground md:inline">emma@example.com</div>
                   </Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">Subscription</Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">
@@ -166,7 +166,7 @@
                 <Table.Row>
                   <Table.Cell>
                     <div class="font-medium">Liam Johnson</div>
-                    <div class="text-muted-foreground hidden text-sm md:inline">liam@example.com</div>
+                    <div class="hidden text-sm text-muted-foreground md:inline">liam@example.com</div>
                   </Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">Sale</Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">
@@ -178,7 +178,7 @@
                 <Table.Row>
                   <Table.Cell>
                     <div class="font-medium">Olivia Smith</div>
-                    <div class="text-muted-foreground hidden text-sm md:inline">olivia@example.com</div>
+                    <div class="hidden text-sm text-muted-foreground md:inline">olivia@example.com</div>
                   </Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">Refund</Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">
@@ -190,7 +190,7 @@
                 <Table.Row>
                   <Table.Cell>
                     <div class="font-medium">Emma Brown</div>
-                    <div class="text-muted-foreground hidden text-sm md:inline">emma@example.com</div>
+                    <div class="hidden text-sm text-muted-foreground md:inline">emma@example.com</div>
                   </Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">Sale</Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">
@@ -208,7 +208,7 @@
   </div>
   <div>
     <Card.Root class="overflow-hidden">
-      <Card.Header class="bg-muted/50 flex flex-row items-start">
+      <Card.Header class="flex flex-row items-start bg-muted/50">
         <div class="grid gap-0.5">
           <Card.Title class="group flex items-center gap-2 text-lg">
             Order Oe31b70H
@@ -281,7 +281,7 @@
         <div class="grid grid-cols-2 gap-4">
           <div class="grid gap-3">
             <div class="font-semibold">Shipping Information</div>
-            <address class="text-muted-foreground grid gap-0.5 not-italic">
+            <address class="grid gap-0.5 not-italic text-muted-foreground">
               <span>Liam Johnson</span>
               <span>1234 Main St.</span>
               <span>Anytown, CA 12345</span>
@@ -319,7 +319,7 @@
           <div class="font-semibold">Payment Information</div>
           <dl class="grid gap-3">
             <div class="flex items-center justify-between">
-              <dt class="text-muted-foreground flex items-center gap-1">
+              <dt class="flex items-center gap-1 text-muted-foreground">
                 <CreditCard class="h-4 w-4" />
                 Visa
               </dt>
@@ -328,8 +328,8 @@
           </dl>
         </div>
       </Card.Content>
-      <Card.Footer class="bg-muted/50 flex flex-row items-center border-t px-6 py-3">
-        <div class="text-muted-foreground text-xs">
+      <Card.Footer class="flex flex-row items-center border-t bg-muted/50 px-6 py-3">
+        <div class="text-xs text-muted-foreground">
           Updated <time dateTime="2023-11-23">November 23, 2023</time>
         </div>
         <Pagination.Root count={10} class="ml-auto mr-0 w-auto">

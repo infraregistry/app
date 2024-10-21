@@ -1,5 +1,5 @@
 <script>
-  import { openSearch } from "$lib/components/search/search-modal.svelte";
+  import { openSearch } from "$lib/components/search/search.svelte";
   import Button from "$lib/components/ui/button/button.svelte";
   import { DropdownMenu, DropdownMenuTrigger } from "$lib/components/ui/dropdown-menu";
   import DropdownMenuContent from "$lib/components/ui/dropdown-menu/dropdown-menu-content.svelte";

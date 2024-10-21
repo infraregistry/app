@@ -1,7 +1,4 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-  import "./app.css";
-
   import VerticalNav from "$lib/nav/vertical-nav.svelte";
   import { sessions } from "$lib/sessions/sessions.svelte";
   import { confettiStore } from "$lib/shared/effects/confetti-store";
@@ -11,6 +8,11 @@
   import Router from "svelte-spa-router";
   import { routes } from "./pages/routes";
   import Sessions from "./pages/sessions/Sessions.svelte";
+
+  import * as Command from "$lib/components/ui/command/index.js";
+
+  import "./app.css";
+  import DataTable from "$lib/components/data-table/data-table.svelte";
 
   sessions.init();
 
@@ -22,23 +24,23 @@
     confettiStore;
   });
 
-  onMount(() => {
-    function handleKeydown(e: KeyboardEvent) {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        // openSearch({ data: [] });
-      }
+  let open = $state(false);
+
+  function onkeydown(e: KeyboardEvent) {
+    if (e.key === "k" && (e.metaKey || e.ctrlKey) && !open) {
+      e.preventDefault();
+      open = true;
     }
-
-    document.addEventListener("keydown", handleKeydown);
-
-    return () => {
-      document.removeEventListener("keydown", handleKeydown);
-    };
-  });
+  }
 </script>
 
+<svelte:window {onkeydown} />
+
 <ModeWatcher />
+
+<Command.Dialog bind:open>
+  <DataTable />
+</Command.Dialog>
 
 {#if sessions.isLoggedIn}
   <div class="absolute bottom-0 left-0 right-0 top-0 flex h-full w-full flex-col bg-muted/25">
