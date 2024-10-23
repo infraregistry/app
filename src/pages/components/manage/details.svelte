@@ -1,39 +1,34 @@
 <script lang="ts">
-  import { Button } from "$lib/components/ui/button/index.js";
-  import * as Card from "$lib/components/ui/card/index.js";
-  import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
-  import * as Pagination from "$lib/components/ui/pagination/index.js";
-  import { Separator } from "$lib/components/ui/separator/index.js";
+  import { Button } from "$lib/components/ui/button";
+  import * as Card from "$lib/components/ui/card";
+  import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
+  import * as Pagination from "$lib/components/ui/pagination";
+  import { Separator } from "$lib/components/ui/separator";
   import ChevronLeft from "lucide-svelte/icons/chevron-left";
   import ChevronRight from "lucide-svelte/icons/chevron-right";
   import Copy from "lucide-svelte/icons/copy";
   import CreditCard from "lucide-svelte/icons/credit-card";
   import EllipsisVertical from "lucide-svelte/icons/ellipsis-vertical";
-  import Truck from "lucide-svelte/icons/truck";
 </script>
 
-<Card.Root class="overflow-hidden">
-  <Card.Header class="flex flex-row items-start bg-muted/50">
-    <div class="grid gap-0.5">
-      <Card.Title class="group flex items-center gap-2 text-lg">
-        Order Oe31b70H
+<Card.Root>
+  <Card.Header class="flex flex-row items-start">
+    <div class="grid flex-1 gap-0.5">
+      <Card.Title class="group flex items-center gap-2">
+        Oasde31b70H
         <Button size="icon" variant="outline" class="h-6 w-6 opacity-0 transition-opacity group-hover:opacity-100">
           <Copy class="h-3 w-3" />
           <span class="sr-only">Copy Order ID</span>
         </Button>
       </Card.Title>
-      <Card.Description>Date: November 23, 2023</Card.Description>
+      <Card.Description class="text-xs">Last Synced: 4 minutes ago</Card.Description>
     </div>
-    <div class="ml-auto flex items-center gap-1">
-      <Button size="sm" variant="outline" class="h-8 gap-1">
-        <Truck class="h-3.5 w-3.5" />
-        <span class="lg:sr-only xl:not-sr-only xl:whitespace-nowrap"> Track Order </span>
-      </Button>
+    <div class="flex items-center gap-1">
       <DropdownMenu.Root>
         <DropdownMenu.Trigger asChild let:builder>
-          <Button builders={[builder]} size="icon" variant="outline" class="h-8 w-8">
+          <Button builders={[builder]} size="lg" variant="outline" class="gap-2 px-2 pl-4">
+            <span class="lg:sr-only xl:not-sr-only xl:whitespace-nowrap">History</span>
             <EllipsisVertical class="h-3.5 w-3.5" />
-            <span class="sr-only">More</span>
           </Button>
         </DropdownMenu.Trigger>
         <DropdownMenu.Content align="end">
@@ -45,43 +40,7 @@
       </DropdownMenu.Root>
     </div>
   </Card.Header>
-  <Card.Content class="p-6 text-sm">
-    <div class="grid gap-3">
-      <div class="font-semibold">Order Details</div>
-      <ul class="grid gap-3">
-        <li class="flex items-center justify-between">
-          <span class="text-muted-foreground">
-            Glimmer Lamps x <span>2</span>
-          </span>
-          <span>$250.00</span>
-        </li>
-        <li class="flex items-center justify-between">
-          <span class="text-muted-foreground">
-            Aqua Filters x <span>1</span>
-          </span>
-          <span>$49.00</span>
-        </li>
-      </ul>
-      <Separator class="my-2" />
-      <ul class="grid gap-3">
-        <li class="flex items-center justify-between">
-          <span class="text-muted-foreground">Subtotal</span>
-          <span>$299.00</span>
-        </li>
-        <li class="flex items-center justify-between">
-          <span class="text-muted-foreground">Shipping</span>
-          <span>$5.00</span>
-        </li>
-        <li class="flex items-center justify-between">
-          <span class="text-muted-foreground">Tax</span>
-          <span>$25.00</span>
-        </li>
-        <li class="flex items-center justify-between font-semibold">
-          <span class="text-muted-foreground">Total</span>
-          <span>$329.00</span>
-        </li>
-      </ul>
-    </div>
+  <Card.Content class=" text-sm">
     <Separator class="my-4" />
     <div class="grid grid-cols-2 gap-4">
       <div class="grid gap-3">

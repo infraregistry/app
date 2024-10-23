@@ -56,7 +56,6 @@
     </Button>
   </div>
 </div>
-d
 <div class="flex gap-3">
   <div class="flex flex-1 flex-col gap-3">
     <Tabs.Root
