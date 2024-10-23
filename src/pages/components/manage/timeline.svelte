@@ -107,7 +107,7 @@
   </div>
 {/snippet}
 
-<div class="flex flex-col gap-5">
+<div class="flex max-h-[80vh] flex-1 flex-col gap-5 overflow-x-hidden overflow-y-scroll">
   {#each messages as message}
     {@render entryContainer(message)}
   {/each}
