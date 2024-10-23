@@ -1,51 +1,55 @@
 <script lang="ts">
-  import type { EntryKind, Change, Message, TimelineEntry, MessageEntry } from "$lib/types.ts";
+  import type { Change, Message, TimelineEntry } from "$lib/types.ts";
   import { timeSince } from "$lib/utils";
 
-  const messages: TimelineEntry[] = [
-    {
-      id: "message-1",
-      kind: "message",
-      date: new Date("2024/10/23 13:00:00"),
-      content: {
-        text: "We need to prepare audit data for compliance by next month!",
-        author: "roaming"
-      } satisfies Message
-    },
-    {
-      id: "message-2",
-      kind: "message",
-      date: new Date("2024/10/23 13:05:00"),
-      content: {
-        text: "Yes, I agree, please create a ticket.",
-        author: "matthew"
-      } satisfies Message
-    },
-    {
-      id: "message-3",
-      kind: "change",
-      date: new Date("2024/10/23 13:15:00"),
-      content: {
-        field: "IP Address",
-        value: {
-          previous: "192.168.1.101",
-          current: "1.1.1.1"
-        }
-      } satisfies Change
-    },
-    {
-      id: "message-4",
-      kind: "change",
-      date: new Date("2024/10/23 13:50:00"),
-      content: {
-        field: "IP Address",
-        value: {
-          previous: "192.168.1.101",
-          current: "1.1.1.1"
-        }
-      } satisfies Change
-    }
-  ];
+  const messages: TimelineEntry[] = [];
+
+  for (let i = 0; i < 100; i++) {
+    messages.push(
+      {
+        id: `message-${i * 4 + 1}`,
+        kind: "message",
+        date: new Date("2024/10/23 13:00:00"),
+        content: {
+          text: "We need to prepare audit data for compliance by next month!",
+          author: "roaming"
+        } satisfies Message
+      },
+      {
+        id: `message-${i * 4 + 2}`,
+        kind: "message",
+        date: new Date("2024/10/23 13:05:00"),
+        content: {
+          text: "Yes, I agree, please create a ticket.",
+          author: "matthew"
+        } satisfies Message
+      },
+      {
+        id: `message-${i * 4 + 3}`,
+        kind: "change",
+        date: new Date("2024/10/23 13:15:00"),
+        content: {
+          field: "IP Address",
+          value: {
+            previous: "192.168.1.101",
+            current: "1.1.1.1"
+          }
+        } satisfies Change
+      },
+      {
+        id: `message-${i * 4 + 4}`,
+        kind: "change",
+        date: new Date("2024/10/23 13:50:00"),
+        content: {
+          field: "IP Address",
+          value: {
+            previous: "192.168.1.101",
+            current: "1.1.1.1"
+          }
+        } satisfies Change
+      }
+    );
+  }
 </script>
 
 {#snippet messageEntry(content: Message, date: Date)}
