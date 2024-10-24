@@ -7,29 +7,18 @@ export interface Dependency {
 
 let dependencies = $state<Dependency[]>([]);
 
-export const getDependencies = (id: string): Dependency[] => {
-  dependencies = [
-    {
-      id: "a",
-      name: "A",
-      description: "A",
-    },
-    {
-      id: "b",
-      name: "B",
-      description: "B",
-    },
-    {
-      id: "c",
-      name: "C",
-      description: "C",
-    },
-    {
-      id: "d",
-      name: "D",
-      description: "D",
-    },
-  ];
-
+export const generateRandomDependencies = (max: number): Dependency[] => {
+  const dependencies: Dependency[] = [];
+  for (let i = 0; i < max; i++) {
+    dependencies.push({
+      id: i.toString(),
+      name: `Dependency ${i}`,
+      description: `Description of Dependency ${i}`,
+    });
+  }
   return dependencies;
+}
+
+export const getDependencies = (id: string): Dependency[] => {
+  return generateRandomDependencies(100);
 };
