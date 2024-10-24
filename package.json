@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@iconify/svelte": "^4.0.2",
-    "@mateothegreat/svelte5-table": "^1.0.8",
+    "@mateothegreat/svelte5-table": "^1.0.13",
     "@svelte.codes/forms": "^0.0.26",
     "@sveltejs/vite-plugin-svelte": "^4.0.0",
     "@tailwindcss/typography": "^0.5.15",
@@ -50,6 +50,7 @@
     "svelte": "^5.0.5",
     "svelte-check": "^4.0.5",
     "svelte-confetti": "^2.1.2",
+    "svelte-headless-table": "^0.18.2",
     "svelte-radix": "^1.1.1",
     "svelte-sonner": "^0.3.28",
     "svelte-spa-router": "^4.0.1",

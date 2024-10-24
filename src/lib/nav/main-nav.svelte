@@ -1,5 +1,5 @@
 <script>
-  import { openSearch } from "$lib/components/search/search-modal.svelte";
+  import { openCommandPalette } from "$lib/components/command-palette/command-palette-types.svelte";
   import Button from "$lib/components/ui/button/button.svelte";
   import { DropdownMenu, DropdownMenuTrigger } from "$lib/components/ui/dropdown-menu";
   import DropdownMenuContent from "$lib/components/ui/dropdown-menu/dropdown-menu-content.svelte";
@@ -18,7 +18,7 @@
   </div>
   <div class="flex flex-row items-center gap-2">
     {#if sessions.isLoggedIn}
-      <Button onclick={() => openSearch({ data: [] })} variant="ghost" class="gap-20 border text-muted-foreground">
+      <Button onclick={() => openCommandPalette({ data: [] })} variant="ghost" class="gap-20 border text-muted-foreground">
         <span>Search here...</span>
         <div class="flex items-center gap-1 text-xs">
           <CommandIcon size={12} />

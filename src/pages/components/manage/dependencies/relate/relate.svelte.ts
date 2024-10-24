@@ -1,13 +1,11 @@
-import { openSearch } from "$lib/components/search/search.svelte";
+import { openSelector } from "$lib/components/selector/selector.svelte";
 import { getDependencies } from "../dependencies.svelte";
 
-export const openRelateModal = (id: string) => {
-  const data = getDependencies(id).map((dependency) => ({
-    name: dependency.name,
-    value: dependency,
-  }));
-
-  openSearch({
-    data,
+export const openAddRelation = (id: string) => {
+  openSelector({
+    title: "Add children to this component.",
+    data: getDependencies(id),
+  }).subscribe((selections) => {
+    console.log(selections);
   });
 };

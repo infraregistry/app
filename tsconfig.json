@@ -23,6 +23,12 @@
       "$lib/*": [
         "./src/lib/*"
       ],
+      "$pages": [
+        "./src/pages"
+      ],
+      "$pages/*": [
+        "./src/pages/*"
+      ],
     }
   },
   "include": [

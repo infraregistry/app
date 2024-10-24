@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Home, LineChart, Package, Package2, ShoppingCart, UsersRound } from "lucide-svelte";
 
-  import { openSearch } from "$lib/components/search/search.svelte";
+  import { openCommandPalette } from "$lib/components/command-palette/command-palette-types.svelte";
   import { Button } from "$lib/components/ui/button";
   import { DropdownMenu, DropdownMenuTrigger } from "$lib/components/ui/dropdown-menu";
   import DropdownMenuContent from "$lib/components/ui/dropdown-menu/dropdown-menu-content.svelte";
@@ -19,7 +19,7 @@
       <Package2 class="h-4 w-4 transition-all group-hover:scale-110" />
       <span class="sr-only">Acme Inc</span>
     </a>
-    <Tooltip.Root on:click={() => openSearch({ data: [] })}>
+    <Tooltip.Root on:click={() => openCommandPalette({ data: [] })}>
       <Tooltip.Trigger asChild let:builder>
         <div class="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8" use:builder.action {...builder}>
           <Search class="h-5 w-5" />

@@ -1,9 +1,9 @@
-<script lang="ts" generics="T extends SearchItem<T>">
+<script lang="ts" generics="T extends CommandPaletteItem<T>">
   import { Checkbox } from "$lib/components/ui/checkbox";
   import * as CommandPalette from "@mateothegreat/svelte5-command-palette";
-  import type { SearchConfig, SearchItem } from "./search.svelte";
+  import type { CommandPaletteConfig, CommandPaletteItem } from "./command-palette-types.svelte";
 
-  const { config }: { config: SearchConfig<T> } = $props();
+  const { config }: { config: CommandPaletteConfig<T> } = $props();
   const selected = $state<T[]>([]);
 </script>
 
