@@ -32,6 +32,12 @@
       tooltip: "Add component(s) that this component links down to (is a parent of)."
     }
   };
+
+  const relate = (id: string) => {
+    openAddRelation(id).subscribe((success) => {
+      console.log("add relation process completed:", success);
+    });
+  };
 </script>
 
 <Card.Root>
@@ -50,7 +56,7 @@
     <div class="flex items-center gap-2">
       <Tooltip.Root>
         <Tooltip.Trigger asChild let:builder>
-          <Button builders={[builder]} variant="outline" onclick={() => openAddRelation(id)} class="flex items-center gap-1 {types[type].classes}">
+          <Button builders={[builder]} variant="outline" onclick={() => relate(id)} class="flex items-center gap-1 {types[type].classes}">
             <p>Add {type}</p>
             <Icon class="h-5 w-5" icon="material-symbols:add-link" />
           </Button>

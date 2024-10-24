@@ -1,6 +1,6 @@
 import { openSelector } from "$lib/components/selector/selector.svelte";
 import { ComponentType } from "$pages/components/components";
-import { map, type Observable } from "rxjs";
+import { map, tap, type Observable } from "rxjs";
 import { createRawSnippet, hydrate } from "svelte";
 import { toast } from "svelte-sonner";
 import { getDependencies } from "../dependencies.svelte";
@@ -36,6 +36,9 @@ export const openAddRelation = (id: string): Observable<boolean> => {
       }
     }
   }).pipe(
+    tap((selections) => {
+      console.log(selections);
+    }),
     map((selections) => {
       toast.success(`Added ${selections.length > 1 ? `${selections.length} components as children` : "1 component as a child"} to component ${id}.`);
       return selections.length > 0;
