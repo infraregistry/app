@@ -1,19 +1,39 @@
 <script lang="ts">
-  import Diagram from "$lib/components/diagram/diagram.svelte";
+  import { openConfirm } from "$lib/components/confirm/confirm";
   import { Badge } from "$lib/components/ui/badge/index.js";
   import { Button } from "$lib/components/ui/button/index.js";
   import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
   import * as Tabs from "$lib/components/ui/tabs";
   import Icon from "@iconify/svelte";
-  import { push } from "svelte-spa-router";
-  import { writable } from "svelte/store";
-  import Depedencies from "./dependencies/depedencies.svelte";
+  import Router, { push } from "svelte-spa-router";
+  import { deleteComponent, loadComponent } from "./api.svelte";
   import Feed from "./feed.svelte";
-  import Settings from "./settings/settings.svelte";
+  import { routes } from "./routes";
 
-  // openCreateProperty();
+  type Props = {
+    params: {
+      id: string;
+      tab: string;
+    };
+  };
+  let { params }: Props = $props();
 
-  const tab = writable<"documentation" | "dependencies" | "diagram" | "settings">("dependencies");
+  const component = loadComponent(params.id);
+  const tab = $state<string>(params.tab || "documentation");
+
+  const onSyncClick = () => {};
+
+  const onDeleteClick = () => {
+    openConfirm({
+      title: "Delete Component",
+      description: "Are you sure you want to delete this component?",
+      label: "Delete"
+    }).subscribe((result) => {
+      if (result) {
+        deleteComponent(component.id).subscribe();
+      }
+    });
+  };
 </script>
 
 <div class="mb-4 flex items-end gap-4">
@@ -41,12 +61,9 @@
         </DropdownMenu.Trigger>
         <DropdownMenu.Content>
           <DropdownMenu.Group>
-            <DropdownMenu.Label>My Account</DropdownMenu.Label>
+            <DropdownMenu.Item onclick={() => onSyncClick()}>Sync Now</DropdownMenu.Item>
             <DropdownMenu.Separator />
-            <DropdownMenu.Item>Profile</DropdownMenu.Item>
-            <DropdownMenu.Item>Billing</DropdownMenu.Item>
-            <DropdownMenu.Item>Team</DropdownMenu.Item>
-            <DropdownMenu.Item>Subscription</DropdownMenu.Item>
+            <DropdownMenu.Item onclick={() => onDeleteClick()}>Delete</DropdownMenu.Item>
           </DropdownMenu.Group>
         </DropdownMenu.Content>
       </DropdownMenu.Root>
@@ -59,26 +76,18 @@
 <div class="flex gap-3">
   <div class="flex flex-1 flex-col gap-3">
     <Tabs.Root
-      value={$tab}
+      value={tab}
       on:selected={() => {
         console.log("selected");
       }}>
       <Tabs.List class="">
-        <Tabs.Trigger onclick={() => ($tab = "documentation")} value="documentation">Documentation</Tabs.Trigger>
-        <Tabs.Trigger onclick={() => ($tab = "dependencies")} value="dependencies">Dependencies</Tabs.Trigger>
-        <Tabs.Trigger onclick={() => ($tab = "diagram")} value="diagram">Diagram</Tabs.Trigger>
-        <Tabs.Trigger onclick={() => ($tab = "settings")} value="settings">Settings</Tabs.Trigger>
+        <Tabs.Trigger onclick={() => push(`/components/${component.id}/documentation`)} value="documentation">Documentation</Tabs.Trigger>
+        <Tabs.Trigger onclick={() => push(`/components/${component.id}/dependencies`)} value="dependencies">Dependencies</Tabs.Trigger>
+        <Tabs.Trigger onclick={() => push(`/components/${component.id}/diagram`)} value="diagram">Diagram</Tabs.Trigger>
+        <Tabs.Trigger onclick={() => push(`/components/${component.id}/settings`)} value="settings">Settings</Tabs.Trigger>
       </Tabs.List>
     </Tabs.Root>
-    {#if $tab === "settings"}
-      <Settings />
-    {:else if $tab === "dependencies"}
-      <Depedencies />
-    {:else if $tab === "diagram"}
-      <Diagram />
-    {:else}
-      <!-- <Documentation /> -->
-    {/if}
+    <Router {routes} />
   </div>
   <div class="w-[375px]">
     <!-- <Panel /> -->

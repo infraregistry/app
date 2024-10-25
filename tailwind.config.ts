@@ -1,9 +1,9 @@
-import { fontFamily } from "tailwindcss/defaultTheme";
 import type { Config } from "tailwindcss";
+import { fontFamily } from "tailwindcss/defaultTheme";
 
 const config: Config = {
 	darkMode: ["class"],
-	content: ["./src/**/*.{html,js,svelte,ts}"],
+	content: ["./src/**/*.{html,js,svelte,ts}", "./node_modules/@mateothegreat/svelte5-forms/**/*.svelte"],
 	safelist: ["dark"],
 	theme: {
 		container: {
@@ -56,7 +56,12 @@ const config: Config = {
 			},
 			fontFamily: {
 				sans: [...fontFamily.sans]
-			}
+			},
+			scale: {
+				80: ".80",
+				98: ".98",
+				99: ".99",
+			},
 		}
 	},
 };

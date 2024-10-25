@@ -1,5 +1,5 @@
-import { jwtDecode } from "jwt-decode";
 import dayjs from "dayjs";
+import { jwtDecode } from "jwt-decode";
 
 class Session {
   private token: string = $state("");

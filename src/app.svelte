@@ -44,8 +44,8 @@
 {#if sessions.isLoggedIn}
   <div class="absolute bottom-0 left-0 right-0 top-0 flex h-full w-full flex-col bg-muted/25">
     <VerticalNav />
-    <div class="flex flex-col gap-2 pl-14">
-      <div class="m-3 h-full">
+    <div class="flex h-full flex-col gap-2 pl-14">
+      <div class="h-full">
         <Router {routes} />
       </div>
     </div>

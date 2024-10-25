@@ -2,10 +2,7 @@
   import { Button } from "$lib/components/ui/button";
   import * as Card from "$lib/components/ui/card";
   import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
-  import * as Pagination from "$lib/components/ui/pagination";
   import { Separator } from "$lib/components/ui/separator";
-  import ChevronLeft from "lucide-svelte/icons/chevron-left";
-  import ChevronRight from "lucide-svelte/icons/chevron-right";
   import Copy from "lucide-svelte/icons/copy";
   import CreditCard from "lucide-svelte/icons/credit-card";
   import EllipsisVertical from "lucide-svelte/icons/ellipsis-vertical";
@@ -25,8 +22,8 @@
     </div>
     <div class="flex items-center gap-1">
       <DropdownMenu.Root>
-        <DropdownMenu.Trigger asChild let:builder>
-          <Button builders={[builder]} size="lg" variant="outline" class="gap-2 px-2 pl-4">
+        <DropdownMenu.Trigger>
+          <Button size="lg" variant="outline" class="gap-2 px-2 pl-4">
             <span class="lg:sr-only xl:not-sr-only xl:whitespace-nowrap">History</span>
             <EllipsisVertical class="h-3.5 w-3.5" />
           </Button>
@@ -96,7 +93,7 @@
     <div class="text-xs text-muted-foreground">
       Updated <time dateTime="2023-11-23">November 23, 2023</time>
     </div>
-    <Pagination.Root count={10} class="ml-auto mr-0 w-auto">
+    <!-- <Pagination.Root count={10} class="ml-auto mr-0 w-auto">
       <Pagination.Content>
         <Pagination.Item>
           <Button size="icon" variant="outline" class="h-6 w-6">
@@ -111,6 +108,6 @@
           </Button>
         </Pagination.Item>
       </Pagination.Content>
-    </Pagination.Root>
+    </Pagination.Root> -->
   </Card.Footer>
 </Card.Root>

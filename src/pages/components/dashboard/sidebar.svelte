@@ -1,7 +1,7 @@
 <script lang="ts">
   import Badge from "$lib/components/ui/badge/badge.svelte";
   import { Button } from "$lib/components/ui/button";
-  import { ScrollArea } from "$lib/components/ui/scroll-area";
+  import { ScrollArea } from "bits-ui";
 
   let className: string | null | undefined = undefined;
   export { className as class };
@@ -51,20 +51,28 @@
     <div class="flex-1">Playlists</div>
     <Badge class="bg-zinc-800 text-slate-200">10</Badge>
   </h2>
-  <ScrollArea class="h-[100px] text-slate-300">
-    {#each playlists as playlist}
-      <Button variant="ghost" class="h-8 w-full justify-start">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-4 w-4">
-          <path d="M21 15V6" />
-          <path d="M18.5 18a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
-          <path d="M12 12H3" />
-          <path d="M16 6H3" />
-          <path d="M12 18H3" />
-        </svg>
-        {playlist}
-      </Button>
-    {/each}
-  </ScrollArea>
+  <ScrollArea.Root class="border-dark-10 bg-background-alt relative overflow-hidden rounded-[10px] border px-4 py-4 shadow-card">
+    <ScrollArea.Viewport class="h-full max-h-[200px] w-full max-w-[250px]">
+      {#each playlists as playlist}
+        <Button variant="ghost" class="h-8 w-full justify-start">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-4 w-4">
+            <path d="M21 15V6" />
+            <path d="M18.5 18a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+            <path d="M12 12H3" />
+            <path d="M16 6H3" />
+            <path d="M12 18H3" />
+          </svg>
+          {playlist}
+        </Button>
+      {/each}</ScrollArea.Viewport>
+    <ScrollArea.Scrollbar orientation="vertical" class="hover:bg-dark-10 flex w-2.5 touch-none select-none rounded-full border-l border-l-transparent bg-muted p-px transition-all duration-200 hover:w-3 ">
+      <ScrollArea.Thumb class="flex-1 rounded-full bg-muted-foreground" />
+    </ScrollArea.Scrollbar>
+    <ScrollArea.Scrollbar orientation="horizontal" class="hover:bg-dark-10 flex h-2.5 touch-none select-none rounded-full border-t border-t-transparent bg-muted p-px transition-all duration-200 hover:h-3 ">
+      <ScrollArea.Thumb class="rounded-full bg-muted-foreground" />
+    </ScrollArea.Scrollbar>
+    <ScrollArea.Corner />
+  </ScrollArea.Root>
 </div>
 <div class="">
   {@render sidebar()}

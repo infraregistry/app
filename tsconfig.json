@@ -5,8 +5,6 @@
     "useDefineForClassFields": true,
     "module": "ESNext",
     "resolveJsonModule": true,
-    "strictNullChecks": false,
-    "allowArbitraryExtensions": true,
     /**
      * Typecheck JS in `.svelte` and `.js` files by default.
      * Disable checkJs if you'd like to use dynamic types in JS.
@@ -16,6 +14,7 @@
     "allowJs": true,
     "checkJs": true,
     "isolatedModules": true,
+    "moduleDetection": "force",
     "paths": {
       "$lib": [
         "./src/lib"
