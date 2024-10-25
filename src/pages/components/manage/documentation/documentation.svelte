@@ -18,7 +18,7 @@
     { value: "apple", label: "Apple" }
   ];
 
-  let form: Form.Instance<MyDataType1>;
+  let form: Form.Instance;
 
   const controls = $state([
     {
@@ -30,7 +30,7 @@
       name: "foobar",
       data: items,
       validators: [minLength(2)],
-      displayFn: (data) => {
+      displayFn: (data: (typeof items)[number]) => {
         return data.label;
       }
     },

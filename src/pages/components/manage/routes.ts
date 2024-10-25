@@ -9,4 +9,5 @@ export const routes = {
   "/components/:id/diagram": Diagram,
   "/components/:id/settings": Settings,
   "/components/:id": Documentation,
+
 }

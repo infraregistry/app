@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { openConfirm } from "$lib/components/confirm/confirm";
+  import { Button } from "$lib/components/ui/button";
   import * as Card from "$lib/components/ui/card";
   import * as Form from "@mateothegreat/svelte5-forms";
   import { minLength } from "@mateothegreat/svelte5-forms";
@@ -9,22 +11,13 @@
     enabled: boolean;
   }
 
-  type MyDataType1 = {
-    name: string;
-    foobar: {
-      value: string;
-      label: string;
-    }[];
-    agree: boolean;
-  };
-
   const items = [
     { value: "mango", label: "Mango" },
     { value: "watermelon", label: "Watermelon" },
     { value: "apple", label: "Apple" }
   ];
 
-  let form: Form.Instance<MyDataType1>;
+  let form: Form.Instance;
 
   const controls = $state([
     {
@@ -45,6 +38,18 @@
       validators: [minLength(2)]
     }
   ]);
+
+  const onDeleteClick = () => {
+    console.log(123);
+
+    openConfirm({
+      title: "Delete Component",
+      description: "Are you sure you want to delete this component?",
+      label: "Delete"
+    }).subscribe((result) => {
+      console.log(result);
+    });
+  };
 </script>
 
 <div class="m-2 flex gap-16">
@@ -78,33 +83,44 @@
             <Textarea id="description" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl nec ultricies ultricies, nunc nisl ultricies nunc, nec ultricies nunc nisl nec nunc." class="min-h-32" />
           </div>
         </div> -->
-        <Form.Group>
-          <Form.Field>
-            <Form.Header.Root>
-              <Form.Header.Label>Name</Form.Header.Label>
-              <Form.Header.Description>Foo bar baz pow.</Form.Header.Description>
-            </Form.Header.Root>
-            <Form.Controls.Input {form} name="name" />
-          </Form.Field>
-          <Form.Field>
-            <Form.Header.Root>
-              <Form.Header.Label>Name</Form.Header.Label>
-              <Form.Header.Description>Foo bar baz pow.</Form.Header.Description>
-            </Form.Header.Root>
-            <Form.Controls.Select {form} placeholder="Select something cool.." name="asdf" type="multiple" prefix={selectPrefix} />
-          </Form.Field>
-        </Form.Group>
-        <Form.Group>
-          <Form.Field>
-            <Form.Header.Root>
-              <Form.Header.Label>Name</Form.Header.Label>
-              <Form.Header.Description>Foo bar baz pow.</Form.Header.Description>
-            </Form.Header.Root>
-            <Form.Controls.Switch {form} name="agree" class="rounded-lg border-2 border-slate-800 bg-zinc-900/40 p-2">
-              <span class="text-xs text-sky-500">I agree to be awesome.</span>
-            </Form.Controls.Switch>
-          </Form.Field>
-        </Form.Group>
+        <Form.Root bind:form {controls}>
+          <Form.Group>
+            <Form.Field>
+              <Form.Header.Root>
+                <Form.Header.Label>Name</Form.Header.Label>
+                <Form.Header.Description>Foo bar baz pow.</Form.Header.Description>
+              </Form.Header.Root>
+              <Form.Controls.Input {form} name="name" />
+            </Form.Field>
+            <Form.Field>
+              <Form.Header.Root>
+                <Form.Header.Label>Foo Bar</Form.Header.Label>
+                <Form.Header.Description>Foo bar baz pow.</Form.Header.Description>
+              </Form.Header.Root>
+              <Form.Controls.Select {form} placeholder="Select something cool.." name="foobar" type="multiple" prefix={selectPrefix} />
+            </Form.Field>
+          </Form.Group>
+          <Form.Group>
+            <Form.Field>
+              <Form.Header.Root>
+                <Form.Header.Label>Name</Form.Header.Label>
+                <Form.Header.Description>Foo bar baz pow.</Form.Header.Description>
+              </Form.Header.Root>
+              <Form.Controls.Switch {form} name="agree" class="rounded-lg border-2 border-slate-800 bg-zinc-900/40 p-2">
+                <span class="text-xs text-sky-500">I agree to be awesome.</span>
+              </Form.Controls.Switch>
+            </Form.Field>
+          </Form.Group>
+        </Form.Root>
+      </Card.Content>
+    </Card.Root>
+    <Card.Root>
+      <Card.Header>
+        <Card.Title>Delete Component</Card.Title>
+        <Card.Description>Permanently delete this component.</Card.Description>
+      </Card.Header>
+      <Card.Content>
+        <Button onclick={onDeleteClick} variant="destructive">Delete</Button>
       </Card.Content>
     </Card.Root>
   </div>
@@ -114,37 +130,6 @@
   <div class="text-muted-foreground">x</div>
 {/snippet}
 
-<div class="w-96 rounded-lg bg-black p-4 shadow-xl">
-  <Form.Root bind:form {controls}>
-    <Form.Group>
-      <Form.Field>
-        <Form.Header.Root>
-          <Form.Header.Label>Name</Form.Header.Label>
-          <Form.Header.Description>Foo bar baz pow.</Form.Header.Description>
-        </Form.Header.Root>
-        <Form.Controls.Input {form} name="name" />
-      </Form.Field>
-      <Form.Field>
-        <Form.Header.Root>
-          <Form.Header.Label>Foo Bar</Form.Header.Label>
-          <Form.Header.Description>Foo bar baz pow.</Form.Header.Description>
-        </Form.Header.Root>
-        <Form.Controls.Select {form} placeholder="Select something cool.." name="foobar" type="multiple" prefix={selectPrefix} />
-      </Form.Field>
-    </Form.Group>
-    <Form.Group>
-      <Form.Field>
-        <Form.Header.Root>
-          <Form.Header.Label>Name</Form.Header.Label>
-          <Form.Header.Description>Foo bar baz pow.</Form.Header.Description>
-        </Form.Header.Root>
-        <Form.Controls.Switch {form} name="agree" class="rounded-lg border-2 border-slate-800 bg-zinc-900/40 p-2">
-          <span class="text-xs text-sky-500">I agree to be awesome.</span>
-        </Form.Controls.Switch>
-      </Form.Field>
-    </Form.Group>
-  </Form.Root>
-</div>
 <div class="w-96 rounded-lg bg-black p-4 shadow-xl">
   <pre class="text-xs text-slate-500">{JSON.stringify(form.values, null, 2)}</pre>
 </div>
