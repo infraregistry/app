@@ -36,3 +36,7 @@ export interface Tag {
   color: string;
   disabled: boolean;
 }
+
+export type TagDictionary = {
+  [key: string]: string;
+};
