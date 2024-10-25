@@ -1,10 +1,11 @@
 <script lang="ts">
   import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
-
+  import { sessions } from "$lib/sessions/sessions.svelte";
   import type { iconStatics } from "$lib/shared/icons/icon-statics";
   import IconifyWrapper from "$lib/shared/icons/iconify-wrapper.svelte";
   import { Tooltip } from "bits-ui";
-  import { link } from "svelte-spa-router";
+  import { toast } from "svelte-sonner";
+  import { link, push } from "svelte-spa-router";
   import { slide } from "svelte/transition";
 
   type Link = {
@@ -115,7 +116,13 @@
                 <DropdownMenu.Item>Profile</DropdownMenu.Item>
                 <DropdownMenu.Item>Billing</DropdownMenu.Item>
                 <DropdownMenu.Item>Team</DropdownMenu.Item>
-                <DropdownMenu.Item>Subscription</DropdownMenu.Item>
+                <DropdownMenu.Separator />
+                <DropdownMenu.Item
+                  onclick={() => {
+                    sessions.logout();
+                    push("/");
+                    toast.success("Logged out successfully!");
+                  }}>Logout</DropdownMenu.Item>
               </DropdownMenu.Group>
             </DropdownMenu.Content>
           </DropdownMenu.Root>
