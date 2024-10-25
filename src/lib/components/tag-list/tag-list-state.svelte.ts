@@ -5,9 +5,10 @@ import { get } from "svelte/store";
 
 export class TagListState {
   tagDict: TagDictionary;
-  tags = $state<Tag[]>();
+  tags = $state<Tag[]>([]);
 
-  constructor(dict?: TagDictionary) {
+  constructor(tags?: Tag[], dict?: TagDictionary) {
+    this.tags = tags || [];
     this.tagDict = dict || get(tagDictionary);
   }
 
