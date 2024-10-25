@@ -2,12 +2,11 @@
   import { Button } from "$lib/components/ui/button";
   import * as Card from "$lib/components/ui/card/index.js";
   import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
-  import * as Tooltip from "$lib/components/ui/tooltip/index.js";
   import IconifyWrapper from "$lib/shared/icons/iconify-wrapper.svelte";
   import Icon from "@iconify/svelte";
   import { DropinTable } from "@mateothegreat/svelte5-table";
   import { writable } from "svelte/store";
-  import { getDependencies } from "./dependencies.svelte.js";
+  import { getDependencies } from "./dependencies-api.svelte.js";
   import { openAddRelation } from "./relate/relate.svelte.js";
   type Props = {
     id: string;
@@ -54,7 +53,7 @@
       </div>
     </div>
     <div class="flex items-center gap-2">
-      <Tooltip.Root>
+      <!-- <Tooltip.Root>
         <Tooltip.Trigger asChild let:builder>
           <Button builders={[builder]} variant="outline" onclick={() => relate(id)} class="flex items-center gap-1 {types[type].classes}">
             <p>Add {type}</p>
@@ -64,11 +63,11 @@
         <Tooltip.Content>
           {types[type].tooltip}
         </Tooltip.Content>
-      </Tooltip.Root>
+      </Tooltip.Root> -->
       <div class="flex items-center gap-2">
         <DropdownMenu.Root>
-          <DropdownMenu.Trigger asChild let:builder>
-            <Button builders={[builder]} variant="outline" class="px-2"><Icon icon="rivet-icons:ellipsis-vertical" /></Button>
+          <DropdownMenu.Trigger>
+            <Button variant="outline" class="px-2"><Icon icon="rivet-icons:ellipsis-vertical" /></Button>
           </DropdownMenu.Trigger>
           <DropdownMenu.Content class="w-56">
             <DropdownMenu.Label>My Account</DropdownMenu.Label>
@@ -109,8 +108,8 @@
     {#snippet actionsColumn(row: any)}
       <div class="flex items-center gap-2">
         <DropdownMenu.Root>
-          <DropdownMenu.Trigger asChild let:builder>
-            <Button builders={[builder]} variant="outline" class="px-2"><Icon icon="rivet-icons:ellipsis-vertical" /></Button>
+          <DropdownMenu.Trigger>
+            <Button variant="outline" class="px-2"><Icon icon="rivet-icons:ellipsis-vertical" /></Button>
           </DropdownMenu.Trigger>
           <DropdownMenu.Content class="w-56">
             <DropdownMenu.Label>My Account</DropdownMenu.Label>

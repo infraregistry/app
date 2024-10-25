@@ -3,7 +3,7 @@ import { ComponentType } from "$pages/components/components";
 import { map, tap, type Observable } from "rxjs";
 import { createRawSnippet, hydrate } from "svelte";
 import { toast } from "svelte-sonner";
-import { getDependencies } from "../dependencies.svelte";
+import { getDependencies } from "../dependencies-api.svelte";
 import RelateHeader from "./relate-header.svelte";
 
 const createHeader = (name: string, subtext: string, type: ComponentType) => {

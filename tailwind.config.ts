@@ -1,5 +1,5 @@
-import { fontFamily } from "tailwindcss/defaultTheme";
 import type { Config } from "tailwindcss";
+import { fontFamily } from "tailwindcss/defaultTheme";
 
 const config: Config = {
 	darkMode: ["class"],
@@ -56,7 +56,12 @@ const config: Config = {
 			},
 			fontFamily: {
 				sans: [...fontFamily.sans]
-			}
+			},
+			scale: {
+				80: ".80",
+				98: ".98",
+				99: ".99",
+			},
 		}
 	},
 };

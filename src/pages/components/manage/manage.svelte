@@ -1,15 +1,13 @@
 <script lang="ts">
-  import Diagram from "$lib/components/diagram/diagram.svelte";
   import { Badge } from "$lib/components/ui/badge/index.js";
   import { Button } from "$lib/components/ui/button/index.js";
   import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
   import * as Tabs from "$lib/components/ui/tabs";
   import Icon from "@iconify/svelte";
-  import { push } from "svelte-spa-router";
+  import Router, { push } from "svelte-spa-router";
   import { writable } from "svelte/store";
-  import Depedencies from "./dependencies/depedencies.svelte";
   import Feed from "./feed.svelte";
-  import Settings from "./settings/settings.svelte";
+  import { routes } from "./routes";
 
   // openCreateProperty();
 
@@ -64,21 +62,13 @@
         console.log("selected");
       }}>
       <Tabs.List class="">
-        <Tabs.Trigger onclick={() => ($tab = "documentation")} value="documentation">Documentation</Tabs.Trigger>
+        <Tabs.Trigger onclick={() => push("/components/1/documentation")} value="documentation">Documentation</Tabs.Trigger>
         <Tabs.Trigger onclick={() => ($tab = "dependencies")} value="dependencies">Dependencies</Tabs.Trigger>
         <Tabs.Trigger onclick={() => ($tab = "diagram")} value="diagram">Diagram</Tabs.Trigger>
         <Tabs.Trigger onclick={() => ($tab = "settings")} value="settings">Settings</Tabs.Trigger>
       </Tabs.List>
     </Tabs.Root>
-    {#if $tab === "settings"}
-      <Settings />
-    {:else if $tab === "dependencies"}
-      <Depedencies />
-    {:else if $tab === "diagram"}
-      <Diagram />
-    {:else}
-      <!-- <Documentation /> -->
-    {/if}
+    <Router {routes} />
   </div>
   <div class="w-[375px]">
     <!-- <Panel /> -->
