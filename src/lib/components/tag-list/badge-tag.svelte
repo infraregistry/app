@@ -4,8 +4,13 @@
   import { cubicOut } from "svelte/easing";
   import { slide } from "svelte/transition";
 
-  let { tag }: { tag: Tag } = $props();
+  let { tag, handleClick }: { tag: Tag; handleClick: () => void } = $props();
   let hovering = $state(false);
+
+  function onclick() {
+    hovering = false;
+    handleClick();
+  }
 
   function onmouseenter() {
     if (tag.disabled) return;
@@ -18,7 +23,7 @@
   }
 </script>
 
-<button class={tag.color} class:disabled={tag.disabled} {onmouseenter} {onmouseleave}>
+<button {onclick} class={tag.color} class:disabled={tag.disabled} {onmouseenter} {onmouseleave}>
   <span>
     {tag.label}
   </span>
@@ -34,6 +39,6 @@
     @apply flex w-max items-center gap-1 rounded-full px-[10px] py-1 text-xs font-semibold text-white transition-all hover:brightness-[1.15];
   }
   .disabled {
-    @apply cursor-not-allowed opacity-50 hover:brightness-100;
+    @apply cursor-not-allowed opacity-50 brightness-90 hover:brightness-100;
   }
 </style>

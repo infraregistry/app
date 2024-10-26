@@ -3,6 +3,8 @@ import type { Tag, TagDictionary } from "$lib/types";
 import { getContext, setContext } from "svelte";
 import { get } from "svelte/store";
 
+// Unused for now
+
 export class TagListState {
   tagDict: TagDictionary;
   tags = $state<Tag[]>([]);
@@ -29,12 +31,12 @@ export class TagListState {
   }
 }
 
-const TAGLIST_KEY = Symbol("INFR-TAGLIST");
+const DEFAULT_TAGLIST_KEY = "INFRG-TAGLIST";
 
-export function setTagListState() {
-  return setContext(TAGLIST_KEY, new TagListState());
+export function setTagListState(key = DEFAULT_TAGLIST_KEY, tagList?: Tag[]) {
+  return setContext(Symbol(key), new TagListState(tagList));
 }
 
-export function getTagListState() {
-  return getContext<ReturnType<typeof setTagListState>>(TAGLIST_KEY);
+export function getTagListState(key = DEFAULT_TAGLIST_KEY) {
+  return getContext<ReturnType<typeof setTagListState>>(Symbol(key));
 }
