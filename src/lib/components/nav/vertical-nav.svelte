@@ -18,7 +18,7 @@
     { href: "/catalog", icon: "catalog", tooltip: "Service Catalog" },
     { href: "/components", icon: "components", tooltip: "Components" },
     { href: "/cmdb", icon: "cmdb", tooltip: "Change Management Database" },
-    { href: "/components", icon: "components", tooltip: "Components" }
+    { href: "/integrations", icon: "integrations", tooltip: "Integrations" }
   ];
 </script>
 
@@ -40,7 +40,7 @@
               <IconifyWrapper name={l.icon} size={7} />
             </a>
           </Tooltip.Trigger>
-          <Tooltip.Content forceMount align="start">
+          <Tooltip.Content forceMount side="right">
             {#snippet child({ props, open })}
               {#if open}
                 <div {...props} transition:slide>
@@ -91,7 +91,7 @@
         <Tooltip.Trigger>
           <IconifyWrapper name="settings" size={7} />
         </Tooltip.Trigger>
-        <Tooltip.Content forceMount align="start">
+        <Tooltip.Content forceMount side="right">
           {#snippet child({ props, open })}
             {#if open}
               <div {...props} transition:slide>
@@ -129,7 +129,7 @@
             </DropdownMenu.Content>
           </DropdownMenu.Root>
         </Tooltip.Trigger>
-        <Tooltip.Content forceMount align="start">
+        <Tooltip.Content forceMount side="right">
           {#snippet child({ props, open })}
             {#if open}
               <div {...props} transition:slide>
