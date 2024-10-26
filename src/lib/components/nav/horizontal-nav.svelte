@@ -106,7 +106,7 @@
       <div class="flex max-w-xs flex-col items-center gap-2">
         <div class="relative w-full">
           <Input type="email" placeholder="Search everything..." class="h-10 w-72" />
-          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 font-semibold text-slate-500">
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-sm font-semibold text-slate-600">
             ⌘
             <span class="mx-1">+</span>
             K

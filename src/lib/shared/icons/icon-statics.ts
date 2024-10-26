@@ -21,7 +21,7 @@ export const iconStatics = {
   },
   components: {
     value: "tdesign:system-components",
-    classes: "text-slate-600 hover:text-green-600",
+    classes: "text-indigo-500 hover:text-green-600",
   },
   cmdb: {
     value: "tabler:database-cog",
