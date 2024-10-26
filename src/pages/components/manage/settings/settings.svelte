@@ -3,7 +3,7 @@
   import { Button } from "$lib/components/ui/button";
   import * as Card from "$lib/components/ui/card";
   import * as Form from "@mateothegreat/svelte5-forms";
-  import { minLength } from "@mateothegreat/svelte5-forms";
+  import { FormInstance, minLength } from "@mateothegreat/svelte5-forms";
 
   interface ComponentSettings {
     name: string;
@@ -17,7 +17,7 @@
     { value: "apple", label: "Apple" }
   ];
 
-  let form: Form.Instance;
+  let form: FormInstance;
 
   const controls = $state([
     {
@@ -53,11 +53,11 @@
 </script>
 
 <div class="m-2 flex gap-16">
-  <div class="text-xl font-semibold text-slate-400">Settings</div>
+  <div class="text-lg font-semibold text-slate-400">Settings</div>
 </div>
 <div class="m-2 flex gap-16">
   <div class="">
-    <nav class="grid gap-4 text-sm text-muted-foreground" data-x-chunk-container="chunk-container after:right-0">
+    <nav class="grid gap-4 text-xs text-muted-foreground" data-x-chunk-container="chunk-container after:right-0">
       <a href="##" class="font-semibold text-primary"> General </a>
       <a href="##">Security</a>
       <a href="##">Integrations</a>

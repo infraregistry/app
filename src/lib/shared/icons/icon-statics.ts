@@ -1,7 +1,7 @@
 export const iconStatics = {
   logo: {
     value: "game-icons:mesh-network",
-    classes: "text-gray-600",
+    classes: "text-indigo-600",
   },
   help: {
     value: "ic:twotone-help",
@@ -29,7 +29,7 @@ export const iconStatics = {
   },
   catalog: {
     value: "grommet-icons:catalog",
-    classes: "text-indigo-600 hover:text-green-600",
+    classes: "text-slate-600 hover:text-green-600",
   },
   user: {
     value: "duo-icons:user-card",

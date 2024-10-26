@@ -23,7 +23,7 @@
       <Tabs tabs={["table", "list", "grid"]} {selected} />
     </div>
   </div>
-  <Scrollarea class="h-full overflow-hidden bg-blue-500" viewportClasses="bg-pink-500 h-42" type="always">
+  <Scrollarea class="h-full overflow-hidden" viewportClasses="bg-pink-500 h-42" type="always">
     <div class="mt-4 flex flex-wrap gap-4">
       {#each items as item}
         <Item />

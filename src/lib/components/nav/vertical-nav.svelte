@@ -24,10 +24,12 @@
 
 <aside class="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background pt-4 sm:flex">
   <nav class="flex flex-col items-center gap-4">
-    <a use:link href="/">
-      <IconifyWrapper name="logo" size={9} />
-    </a>
-    <div class="h-px w-full bg-slate-800" />
+    <div class="-mt-2 h-7">
+      <a use:link href="/">
+        <IconifyWrapper name="logo" size={10} />
+      </a>
+    </div>
+    <div class="h-px w-full bg-zinc-800" />
   </nav>
   <nav class="flex flex-1 flex-col items-center gap-3.5 px-2 py-4">
     {#each links as l}
@@ -120,7 +122,7 @@
                 <DropdownMenu.Item
                   onclick={() => {
                     sessions.logout();
-                    push("/");
+                    push("/login");
                     toast.success("Logged out successfully!");
                   }}>Logout</DropdownMenu.Item>
               </DropdownMenu.Group>

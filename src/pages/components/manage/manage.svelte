@@ -31,13 +31,14 @@
     }).subscribe((result) => {
       if (result) {
         deleteComponent(component.id).subscribe();
+        push("/components");
       }
     });
   };
 </script>
 
 <div class="mb-4 flex items-end gap-4">
-  <div class="flex flex-1 items-center gap-3 rounded-xl bg-black px-3 py-2">
+  <div class="flex flex-1 items-center gap-3 bg-black px-3 py-2">
     <Button on:click={() => push("/components")} variant="outline" size="icon" class="">
       <Icon icon="material-symbols:navigate-next" class="h-5 w-5 rotate-180 text-zinc-700" />
     </Button>

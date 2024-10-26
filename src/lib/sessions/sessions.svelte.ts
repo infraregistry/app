@@ -1,23 +1,31 @@
 import dayjs from "dayjs";
 import { jwtDecode } from "jwt-decode";
-import { delay, Observable, of, tap } from "rxjs";
+import { delay, Observable, of, ReplaySubject, tap } from "rxjs";
 
 class Session {
-  private token: string = $state("");
-  public isLoggedIn: boolean = $state(false);
+  public token: string = $state("");
   private intervalId: NodeJS.Timeout | undefined;
+
+  public isLoggedIn: boolean = $state(false);
+  public status: ReplaySubject<boolean> = new ReplaySubject(1);
 
   public init() {
     const storedToken = localStorage.getItem("session");
-    this.startExpirationCheck();
-    return storedToken ? this.register(storedToken) : false;
+    if (storedToken) {
+      this.isLoggedIn = true;
+      // this.status.next(this.isExpired());
+    }
+  }
+
+  public getToken(): string {
+    return localStorage.getItem("session")!;
   }
 
   private isExpired = () => {
     if (!this.token) return true;
     try {
       const decodedToken = jwtDecode(this.token);
-      const expiration = dayjs(decodedToken.exp * 1000);
+      const expiration = dayjs(decodedToken.exp! * 1000);
       if (!expiration.isValid()) return true;
 
       return dayjs().isAfter(expiration);
@@ -26,21 +34,22 @@ class Session {
     }
   };
 
-  private startExpirationCheck() {
+  public startExpirationCheck() {
     this.stopExpirationCheck();
-
     this.intervalId = setInterval(() => {
       const isExpired = this.isExpired();
       if (isExpired) {
+        console.log("session expired");
+
         this.token = "";
         this.isLoggedIn = false;
         localStorage.removeItem("session");
         this.stopExpirationCheck();
       }
-    }, 1000);
+    }, 5000);
   }
 
-  private stopExpirationCheck() {
+  public stopExpirationCheck() {
     if (this.intervalId) {
       clearInterval(this.intervalId);
       this.intervalId = undefined;

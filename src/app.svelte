@@ -3,23 +3,28 @@
   import "./app.css";
 
   import { openCommandPalette } from "$lib/components/command-palette/command-palette-types.svelte";
-  import VerticalNav from "$lib/nav/vertical-nav.svelte";
+  import HorizontalNav from "$lib/components/nav/horizontal-nav.svelte";
+  import VerticalNav from "$lib/components/nav/vertical-nav.svelte";
   import { sessions } from "$lib/sessions/sessions.svelte";
   import { confettiStore } from "$lib/shared/effects/confetti-store";
   import { ModeWatcher } from "mode-watcher";
   import { Confetti } from "svelte-confetti";
   import { Toaster } from "svelte-sonner";
   import Router from "svelte-spa-router";
+  import { streamingClient } from "./api/sreaming";
   import { routes } from "./pages/routes";
   import Sessions from "./pages/sessions/Sessions.svelte";
 
   sessions.init();
-
-  $effect(() => {
-    console.log("is logged in", sessions.isLoggedIn);
+  sessions.status.subscribe((status) => {
+    if (status) {
+      streamingClient.connect(sessions.getToken());
+    } else {
+      streamingClient.disconnect();
+    }
   });
 
-  $effect.pre(() => {
+  onMount(() => {
     confettiStore;
   });
 
@@ -42,10 +47,11 @@
 <ModeWatcher />
 
 {#if sessions.isLoggedIn}
-  <div class="absolute bottom-0 left-0 right-0 top-0 flex h-full w-full flex-col bg-muted/25">
+  <div class="absolute bottom-0 left-0 right-0 top-0 -z-20 flex h-full w-full flex-col bg-black">
     <VerticalNav />
     <div class="flex h-full flex-col gap-2 pl-14">
       <div class="h-full">
+        <HorizontalNav />
         <Router {routes} />
       </div>
     </div>
