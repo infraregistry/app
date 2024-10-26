@@ -75,7 +75,7 @@
   </div>
 </div>
 <div class="flex gap-3">
-  <div class="flex flex-1 flex-col gap-3">
+  <div class="flex flex-1 flex-col gap-3 p-3">
     <Tabs.Root
       value={tab}
       on:selected={() => {
