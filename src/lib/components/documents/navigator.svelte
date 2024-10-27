@@ -1,7 +1,7 @@
 <script lang="ts">
   import { TreeItem } from "$lib/components/tree/types";
   import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
-  import { DownloadCloud, Ellipsis, FilePlus } from "lucide-svelte";
+  import { DownloadCloud, Ellipsis } from "lucide-svelte";
   import Tree from "../tree/tree.svelte";
   import Button from "../ui/button/button.svelte";
   import { Input } from "../ui/input";
@@ -13,7 +13,7 @@
   let { data }: Props = $props();
 </script>
 
-<div class="flex h-full flex-col gap-2">
+<div class="flex h-full flex-col gap-2 bg-zinc-900/50">
   <div class="flex gap-2 border-b">
     <Input type="email" placeholder="Search documents..." class="h-10 w-full rounded-none border-none" />
   </div>
@@ -21,10 +21,7 @@
     <Tree {data} />
   </div>
   <div class="flex gap-2 p-2">
-    <Button variant="outline" class="w-full text-green-500">
-      Create Document
-      <FilePlus class="h-4 w-4" />
-    </Button>
+    <Button variant="outline" class="w-full text-green-500">Create Document</Button>
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>
         <Button variant="outline" class="text-slate-500">

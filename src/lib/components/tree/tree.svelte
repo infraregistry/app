@@ -25,36 +25,35 @@
   const items = $state<TreeItem[]>([]);
 
   onMount(() => {
-    console.log("data", data, items);
-
     for (const item of data) {
       const treeItem = new TreeItem(item);
       items.push(treeItem);
-      console.log("treeItem", treeItem);
     }
   });
 </script>
 
-{#each items as item}
-  <div class="text-slate-200" style={`padding-left:${level * 15}px`}>
-    <div
-      onclick={() => {
-        item.expanded = !item.expanded;
-      }}
-      class="flex cursor-pointer gap-2">
-      <div class="w-4">
-        {#if item.children && items.length > 0}
-          {#if item.expanded}
-            <ChevronDown />
-          {:else}
-            <ChevronRight />
+<div class="flex flex-col gap-1">
+  {#each items as item}
+    <div class="text-[13px] text-slate-300" style={`padding-left:${item.children ? level * 15 : 0}px`}>
+      <div
+        class="flex cursor-pointer gap-0.5"
+        onclick={() => {
+          item.expanded = !item.expanded;
+        }}>
+        <div class="flex w-4 items-center">
+          {#if item.children && items.length > 0}
+            {#if item.expanded}
+              <ChevronDown class="size-5" />
+            {:else}
+              <ChevronRight class="size-5" />
+            {/if}
           {/if}
-        {/if}
+        </div>
+        <div class="">{item.label}</div>
       </div>
-      <div class="">{item.label}</div>
+      {#if item.children && items.length > 0 && item.expanded}
+        <svelte:self data={item.children} level={level + 1} />
+      {/if}
     </div>
-    {#if item.children && items.length > 0 && item.expanded}
-      <svelte:self data={item.children} level={level + 1} />
-    {/if}
-  </div>
-{/each}
+  {/each}
+</div>
