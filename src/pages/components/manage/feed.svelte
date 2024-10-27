@@ -1,27 +1,26 @@
 <script lang="ts">
-  import { CornerDownLeft } from "lucide-svelte";
+  import ToggleGroup from "$lib/components/toggle-group/toggle-group.svelte";
   import { Button } from "$lib/components/ui/button";
   import * as Card from "$lib/components/ui/card";
   import { Textarea } from "$lib/components/ui/textarea";
+  import { Tooltip } from "bits-ui";
+  import { CornerDownLeft, Paperclip } from "lucide-svelte";
   import { writable } from "svelte/store";
   import Timeline from "./timeline.svelte";
-  import { Tooltip } from "bits-ui";
-  import Paperclip from "lucide-svelte/icons/paperclip";
-  import { Label } from "$lib/components/ui/label";
-  import * as Tabs from "$lib/components/ui/tabs";
-  import Router, { push } from "svelte-spa-router";
-  import { ToggleGroup } from "bits-ui";
 
   const tab = writable<"details" | "timeline">("details");
 
-  let value: string[] = $state(["bold"]);
+  let value: string[] = $state(["audit"]);
+
+  $effect(() => {
+    if (value.length === 0) {
+      value = ["audit", "messages"];
+    }
+  });
 </script>
 
 <div class="flex flex-col gap-3">
-  <ToggleGroup.Root bind:value type="multiple" class="flex h-9 items-center gap-1 rounded-lg border border-border bg-muted/35 px-[4px] py-1 text-sm font-semibold">
-    <ToggleGroup.Item value="audit" class="data-[state=off]:text-foreground-alt active:data-[state=on]:bg-dark-10 flex-grow items-center justify-center rounded-md px-3 py-1 transition-all hover:bg-black data-[state=on]:bg-black data-[state=on]:text-foreground">Audit</ToggleGroup.Item>
-    <ToggleGroup.Item value="messages" class="data-[state=off]:text-foreground-alt active:data-[state=on]:bg-dark-10 flex-grow items-center justify-center rounded-md px-3 py-1 transition-all hover:bg-black data-[state=on]:bg-black data-[state=on]:text-foreground">Messages</ToggleGroup.Item>
-  </ToggleGroup.Root>
+  <ToggleGroup items={["audit", "messages"]} bind:value />
   <Card.Root class="rounded-lg bg-zinc-900/50">
     <Card.Content class="p-1">
       <Timeline />

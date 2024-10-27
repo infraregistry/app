@@ -76,7 +76,7 @@
 </div>
 <div class="px-3">
   <PaneGroup autoSaveId={`${component.id}-pane-group`} direction="horizontal">
-    <Pane defaultSize={50} class="flex flex-col gap-3 px-4">
+    <Pane defaultSize={50} class=" flex flex-col gap-3 px-4 pb-2">
       <Tabs.Root
         value={tab}
         on:selected={() => {
@@ -99,7 +99,7 @@
         </svg>
       </div>
     </PaneResizer>
-    <Pane defaultSize={50} minSize={2} collapsible={true} collapsedSize={2}>
+    <Pane defaultSize={50} minSize={2} collapsible={true} collapsedSize={2} class="pb-2">
       <Feed />
     </Pane>
   </PaneGroup>

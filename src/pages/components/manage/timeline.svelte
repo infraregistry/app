@@ -107,7 +107,7 @@
   </div>
 {/snippet}
 
-<div class="flex h-[calc(100vh-280px)] flex-1 flex-col gap-4 overflow-x-hidden overflow-y-scroll">
+<div class="flex h-[calc(100vh-312px)] flex-1 flex-col gap-4 overflow-x-hidden overflow-y-scroll">
   <div class="flex flex-col items-center justify-between gap-2 pt-2">
     <svg class="h-8 w-8 text-slate-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <path fill="currentColor" fill-rule="evenodd" d="M2 6a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7.333L4 21.5c-.824.618-2 .03-2-1z" class="duoicon-secondary-layer" opacity="0.3" />
