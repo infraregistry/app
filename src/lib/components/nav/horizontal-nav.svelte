@@ -8,7 +8,6 @@
   import PlusCircled from "svelte-radix/PlusCircled.svelte";
   import { toast } from "svelte-sonner";
   import { loadSlim } from "tsparticles-slim";
-  import Item from "./../../../pages/components/dashboard/search/item.svelte";
 
   const groups = [
     {
@@ -72,7 +71,7 @@
     <Particles options={particlesConfig} particlesInit={async (engine) => loadSlim(engine)} />
   </div>
   <div class="flex w-full justify-between">
-    <div class="borer flex items-center gap-2 bg-black px-3">
+    <div class="flex items-center gap-2 rounded-lg border bg-black/50 px-3">
       <Breadcrumb.Root>
         <Breadcrumb.List>
           <Breadcrumb.Item>
@@ -106,7 +105,7 @@
       <div class="flex max-w-xs flex-col items-center gap-2">
         <div class="relative w-full">
           <Input type="email" placeholder="Search everything..." class="h-10 w-72" />
-          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-sm font-semibold text-slate-600">
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-xs font-semibold text-slate-600">
             ⌘
             <span class="mx-1">+</span>
             K
@@ -118,7 +117,7 @@
         placeholder="Search my organizations..."
         commands={[create, invite]}
         selected={groups[0].items[0]}
-        selectedFn={(item: Item) => {
+        selectedFn={(item: { label: string }) => {
           toast.success(`Switched organization to ${item.label}!`);
         }} />
     </div>

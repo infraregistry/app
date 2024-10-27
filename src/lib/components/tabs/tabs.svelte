@@ -1,19 +1,19 @@
 <script lang="ts">
   import * as Tabs from "$lib/components/ui/tabs";
-  import { type Writable } from "svelte/store";
 
   type Props = {
     tabs: string[];
-    selected: Writable<string>;
+    selected: string;
+    onValueChange?: (value: string) => void;
   };
 
-  let { tabs, selected }: Props = $props();
+  let { tabs, selected = $bindable(), onValueChange }: Props = $props();
 </script>
 
-<Tabs.Root value={$selected}>
-  <Tabs.List class="">
+<Tabs.Root value={selected}>
+  <Tabs.List>
     {#each tabs as tab}
-      <Tabs.Trigger onclick={() => selected.set(tab)} value={tab}>{tab}</Tabs.Trigger>
+      <Tabs.Trigger onclick={() => onValueChange?.(tab)} value={tab}>{tab}</Tabs.Trigger>
     {/each}
   </Tabs.List>
 </Tabs.Root>

@@ -2,12 +2,14 @@
   import { Button } from "$lib/components/ui/button";
   import * as Card from "$lib/components/ui/card/index.js";
   import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
-  import IconifyWrapper from "$lib/shared/icons/iconify-wrapper.svelte";
   import Icon from "@iconify/svelte";
   import { DropinTable } from "@mateothegreat/svelte5-table";
+  import { Tooltip } from "bits-ui";
   import { writable } from "svelte/store";
+  import { slide } from "svelte/transition";
   import { getDependencies } from "./dependencies-api.svelte.js";
   import { openAddRelation } from "./relate/relate.svelte.js";
+
   type Props = {
     id: string;
     icon: string;
@@ -53,55 +55,26 @@
       </div>
     </div>
     <div class="flex items-center gap-2">
-      <!-- <Tooltip.Root>
-        <Tooltip.Trigger asChild let:builder>
-          <Button builders={[builder]} variant="outline" onclick={() => relate(id)} class="flex items-center gap-1 {types[type].classes}">
-            <p>Add {type}</p>
-            <Icon class="h-5 w-5" icon="material-symbols:add-link" />
-          </Button>
-        </Tooltip.Trigger>
-        <Tooltip.Content>
-          {types[type].tooltip}
-        </Tooltip.Content>
-      </Tooltip.Root> -->
-      <div class="flex items-center gap-2">
-        <DropdownMenu.Root>
-          <DropdownMenu.Trigger>
-            <Button variant="outline" class="px-2"><Icon icon="rivet-icons:ellipsis-vertical" /></Button>
-          </DropdownMenu.Trigger>
-          <DropdownMenu.Content class="w-56">
-            <DropdownMenu.Label>My Account</DropdownMenu.Label>
-            <DropdownMenu.Separator />
-            <DropdownMenu.Group>
-              <DropdownMenu.Item>Team</DropdownMenu.Item>
-              <DropdownMenu.Sub>
-                <DropdownMenu.SubTrigger>Export...</DropdownMenu.SubTrigger>
-                <DropdownMenu.SubContent>
-                  <DropdownMenu.Item>Download .csv</DropdownMenu.Item>
-                  <DropdownMenu.Item>Download .json</DropdownMenu.Item>
-                  <DropdownMenu.Separator />
-                  <DropdownMenu.Item>Download .pdf</DropdownMenu.Item>
-                </DropdownMenu.SubContent>
-              </DropdownMenu.Sub>
-              <DropdownMenu.Item>
-                New Team
-                <DropdownMenu.Shortcut>⌘+T</DropdownMenu.Shortcut>
-              </DropdownMenu.Item>
-            </DropdownMenu.Group>
-            <DropdownMenu.Separator />
-            <DropdownMenu.Item>GitHub</DropdownMenu.Item>
-            <DropdownMenu.Item>
-              <IconifyWrapper name="help">Help with Components</IconifyWrapper>
-            </DropdownMenu.Item>
-            <DropdownMenu.Item>API</DropdownMenu.Item>
-            <DropdownMenu.Separator />
-            <DropdownMenu.Item>
-              Log out
-              <DropdownMenu.Shortcut>⇧⌘Q</DropdownMenu.Shortcut>
-            </DropdownMenu.Item>
-          </DropdownMenu.Content>
-        </DropdownMenu.Root>
-      </div>
+      <Tooltip.Provider>
+        <Tooltip.Root delayDuration={200}>
+          <Tooltip.Trigger class="">
+            <Button variant="outline" onclick={() => relate(id)} class="flex items-center gap-1">
+              <Icon class="h-5 w-5" icon="material-symbols:add-link" />
+            </Button>
+          </Tooltip.Trigger>
+          <Tooltip.Content forceMount side="right">
+            {#snippet child({ props, open })}
+              {#if open}
+                <div {...props} transition:slide>
+                  <div class="border-dark-10 z-0 flex items-center justify-center rounded-lg border bg-background p-2 text-xs font-medium text-slate-400 shadow-popover outline-none">
+                    {types[type].tooltip}
+                  </div>
+                </div>
+              {/if}
+            {/snippet}
+          </Tooltip.Content>
+        </Tooltip.Root>
+      </Tooltip.Provider>
     </div>
   </Card.Header>
   <Card.Content>
@@ -109,30 +82,9 @@
       <div class="flex items-center gap-2">
         <DropdownMenu.Root>
           <DropdownMenu.Trigger>
-            <Button variant="outline" class="px-2"><Icon icon="rivet-icons:ellipsis-vertical" /></Button>
+            <Button variant="outline" class="h-7 px-2"><Icon icon="rivet-icons:ellipsis-vertical" /></Button>
           </DropdownMenu.Trigger>
           <DropdownMenu.Content class="w-56">
-            <DropdownMenu.Label>My Account</DropdownMenu.Label>
-            <DropdownMenu.Separator />
-            <DropdownMenu.Group>
-              <DropdownMenu.Item>
-                Profile
-                <DropdownMenu.Shortcut>⇧⌘P</DropdownMenu.Shortcut>
-              </DropdownMenu.Item>
-              <DropdownMenu.Item>
-                Billing
-                <DropdownMenu.Shortcut>⌘B</DropdownMenu.Shortcut>
-              </DropdownMenu.Item>
-              <DropdownMenu.Item>
-                Settings
-                <DropdownMenu.Shortcut>⌘S</DropdownMenu.Shortcut>
-              </DropdownMenu.Item>
-              <DropdownMenu.Item>
-                Keyboard shortcuts
-                <DropdownMenu.Shortcut>⌘K</DropdownMenu.Shortcut>
-              </DropdownMenu.Item>
-            </DropdownMenu.Group>
-            <DropdownMenu.Separator />
             <DropdownMenu.Group>
               <DropdownMenu.Item>Team</DropdownMenu.Item>
               <DropdownMenu.Sub>
@@ -154,10 +106,7 @@
             <DropdownMenu.Item>Support</DropdownMenu.Item>
             <DropdownMenu.Item>API</DropdownMenu.Item>
             <DropdownMenu.Separator />
-            <DropdownMenu.Item>
-              Log out
-              <DropdownMenu.Shortcut>⇧⌘Q</DropdownMenu.Shortcut>
-            </DropdownMenu.Item>
+            <DropdownMenu.Item>Delete Dependency</DropdownMenu.Item>
           </DropdownMenu.Content>
         </DropdownMenu.Root>
       </div>
@@ -166,7 +115,6 @@
       <DropinTable
         {data}
         {selections}
-        config={{ selection: { all: true } }}
         columns={[
           {
             field: "id",

@@ -7,7 +7,6 @@
   import { writable } from "svelte/store";
   import { Component, componentsClient } from "../../../api/components";
   import Search from "./search/search.svelte";
-  import Sidebar from "./sidebar.svelte";
 
   const operation = componentsClient.search();
   const components = writable<Component[]>([]);
@@ -57,9 +56,9 @@
     </Layout.Actions>
   </Layout.Header>
   <div class="flex h-full flex-1">
-    <div class="mr-4 w-48 border-r-2 border-black pr-4">
+    <!-- <div class="mr-4 w-48 border-r-2 border-black pr-4">
       <Sidebar />
-    </div>
+    </div> -->
     <div class="flex-1">
       <Search />
     </div>

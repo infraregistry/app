@@ -15,7 +15,7 @@
     "@mateothegreat/svelte5-command-palette": "^0.0.10",
     "@mateothegreat/svelte5-forms": "^0.0.24",
     "@mateothegreat/svelte5-modal-manager": "^0.0.12",
-    "@mateothegreat/svelte5-table": "^1.0.13",
+    "@mateothegreat/svelte5-table": "^1.0.14",
     "@melt-ui/pp": "^0.3.2",
     "@melt-ui/svelte": "^0.84.0",
     "@svelte.codes/forms": "^0.0.26",
@@ -100,5 +100,8 @@
     "y-partykit": "0.0.32",
     "y-protocols": "^1.0.6",
     "yjs": "13.6.20"
+  },
+  "dependencies": {
+    "qs": "^6.13.0"
   }
 }
