@@ -11,6 +11,6 @@
   let { class: className = undefined, children, ...rest }: Props = $props();
 </script>
 
-<TabsPrimitive.List class={cn("bg-muted/50 text-muted-foreground inline-flex h-9 items-center justify-center rounded-lg p-1", className)} {...rest}>
+<TabsPrimitive.List class={cn("inline-flex h-9 items-center justify-center rounded-lg bg-muted/50 p-1 text-muted-foreground", className)} {...rest}>
   {@render children?.()}
 </TabsPrimitive.List>

@@ -1,10 +1,11 @@
 <script lang="ts">
   import { openConfirm } from "$lib/components/confirm/confirm";
-  import { Button } from "$lib/components/ui/button";
-  import * as Card from "$lib/components/ui/card";
-  import * as Form from "@mateothegreat/svelte5-forms";
-  import { minLength } from "@mateothegreat/svelte5-forms";
+  import { FormInstance, minLength } from "@mateothegreat/svelte5-forms";
+  import Router, { link } from "svelte-spa-router";
+  import { getComponent } from "../api.svelte";
+  import { routes } from "./routes";
 
+  const component = getComponent();
   interface ComponentSettings {
     name: string;
     description: string;
@@ -17,7 +18,7 @@
     { value: "apple", label: "Apple" }
   ];
 
-  let form: Form.Instance;
+  let form: FormInstance;
 
   const controls = $state([
     {
@@ -53,83 +54,14 @@
 </script>
 
 <div class="m-2 flex gap-16">
-  <div class="text-xl font-semibold text-slate-400">Settings</div>
-</div>
-<div class="m-2 flex gap-16">
   <div class="">
-    <nav class="grid gap-4 text-sm text-muted-foreground" data-x-chunk-container="chunk-container after:right-0">
-      <a href="##" class="font-semibold text-primary"> General </a>
-      <a href="##">Security</a>
-      <a href="##">Integrations</a>
-      <a href="##">Support</a>
-      <a href="##">Organizations</a>
-      <a href="##">Advanced</a>
+    <nav class="grid gap-4 text-xs text-muted-foreground">
+      <a use:link href={`/components/${component.id}/settings/general`} class="font-semibold text-primary"> General </a>
+      <a use:link href={`/components/${component.id}/settings/integrations`}>Integrations</a>
+      <a use:link href={`/components/${component.id}/settings/advanced`}>Advanced</a>
     </nav>
   </div>
   <div class="flex-1">
-    <Card.Root>
-      <Card.Header>
-        <Card.Title>Product Details</Card.Title>
-        <Card.Description>Lipsum dolor sit amet, consectetur adipiscing elit</Card.Description>
-      </Card.Header>
-      <Card.Content>
-        <!-- <div class="grid gap-6">
-          <div class="grid gap-3">
-            <Label for="name">Name</Label>
-            <Input id="name" type="text" class="w-full" value="Gamer Gear Pro Controller" />
-          </div>
-          <div class="grid gap-3">
-            <Label for="description">Description</Label>
-            <Textarea id="description" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl nec ultricies ultricies, nunc nisl ultricies nunc, nec ultricies nunc nisl nec nunc." class="min-h-32" />
-          </div>
-        </div> -->
-        <Form.Root bind:form {controls}>
-          <Form.Group>
-            <Form.Field>
-              <Form.Header.Root>
-                <Form.Header.Label>Name</Form.Header.Label>
-                <Form.Header.Description>Foo bar baz pow.</Form.Header.Description>
-              </Form.Header.Root>
-              <Form.Controls.Input {form} name="name" />
-            </Form.Field>
-            <Form.Field>
-              <Form.Header.Root>
-                <Form.Header.Label>Foo Bar</Form.Header.Label>
-                <Form.Header.Description>Foo bar baz pow.</Form.Header.Description>
-              </Form.Header.Root>
-              <Form.Controls.Select {form} placeholder="Select something cool.." name="foobar" type="multiple" prefix={selectPrefix} />
-            </Form.Field>
-          </Form.Group>
-          <Form.Group>
-            <Form.Field>
-              <Form.Header.Root>
-                <Form.Header.Label>Name</Form.Header.Label>
-                <Form.Header.Description>Foo bar baz pow.</Form.Header.Description>
-              </Form.Header.Root>
-              <Form.Controls.Switch {form} name="agree" class="rounded-lg border-2 border-slate-800 bg-zinc-900/40 p-2">
-                <span class="text-xs text-sky-500">I agree to be awesome.</span>
-              </Form.Controls.Switch>
-            </Form.Field>
-          </Form.Group>
-        </Form.Root>
-      </Card.Content>
-    </Card.Root>
-    <Card.Root>
-      <Card.Header>
-        <Card.Title>Delete Component</Card.Title>
-        <Card.Description>Permanently delete this component.</Card.Description>
-      </Card.Header>
-      <Card.Content>
-        <Button onclick={onDeleteClick} variant="destructive">Delete</Button>
-      </Card.Content>
-    </Card.Root>
+    <Router {routes} />
   </div>
-</div>
-
-{#snippet selectPrefix()}
-  <div class="text-muted-foreground">x</div>
-{/snippet}
-
-<div class="w-96 rounded-lg bg-black p-4 shadow-xl">
-  <pre class="text-xs text-slate-500">{JSON.stringify(form.values, null, 2)}</pre>
 </div>

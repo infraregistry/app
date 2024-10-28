@@ -16,7 +16,7 @@
 {/snippet}
 
 <ScrollArea.Root bind:ref {...rest} type="always">
-  <ScrollArea.Viewport class="h-full bg-orange-500">
+  <ScrollArea.Viewport class="h-full ">
     {@render children?.()}
   </ScrollArea.Viewport>
   {#if orientation === "vertical" || orientation === "both"}
