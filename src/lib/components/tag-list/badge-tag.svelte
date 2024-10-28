@@ -24,7 +24,7 @@
 </script>
 
 <button {onclick} class={tag.color} class:disabled={tag.disabled} {onmouseenter} {onmouseleave}>
-  <span>
+  <span class="select-none">
     {tag.label}
   </span>
   {#if hovering}
