@@ -1,33 +1,28 @@
 <script lang="ts">
-	import { DropdownMenu as DropdownMenuPrimitive } from "bits-ui";
+	import { DropdownMenu as DropdownMenuPrimitive, type WithoutChild } from "bits-ui";
 	import ChevronRight from "svelte-radix/ChevronRight.svelte";
 	import { cn } from "$lib/utils.js";
 
-	type $$Props = DropdownMenuPrimitive.SubTriggerProps & {
+	let {
+		ref = $bindable(null),
+		class: className,
+		inset,
+		children,
+		...restProps
+	}: WithoutChild<DropdownMenuPrimitive.SubTriggerProps> & {
 		inset?: boolean;
-	};
-	type $$Events = DropdownMenuPrimitive.SubTriggerEvents;
-
-	interface Props { [key: string]: any }
-
-	let { class: className = undefined, inset = undefined, children, ...rest }: Props = $props();
-	
+	} = $props();
 </script>
 
 <DropdownMenuPrimitive.SubTrigger
+	bind:ref
 	class={cn(
-		"flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none data-[highlighted]:bg-accent data-[state=open]:bg-accent data-[highlighted]:text-accent-foreground data-[state=open]:text-accent-foreground",
+		"data-[highlighted]:bg-accent data-[state=open]:bg-accent data-[highlighted]:text-accent-foreground data-[state=open]:text-accent-foreground flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none",
 		inset && "pl-8",
 		className
 	)}
-	{...rest}
-	on:click
-	on:keydown
-	on:focusin
-	on:focusout
-	on:pointerleave
-	on:pointermove
+	{...restProps}
 >
 	{@render children?.()}
-	<ChevronRight class="ml-auto h-4 w-4" />
+	<ChevronRight class="ml-auto size-4" />
 </DropdownMenuPrimitive.SubTrigger>

@@ -29,7 +29,7 @@ importers:
         version: 0.0.12
       '@mateothegreat/svelte5-table':
         specifier: ^1.0.14
-        version: 1.0.14(bits-ui@1.0.0-next.28(svelte@5.1.3))(svelte@5.1.3)(tailwind-merge@2.5.4)
+        version: 1.0.14(bits-ui@1.0.0-next.31(svelte@5.1.3))(svelte@5.1.3)(tailwind-merge@2.5.4)
       '@melt-ui/pp':
         specifier: ^0.3.2
         version: 0.3.2(@melt-ui/svelte@0.84.0(svelte@5.1.3))(svelte@5.1.3)
@@ -169,8 +169,8 @@ importers:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.47)
       bits-ui:
-        specifier: 1.0.0-next.28
-        version: 1.0.0-next.28(svelte@5.1.3)
+        specifier: 1.0.0-next.31
+        version: 1.0.0-next.31(svelte@5.1.3)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -228,9 +228,6 @@ importers:
       svelte-confetti:
         specifier: ^2.1.2
         version: 2.1.2(svelte@5.1.3)
-      svelte-headless-table:
-        specifier: ^0.18.2
-        version: 0.18.2(svelte@5.1.3)
       svelte-particles:
         specifier: ^2.12.0
         version: 2.12.0(svelte@5.1.3)
@@ -1102,8 +1099,8 @@ packages:
     peerDependencies:
       svelte: ^4.0.0 || ^5.0.0-next.118
 
-  bits-ui@1.0.0-next.28:
-    resolution: {integrity: sha512-mA2gf79xVLmq2mY0tAzC6ZBB8hUJunxb20/04kOVIN1UL+d75BvA3hdSdEgSj0TrEWU1GmlJr1HWKW4+Q1JIhA==}
+  bits-ui@1.0.0-next.31:
+    resolution: {integrity: sha512-x6Y8pjypBYSUe5Fc2LjLfmDgZjtBXL/tH90NBbbP+zsWBeo27SAcECommOJZeTnC4gyDOib7/eWKARoPyE4Ohg==}
     engines: {node: '>=18', pnpm: '>=8.7.0'}
     peerDependencies:
       svelte: ^5.0.0-next.1
@@ -1902,16 +1899,6 @@ packages:
     peerDependencies:
       svelte: '>=5.0.0'
 
-  svelte-headless-table@0.18.2:
-    resolution: {integrity: sha512-dnDTaXW5CNzRUjHVbc/Hb0Zv80zU4VcIUnAja6OuZriXvim1AqcWYQCHPRzBGwqj1m3YEHHNvspSzY0o5HzA0A==}
-    peerDependencies:
-      svelte: ^4.0.0
-
-  svelte-keyed@2.0.0:
-    resolution: {integrity: sha512-7TeEn+QbJC2OJrHiuM0T8vMBkms3DNpTE+Ir+NtnVBnBMA78aL4f1ft9t0Hn/pBbD/TnIXi4YfjFRAgtN+DZ5g==}
-    peerDependencies:
-      svelte: ^4.0.0
-
   svelte-particles@2.12.0:
     resolution: {integrity: sha512-DISZn5RNIt7hP9SORogWmXyIA/MCha6kkcwRCa7fl3leD1+GFHeNMSjdmyhqlfgip82g17WUFxwyA8n/8EM5KQ==}
     deprecated: '@tsparticles/svelte is the newest package compatible with v3, please use that instead'
@@ -1924,11 +1911,6 @@ packages:
     peerDependencies:
       svelte: ^5.0.0
 
-  svelte-render@2.0.1:
-    resolution: {integrity: sha512-RpB0SurwXm4xhjvHHtjeqMmvd645FURb79GFOotScOSqnKK5vpqBgoBPGC0pp+E/eZgDSQ9rRAdn/+N4ys1mXQ==}
-    peerDependencies:
-      svelte: ^4.0.0
-
   svelte-sonner@0.3.28:
     resolution: {integrity: sha512-K3AmlySeFifF/cKgsYNv5uXqMVNln0NBAacOYgmkQStLa/UoU0LhfAACU6Gr+YYC8bOCHdVmFNoKuDbMEsppJg==}
     peerDependencies:
@@ -1936,11 +1918,6 @@ packages:
 
   svelte-spa-router@4.0.1:
     resolution: {integrity: sha512-2JkmUQ2f9jRluijL58LtdQBIpynSbem2eBGp4zXdi7aDY1znbR6yjw0KsonD0aq2QLwf4Yx4tBJQjxIjgjXHKg==}
-
-  svelte-subscribe@2.0.1:
-    resolution: {integrity: sha512-eKXIjLxB4C7eQWPqKEdxcGfNXm2g/qJ67zmEZK/GigCZMfrTR3m7DPY93R6MX+5uoqM1FRYxl8LZ1oy4URWi2A==}
-    peerDependencies:
-      svelte: ^4.0.0
 
   svelte-toolbelt@0.4.4:
     resolution: {integrity: sha512-sNSJ4zUUVpou/p7O2IagMGfSPKHwqsOCYvDceFEMoPmkRXlNDvRethDDAzYM8hO3ayYpdEAPG4H8wsD385hspw==}
@@ -2441,9 +2418,9 @@ snapshots:
 
   '@mateothegreat/svelte5-modal-manager@0.0.12': {}
 
-  '@mateothegreat/svelte5-table@1.0.14(bits-ui@1.0.0-next.28(svelte@5.1.3))(svelte@5.1.3)(tailwind-merge@2.5.4)':
+  '@mateothegreat/svelte5-table@1.0.14(bits-ui@1.0.0-next.31(svelte@5.1.3))(svelte@5.1.3)(tailwind-merge@2.5.4)':
     dependencies:
-      bits-ui: 1.0.0-next.28(svelte@5.1.3)
+      bits-ui: 1.0.0-next.31(svelte@5.1.3)
       svelte: 5.1.3
       tailwind-merge: 2.5.4
 
@@ -2997,7 +2974,7 @@ snapshots:
       nanoid: 5.0.7
       svelte: 5.1.3
 
-  bits-ui@1.0.0-next.28(svelte@5.1.3):
+  bits-ui@1.0.0-next.31(svelte@5.1.3):
     dependencies:
       '@floating-ui/core': 1.6.8
       '@floating-ui/dom': 1.6.11
@@ -3774,17 +3751,6 @@ snapshots:
     dependencies:
       svelte: 5.1.3
 
-  svelte-headless-table@0.18.2(svelte@5.1.3):
-    dependencies:
-      svelte: 5.1.3
-      svelte-keyed: 2.0.0(svelte@5.1.3)
-      svelte-render: 2.0.1(svelte@5.1.3)
-      svelte-subscribe: 2.0.1(svelte@5.1.3)
-
-  svelte-keyed@2.0.0(svelte@5.1.3):
-    dependencies:
-      svelte: 5.1.3
-
   svelte-particles@2.12.0(svelte@5.1.3):
     dependencies:
       svelte: 5.1.3
@@ -3794,11 +3760,6 @@ snapshots:
     dependencies:
       svelte: 5.1.3
 
-  svelte-render@2.0.1(svelte@5.1.3):
-    dependencies:
-      svelte: 5.1.3
-      svelte-subscribe: 2.0.1(svelte@5.1.3)
-
   svelte-sonner@0.3.28(svelte@5.1.3):
     dependencies:
       svelte: 5.1.3
@@ -3806,10 +3767,6 @@ snapshots:
   svelte-spa-router@4.0.1:
     dependencies:
       regexparam: 2.0.2
-
-  svelte-subscribe@2.0.1(svelte@5.1.3):
-    dependencies:
-      svelte: 5.1.3
 
   svelte-toolbelt@0.4.4(svelte@5.1.3):
     dependencies:
