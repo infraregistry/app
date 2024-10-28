@@ -22,8 +22,8 @@ importers:
         specifier: ^0.0.10
         version: 0.0.10
       '@mateothegreat/svelte5-forms':
-        specifier: ^0.0.24
-        version: 0.0.24(svelte@5.1.3)
+        specifier: ^0.0.27
+        version: 0.0.27(svelte@5.1.3)
       '@mateothegreat/svelte5-modal-manager':
         specifier: ^0.0.12
         version: 0.0.12
@@ -517,8 +517,8 @@ packages:
   '@mateothegreat/svelte5-command-palette@0.0.9':
     resolution: {integrity: sha512-PV326f8RL3d39HXHXGBxzdQdYaIsFIq8/w0Yhoi+wbLg+I843f7sAgbqFsS521m9v8rbUIdPsXqdQ/WsoaMq0g==}
 
-  '@mateothegreat/svelte5-forms@0.0.24':
-    resolution: {integrity: sha512-2WJsw6su9GETFVXbSvxG8uWp0aax/236xNHfEx/FMFfp46x5S2aoMMKYW+BOByTdG/IM/cWKyZyiZYK3HWudfg==}
+  '@mateothegreat/svelte5-forms@0.0.27':
+    resolution: {integrity: sha512-xcV5eISlxlDmLOsW9WdtpPKPwF/RzLeRVIqmccP0u0UI+P5VIp9wvG3YuGuzLCPzOeR1hVcQWqm95GRP1Be5xQ==}
     peerDependencies:
       svelte: ^5.0.0
 
@@ -2435,7 +2435,7 @@ snapshots:
 
   '@mateothegreat/svelte5-command-palette@0.0.9': {}
 
-  '@mateothegreat/svelte5-forms@0.0.24(svelte@5.1.3)':
+  '@mateothegreat/svelte5-forms@0.0.27(svelte@5.1.3)':
     dependencies:
       svelte: 5.1.3
 

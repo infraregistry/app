@@ -75,14 +75,14 @@
             <Form.Header.Label>Name</Form.Header.Label>
             <Form.Header.Description>Foo bar baz pow.</Form.Header.Description>
           </Form.Header.Root>
-          <Form.Controls.Input {form} name="name" />
+          <Form.Controls.Input name="name" />
         </Form.Field>
         <Form.Field>
           <Form.Header.Root>
             <Form.Header.Label>Foo Bar</Form.Header.Label>
             <Form.Header.Description>Foo bar baz pow.</Form.Header.Description>
           </Form.Header.Root>
-          <Form.Controls.Select {form} placeholder="Select something cool.." name="foobar" type="multiple" prefix={selectPrefix} />
+          <Form.Controls.Select placeholder="Select something cool.." name="foobar" type="multiple" prefix={selectPrefix} />
         </Form.Field>
       </Form.Group>
       <Form.Group>
@@ -91,7 +91,7 @@
             <Form.Header.Label>Name</Form.Header.Label>
             <Form.Header.Description>Foo bar baz pow.</Form.Header.Description>
           </Form.Header.Root>
-          <Form.Controls.Switch {form} name="agree" class="rounded-lg border-2 border-slate-800 bg-zinc-900/40 p-2">
+          <Form.Controls.Switch name="agree" class="rounded-lg border-2 border-slate-800 bg-zinc-900/40 p-2">
             <span class="text-xs text-sky-500">I agree to be awesome.</span>
           </Form.Controls.Switch>
         </Form.Field>

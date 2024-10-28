@@ -13,7 +13,7 @@
     "@iconify/svelte": "^4.0.2",
     "@infraregistry/types": "^0.0.3",
     "@mateothegreat/svelte5-command-palette": "^0.0.10",
-    "@mateothegreat/svelte5-forms": "^0.0.24",
+    "@mateothegreat/svelte5-forms": "^0.0.27",
     "@mateothegreat/svelte5-modal-manager": "^0.0.12",
     "@mateothegreat/svelte5-table": "^1.0.14",
     "@melt-ui/pp": "^0.3.2",
