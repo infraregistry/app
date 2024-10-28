@@ -6,7 +6,7 @@
   import Grid from "./grid.svelte";
   import List from "./list.svelte";
 
-  let selected = $state(qs.parse($querystring)?.tab ?? "list");
+  let selected = $state(qs.parse($querystring)?.tab ?? "grid");
   const items = Array.from({ length: 100 }).map((_, i) => i);
 </script>
 
@@ -16,7 +16,7 @@
     <div class="flex items-center gap-2">
       <Input class="w-60" placeholder="Filter results..." />
       <Tabs
-        tabs={["list", "grid"]}
+        tabs={["grid", "list"]}
         {selected}
         onValueChange={(v) => {
           selected = v;
