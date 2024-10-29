@@ -29,7 +29,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            GITHUB_TOKEN=${{ secrets.GH_PAT_PACKAGES_READ_ONLY }}
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
             VITE_API_BASE_URL=https://api.dev.infraregistry.com
       - uses: sarisia/actions-status-discord@v1
         if: always()

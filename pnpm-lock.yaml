@@ -21,9 +21,6 @@ importers:
       '@iconify/svelte':
         specifier: ^4.0.2
         version: 4.0.2(svelte@5.1.4)
-      '@infraregistry/types':
-        specifier: ^0.0.3
-        version: 0.0.3
       '@mateothegreat/svelte5-command-palette':
         specifier: ^0.0.10
         version: 0.0.10
@@ -483,9 +480,6 @@ packages:
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
-
-  '@infraregistry/types@0.0.3':
-    resolution: {integrity: sha512-eu9jCRseCkmr4V2yWPsvrHeu623e4CYF0p39SH6HgvT5bkCftIq5U3XrxWsCCckcsche34Cdd+5vOUIiWD2Y1w==, tarball: https://npm.pkg.github.com/download/@infraregistry/types/0.0.3/ee76f64dbc54bac6cbacca0e6c4da3759198bcd1}
 
   '@internationalized/date@3.5.6':
     resolution: {integrity: sha512-jLxQjefH9VI5P9UQuqB6qNKnvFt1Ky1TPIzHGsIlCi7sZZoMR8SdYbBGRvM0y+Jtb+ez4ieBzmiAUcpmPYpyOw==}
@@ -2493,8 +2487,6 @@ snapshots:
       svelte: 5.1.4
 
   '@iconify/types@2.0.0': {}
-
-  '@infraregistry/types@0.0.3': {}
 
   '@internationalized/date@3.5.6':
     dependencies:
