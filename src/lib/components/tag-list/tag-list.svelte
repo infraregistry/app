@@ -53,7 +53,7 @@
             <Input placeholder="Search tags..." {onfocus} type="text" {oninput} bind:value={searchText} />
           {/if}
         </Popover.Trigger>
-        <Popover.Content>
+        <Popover.Content class="w-full p-0">
           <Command.Root class="w-64">
             {#if plus_button}
               <Command.Input placeholder="Search tags..." />
