@@ -27,16 +27,17 @@
 
   let open = $state(false);
 
-  let initialList = $state.snapshot(tags.slice(0, max));
-  let tagList = $state(tags.slice(0, max));
-  let filteredTags = $state(tags.slice(0, max));
+  let initialList = $state.snapshot(tags);
+  let tagList = $state(initialList.slice(0, max));
+  let filteredTags = $derived.by(() => {
+    const query = searchText.toLowerCase();
+    return initialList.filter((t) => {
+      if (t.label.toLowerCase().match(query)) return t;
+    });
+  });
   let searchText = $state("");
 
   let wrapClass = $derived(wrap ? "flex-wrap" : "overflow-x-auto");
-
-  $effect(() => {
-    $inspect(open);
-  });
 </script>
 
 <Card.Root>
@@ -45,18 +46,18 @@
       <BadgeTag {tag} handleClick={() => handleClick(tag)} />
     {/each}
     {#if !disabled}
-      <Popover.Root bind:open>
-        <Popover.Trigger>
+      <Popover.Root>
+        <Popover.Trigger disabled={tagList.length >= max}>
           {#if plus_button}
             <Button variant="ghost">&plus;</Button>
           {:else}
-            <Input placeholder="Search tags..." {onfocus} type="text" {oninput} bind:value={searchText} />
+            <Input placeholder="Search tags..." type="text" bind:value={searchText} />
           {/if}
         </Popover.Trigger>
         <Popover.Content class="w-full p-0">
           <Command.Root class="w-64">
             {#if plus_button}
-              <Command.Input placeholder="Search tags..." />
+              <Command.Input placeholder="Search tags..." bind:value={searchText} disabled={tagList.length >= max} />
             {/if}
             <Command.List>
               <Command.Group>
@@ -65,6 +66,8 @@
                     <button
                       class="flex h-8 cursor-pointer items-center gap-2 transition-colors hover:bg-muted"
                       onclick={() => {
+                        if (tagList.length >= max) return;
+                        if (tagList.some((t) => t.label === suggestion.label)) return;
                         tagList.push({
                           label: suggestion.label,
                           color: suggestion.color,
