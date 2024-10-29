@@ -36,6 +36,10 @@
     tags = tags.filter((t) => t.label !== tag.label);
     onValueChange(tags);
   };
+
+  const is_tag_added = (tag: Tag): boolean => {
+    return tag.disabled || tags.map((t) => t.label).includes(tag.label);
+  };
 </script>
 
 <Card.Root>
@@ -78,8 +82,8 @@
                 <Command.Group>
                   {#if filtered.length > 0}
                     {#each filtered as suggestion}
-                      <Command.Item class="rounded-button flex h-10 cursor-pointer select-none items-center gap-2 px-3 py-2.5 text-sm capitalize outline-none data-[selected]:bg-muted">
-                        <button class="flex h-8 items-center gap-2 transition-colors hover:enabled:cursor-pointer hover:enabled:bg-muted" disabled={suggestion.disabled || tags.map((t) => t.label).includes(suggestion.label)} onclick={() => add(suggestion)}>
+                      <Command.Item class="rounded-button flex h-10 select-none items-center gap-2 px-3 py-2.5 text-sm capitalize outline-none data-[selected]:bg-muted">
+                        <button class="flex h-8 w-full items-center gap-2 transition-colors hover:enabled:cursor-pointer hover:enabled:bg-muted disabled:opacity-50" disabled={is_tag_added(suggestion)} onclick={() => add(suggestion)}>
                           <div class="h-4 w-4 rounded-md {suggestion.color}"></div>
                           <span class="select-none text-sm">{suggestion.label}</span>
                         </button>
