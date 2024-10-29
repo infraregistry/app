@@ -28,12 +28,17 @@
   let open = $state(false);
 
   let initialList = $state.snapshot(tags);
-  let tagList = $state(initialList.slice(0, max));
+  let tagList = $derived.by(() => {
+    const unique = initialList.filter((tag, index, self) => index === self.findIndex((t) => t.label === tag.label));
+    return unique.slice(0, Math.max(1, max));
+  });
   let filteredTags = $derived.by(() => {
     const query = searchText.toLowerCase();
-    return initialList.filter((t) => {
-      if (t.label.toLowerCase().match(query)) return t;
-    });
+    return initialList
+      .filter((tag) => !tagList.some((t) => t.label === tag.label))
+      .filter((tag) => {
+        if (tag.label.toLowerCase().match(query)) return tag;
+      });
   });
   let searchText = $state("");
 
@@ -59,6 +64,8 @@
             {#if plus_button}
               <Command.Input placeholder="Search tags..." bind:value={searchText} disabled={tagList.length >= max} />
             {/if}
+            <!-- TODO: Change this to create new tag -->
+            <Command.Empty>No results found.</Command.Empty>
             <Command.List>
               <Command.Group>
                 {#each filteredTags as suggestion}
