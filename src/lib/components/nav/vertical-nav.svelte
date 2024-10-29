@@ -3,9 +3,9 @@
   import { sessions } from "$lib/sessions/sessions.svelte";
   import type { iconStatics } from "$lib/shared/icons/icon-statics";
   import IconifyWrapper from "$lib/shared/icons/iconify-wrapper.svelte";
+  import { goto, route } from "@mateothegreat/svelte5-router";
   import { Tooltip } from "bits-ui";
   import { toast } from "svelte-sonner";
-  import { link, push } from "svelte-spa-router";
   import { slide } from "svelte/transition";
 
   type Link = {
@@ -25,7 +25,7 @@
 <aside class="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background pt-4 sm:flex">
   <nav class="flex flex-col items-center gap-4">
     <div class="-mt-2 h-7">
-      <a use:link href="/">
+      <a use:route href="/">
         <IconifyWrapper name="logo" size={10} />
       </a>
     </div>
@@ -36,7 +36,7 @@
       <Tooltip.Provider>
         <Tooltip.Root delayDuration={200}>
           <Tooltip.Trigger class="">
-            <a use:link href={l.href}>
+            <a use:route href={l.href}>
               <IconifyWrapper name={l.icon} size={7} />
             </a>
           </Tooltip.Trigger>
@@ -44,7 +44,8 @@
             {#snippet child({ props, open })}
               {#if open}
                 <div {...props} transition:slide>
-                  <div class="border-dark-10 z-0 flex items-center justify-center rounded-lg border bg-background p-2 text-xs font-medium text-slate-400 shadow-popover outline-none">
+                  <div
+                    class="border-dark-10 z-0 flex items-center justify-center rounded-lg border bg-background p-2 text-xs font-medium text-slate-400 shadow-popover outline-none">
                     {l.tooltip}
                   </div>
                 </div>
@@ -79,7 +80,9 @@
           {#snippet child({ props, open })}
             {#if open}
               <div {...props} transition:slide>
-                <div class="border-dark-10 z-0 flex items-center justify-center rounded-lg border bg-background p-2 text-xs font-medium text-slate-400 shadow-popover outline-none">Help & Support</div>
+                <div class="border-dark-10 z-0 flex items-center justify-center rounded-lg border bg-background p-2 text-xs font-medium text-slate-400 shadow-popover outline-none">
+                  Help & Support
+                </div>
               </div>
             {/if}
           {/snippet}
@@ -89,13 +92,17 @@
     <Tooltip.Provider>
       <Tooltip.Root delayDuration={200}>
         <Tooltip.Trigger>
-          <IconifyWrapper name="settings" size={7} />
+          <a use:route href="/settings">
+            <IconifyWrapper name="settings" size={7} />
+          </a>
         </Tooltip.Trigger>
         <Tooltip.Content forceMount side="right">
           {#snippet child({ props, open })}
             {#if open}
               <div {...props} transition:slide>
-                <div class="border-dark-10 z-0 flex items-center justify-center rounded-lg border bg-background p-2 text-xs font-medium text-slate-400 shadow-popover outline-none">Settings</div>
+                <div class="border-dark-10 z-0 flex items-center justify-center rounded-lg border bg-background p-2 text-xs font-medium text-slate-400 shadow-popover outline-none">
+                  Settings
+                </div>
               </div>
             {/if}
           {/snippet}
@@ -122,7 +129,7 @@
                 <DropdownMenu.Item
                   onclick={() => {
                     sessions.logout();
-                    push("/login");
+                    goto("/login");
                     toast.success("Logged out successfully!");
                   }}>Logout</DropdownMenu.Item>
               </DropdownMenu.Group>
@@ -133,7 +140,9 @@
           {#snippet child({ props, open })}
             {#if open}
               <div {...props} transition:slide>
-                <div class="border-dark-10 z-0 flex items-center justify-center rounded-lg border bg-background p-2 text-xs font-medium text-slate-400 shadow-popover outline-none">My Account & Settings</div>
+                <div class="border-dark-10 z-0 flex items-center justify-center rounded-lg border bg-background p-2 text-xs font-medium text-slate-400 shadow-popover outline-none">
+                  My Account & Settings
+                </div>
               </div>
             {/if}
           {/snippet}

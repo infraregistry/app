@@ -1,24 +1,14 @@
 <script lang="ts">
-	import { type Variant, badgeVariants } from "./index.js";
-	import { cn } from "$lib/utils.js";
+  import { cn } from "$lib/utils.js";
+  import { badgeVariants } from "./index.js";
 
-	interface Props { [key: string]: any }
+  interface Props {
+    [key: string]: any;
+  }
 
-	let {
-		class: className = undefined,
-		href = undefined,
-		variant = "default",
-		children,
-		...rest
-	}: Props = $props();
-	
+  let { class: className = undefined, href = undefined, variant = "default", children, ...rest }: Props = $props();
 </script>
 
-<svelte:element
-	this={href ? "a" : "span"}
-	{href}
-	class={cn(badgeVariants({ variant, className }))}
-	{...rest}
->
-	{@render children?.()}
+<svelte:element this={href ? "a" : "span"} {href} class={cn(badgeVariants({ variant, className }))} {...rest}>
+  {@render children?.()}
 </svelte:element>

@@ -4,22 +4,20 @@
   import { Button } from "$lib/components/ui/button/index.js";
   import * as Tabs from "$lib/components/ui/tabs";
   import Icon from "@iconify/svelte";
+  import { goto, Router } from "@mateothegreat/svelte5-router";
   import { Pane, PaneGroup, PaneResizer } from "paneforge";
-  import Router, { push } from "svelte-spa-router";
   import { deleteComponent, loadComponent } from "./api.svelte";
   import Feed from "./feed.svelte";
   import { routes } from "./routes";
 
   type Props = {
-    params: {
-      id: string;
-      tab: string;
-    };
+    params: string[];
   };
+
   let { params }: Props = $props();
 
-  const component = loadComponent(params.id);
-  const tab = $state<string>(params.tab || "documentation");
+  const component = loadComponent(params[0]);
+  const tab = $state<string>(params[1] || "overview");
 
   const onSyncClick = () => {};
 
@@ -31,7 +29,7 @@
     }).subscribe((result) => {
       if (result) {
         deleteComponent(component.id).subscribe();
-        push("/components");
+        goto("/components");
       }
     });
   };
@@ -39,7 +37,7 @@
 
 <div class="flex items-end gap-4">
   <div class="flex flex-1 items-center gap-3 px-3 py-2">
-    <Button on:click={() => push("/components")} variant="outline" size="icon" class="">
+    <Button on:click={() => goto("/components")} variant="outline" size="icon" class="">
       <Icon icon="material-symbols:navigate-next" class="h-5 w-5 rotate-180 text-zinc-700" />
     </Button>
     <div class="flex flex-col">
@@ -83,11 +81,11 @@
           console.log("selected");
         }}>
         <Tabs.List class="">
-          <Tabs.Trigger onclick={() => push(`/components/${component.id}/overview`)} value="overview">Overview</Tabs.Trigger>
-          <Tabs.Trigger onclick={() => push(`/components/${component.id}/documentation`)} value="documentation">Documentation</Tabs.Trigger>
-          <Tabs.Trigger onclick={() => push(`/components/${component.id}/dependencies`)} value="dependencies">Dependencies</Tabs.Trigger>
-          <Tabs.Trigger onclick={() => push(`/components/${component.id}/monitoring`)} value="monitoring">Monitoring</Tabs.Trigger>
-          <Tabs.Trigger onclick={() => push(`/components/${component.id}/settings`)} value="settings">Settings</Tabs.Trigger>
+          <Tabs.Trigger onclick={() => goto(`/components/${component.id}/overview`)} value="overview">Overview</Tabs.Trigger>
+          <Tabs.Trigger onclick={() => goto(`/components/${component.id}/documentation`)} value="documentation">Documentation</Tabs.Trigger>
+          <Tabs.Trigger onclick={() => goto(`/components/${component.id}/dependencies`)} value="dependencies">Dependencies</Tabs.Trigger>
+          <Tabs.Trigger onclick={() => goto(`/components/${component.id}/monitoring`)} value="monitoring">Monitoring</Tabs.Trigger>
+          <Tabs.Trigger onclick={() => goto(`/components/${component.id}/settings`)} value="settings">Settings</Tabs.Trigger>
         </Tabs.List>
       </Tabs.Root>
       <Router {routes} />

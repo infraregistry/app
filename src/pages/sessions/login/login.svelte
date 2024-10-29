@@ -4,9 +4,9 @@
   import { sessions } from "$lib/sessions/sessions.svelte";
   import * as Form from "@mateothegreat/svelte5-forms";
   import { FormInstance, minLength } from "@mateothegreat/svelte5-forms";
+  import { goto } from "@mateothegreat/svelte5-router";
   import { GithubIcon, LoaderCircleIcon } from "lucide-svelte";
   import { toast } from "svelte-sonner";
-  import { push } from "svelte-spa-router";
 
   let form: FormInstance;
 
@@ -27,7 +27,7 @@
     isLoading = "email";
     sessions.login(form.values.email, form.values.password).subscribe((result) => {
       toast.success("Welcome back!");
-      push("/");
+      goto("/");
     });
   };
 </script>

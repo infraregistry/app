@@ -1,11 +1,11 @@
 <script lang="ts">
   import { Badge } from "$lib/components/ui/badge";
+  import { route } from "@mateothegreat/svelte5-router";
   import { Tooltip } from "bits-ui";
-  import { link } from "svelte-spa-router";
   import { slide } from "svelte/transition";
 </script>
 
-<a use:link={"/components/123"} class="rounded-md hover:bg-zinc-900/75">
+<a use:route href={"/components/cm2mg9afm0001nnrvrmgv9sux"} class="rounded-md hover:bg-zinc-900/75">
   <div class="col-span-1 flex rounded-md shadow-sm">
     <div class="w-1 rounded-l-md bg-purple-700 text-sm font-medium text-white"></div>
     <div class="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-zinc-800">

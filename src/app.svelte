@@ -7,10 +7,10 @@
   import VerticalNav from "$lib/components/nav/vertical-nav.svelte";
   import { sessions } from "$lib/sessions/sessions.svelte";
   import { confettiStore } from "$lib/shared/effects/confetti-store";
+  import { Router } from "@mateothegreat/svelte5-router";
   import { ModeWatcher } from "mode-watcher";
   import { Confetti } from "svelte-confetti";
   import { Toaster } from "svelte-sonner";
-  import Router from "svelte-spa-router";
   import { streamingClient } from "./api/sreaming";
   import { routes } from "./pages/routes";
   import Sessions from "./pages/sessions/Sessions.svelte";

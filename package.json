@@ -14,10 +14,10 @@
     "@infraregistry/types": "^0.0.3",
     "@mateothegreat/svelte5-command-palette": "^0.0.10",
     "@mateothegreat/svelte5-forms": "^0.0.27",
-    "@mateothegreat/svelte5-modal-manager": "^0.0.12",
+    "@mateothegreat/svelte5-modal-manager": "^0.0.18",
     "@mateothegreat/svelte5-table": "^1.0.14",
     "@melt-ui/pp": "^0.3.2",
-    "@melt-ui/svelte": "^0.84.0",
+    "@melt-ui/svelte": "^0.85.0",
     "@svelte.codes/forms": "^0.0.26",
     "@sveltejs/vite-plugin-svelte": "^4.0.0",
     "@tailwindcss/typography": "^0.5.15",
@@ -59,7 +59,7 @@
     "@tiptap/starter-kit": "^2.9.1",
     "@tiptap/suggestion": "^2.9.1",
     "@tsconfig/svelte": "^5.0.4",
-    "@types/node": "^22.8.1",
+    "@types/node": "^22.8.2",
     "@xyflow/svelte": "^0.1.21",
     "autoprefixer": "^10.4.20",
     "bits-ui": "1.0.0-next.31",
@@ -69,7 +69,7 @@
     "dayjs": "^1.11.13",
     "jwt-decode": "^4.0.0",
     "lowlight": "^3.1.0",
-    "lucide-svelte": "^0.453.0",
+    "lucide-svelte": "^0.454.0",
     "mode-watcher": "^0.4.1",
     "paneforge": "^0.0.6",
     "phosphor-svelte": "^2.0.1",
@@ -79,9 +79,10 @@
     "prettier-plugin-tailwindcss": "^0.6.8",
     "rxjs": "^7.8.1",
     "sass": "^1.80.4",
-    "svelte": "^5.1.3",
+    "svelte": "^5.1.4",
     "svelte-check": "^4.0.5",
     "svelte-confetti": "^2.1.2",
+    "svelte-package": "^0.1.0",
     "svelte-particles": "^2.12.0",
     "svelte-radix": "^2.0.1",
     "svelte-sonner": "^0.3.28",
@@ -101,6 +102,8 @@
     "yjs": "13.6.20"
   },
   "dependencies": {
-    "qs": "^6.13.0"
+    "@mateothegreat/svelte5-router": "^0.0.14",
+    "qs": "^6.13.0",
+    "vite-tsconfig-paths": "^5.0.1"
   }
 }

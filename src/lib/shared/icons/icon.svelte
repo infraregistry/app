@@ -1,26 +1,20 @@
 <script lang="ts">
-  import { run } from 'svelte/legacy';
+  import { twMerge } from "tailwind-merge";
+  import { icons, type Icon } from "./repo";
 
-  interface Props { [key: string]: any }
-
-  let { size = 16, src, fit = false, ...rest }: Props = $props();
-
-  if (fit) {
-    sizePx = '100%';
+  interface Props {
+    name?: keyof typeof icons;
+    icon?: Icon;
+    class?: string;
   }
-  let sizePx;
-  run(() => {
-    sizePx = `${size}px`;
-  });
+
+  let { name, icon, class: className }: Props = $props();
+
+  if (!icon) {
+    icon = icons[name!];
+  }
 </script>
 
-<div class:max={fit} style="width: {sizePx}; height: {sizePx}" {...rest}>
-  {@html src}
+<div class={twMerge(icon.classes, className, "flex items-center justify-center")}>
+  {@html icon.value}
 </div>
-
-<style>
-  .max {
-    min-width: 100%;
-    min-height: 100%;
-  }
-</style>

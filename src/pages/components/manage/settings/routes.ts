@@ -1,10 +1,23 @@
+import type { Route } from "@mateothegreat/svelte5-router";
 import Advanced from "./advanced/advanced.svelte";
 import General from "./general/general.svelte";
 import Integrations from "./integrations/integrations.svelte";
 
-export const routes = {
-  "/components/:id/settings/general": General,
-  "/components/:id/settings/integrations": Integrations,
-  "/components/:id/settings/advanced": Advanced,
-  "/components/:id/settings": General
-}
+export const routes: Route[] = [
+  {
+    path: "general",
+    component: General
+  },
+  {
+    path: "integrations",
+    component: Integrations
+  },
+  {
+    path: "advanced",
+    component: Advanced
+  },
+  {
+    path: "",
+    component: General
+  }
+]
