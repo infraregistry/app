@@ -34,11 +34,10 @@
   });
   let filteredTags = $derived.by(() => {
     const query = searchText.toLowerCase();
-    return initialList
-      .filter((tag) => !tagList.some((t) => t.label === tag.label))
-      .filter((tag) => {
-        if (tag.label.toLowerCase().match(query)) return tag;
-      });
+
+    return initialList.filter((tag) => {
+      if (tag.label.toLowerCase().match(query)) return tag;
+    });
   });
   let searchText = $state("");
 
@@ -64,28 +63,50 @@
             {#if plus_button}
               <Command.Input placeholder="Search tags..." bind:value={searchText} disabled={tagList.length >= max} />
             {/if}
-            <!-- TODO: Change this to create new tag -->
-            <Command.Empty>No results found.</Command.Empty>
             <Command.List>
               <Command.Group>
-                {#each filteredTags as suggestion}
+                {#if searchText.length > 0}
                   <Command.Item>
                     <button
                       class="flex h-8 cursor-pointer items-center gap-2 transition-colors hover:bg-muted"
                       onclick={() => {
                         if (tagList.length >= max) return;
-                        if (tagList.some((t) => t.label === suggestion.label)) return;
                         tagList.push({
-                          label: suggestion.label,
-                          color: suggestion.color,
+                          label: searchText,
+                          color: "bg-gray-500",
                           disabled: false
                         });
                       }}>
-                      <div class="h-4 w-4 rounded-full border border-muted-foreground {suggestion.color}"></div>
-                      <span class="select-none">{suggestion.label}</span>
+                      <div class="select-none">
+                        Create tag&nbsp;
+                        <span class="rounded-full border border-muted-foreground bg-gray-500 p-1">{searchText}</span>
+                      </div>
                     </button>
                   </Command.Item>
-                {/each}
+                {/if}
+                {#if filteredTags.length > 0}
+                  {#each filteredTags as suggestion}
+                    <Command.Item>
+                      <button
+                        class="flex h-8 cursor-pointer items-center gap-2 transition-colors hover:bg-muted"
+                        disabled={suggestion.disabled}
+                        onclick={() => {
+                          if (tagList.length >= max) return;
+                          if (tagList.some((t) => t.label === suggestion.label)) return;
+                          tagList.push({
+                            label: suggestion.label,
+                            color: suggestion.color,
+                            disabled: false
+                          });
+                        }}>
+                        <div class="h-4 w-4 rounded-full border border-muted-foreground {suggestion.color}"></div>
+                        <span class="select-none">{suggestion.label}</span>
+                      </button>
+                    </Command.Item>
+                  {/each}
+                {:else}
+                  <Command.Empty>No results found.</Command.Empty>
+                {/if}
               </Command.Group>
             </Command.List>
           </Command.Root>
