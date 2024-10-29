@@ -38,7 +38,7 @@
   };
 
   const is_tag_added = (tag: Tag): boolean => {
-    return tag.disabled || tags.map((t) => t.label).includes(tag.label);
+    return tag.disabled || tags.some((t) => t.label === tag.label);
   };
 </script>
 
