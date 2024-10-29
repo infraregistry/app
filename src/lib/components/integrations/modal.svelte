@@ -12,7 +12,7 @@
   const links = [{ name: "Cloud Providers", count: 6 }, { name: "Databases", count: 3 }, { name: "Other" }];
 </script>
 
-<div class="flex max-h-[70vh] w-[1100px] flex-col gap-4 overflow-hidden rounded-lg border-2 border-slate-800 bg-zinc-950 p-2">
+<div class="flex max-h-[70vh] w-[1100px] flex-col gap-4 overflow-clip rounded-lg border-2 border-slate-800 bg-zinc-950 p-2">
   <Layout.Header>
     <Layout.Left>
       <Layout.Icon tooltip="Components are the building blocks of your service catalog and CMDB such as cloud resources, applications, services, etc.">
@@ -61,3 +61,9 @@
     </div>
   </div>
 </div>
+
+<style lang="postcss">
+  :global(body) {
+    @apply overflow-y-hidden;
+  }
+</style>
