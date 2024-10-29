@@ -1,113 +1,96 @@
 <script lang="ts">
-  import BadgeTag from "./badge-tag.svelte";
-  import * as Command from "$lib/components/ui/command";
   import * as Card from "$lib/components/ui/card";
   import * as Popover from "$lib/components/ui/popover";
   import type { Tag } from "$lib/types";
+  import { Command } from "bits-ui";
   import { noop } from "rxjs";
+  import { writable } from "svelte/store";
   import Button from "../ui/button/button.svelte";
   import Input from "../ui/input/input.svelte";
+  import BadgeTag from "./badge-tag.svelte";
 
   interface Props {
     tags: Tag[];
     disabled?: boolean;
-    plus_button?: boolean;
+    mode?: "button" | "input";
+    search?: boolean;
     max?: number;
     onValueChange?: (value: Tag[]) => void;
     wrap?: boolean;
   }
 
-  function handleClick(tag: Tag) {
-    if (tag.disabled) return;
-    tagList = tagList.filter((t) => t.label !== tag.label);
-    onValueChange(tagList);
-  }
+  let { tags, disabled = false, mode = "button", search = true, max = 10, onValueChange = noop, wrap = true }: Props = $props();
 
-  let { tags, disabled = false, plus_button = true, max = 10, onValueChange = noop, wrap = true }: Props = $props();
-
-  let open = $state(false);
-
-  let initialList = $state.snapshot(tags);
-  let tagList = $derived.by(() => {
-    const unique = initialList.filter((tag, index, self) => index === self.findIndex((t) => t.label === tag.label));
-    return unique.slice(0, Math.max(1, max));
-  });
-  let filteredTags = $derived.by(() => {
-    const query = searchText.toLowerCase();
-
-    return initialList.filter((tag) => {
-      if (tag.label.toLowerCase().match(query)) return tag;
-    });
-  });
-  let searchText = $state("");
-
+  let filtered = $state(tags);
+  let terms = writable("");
+  let createable = $derived($terms.length > 0);
   let wrapClass = $derived(wrap ? "flex-wrap" : "overflow-x-auto");
+
+  const add = (tag: Tag) => {
+    if (tags.length >= max) return;
+
+    tags = [...tags, tag];
+    onValueChange(tags);
+  };
+
+  const remove = (tag: Tag) => {
+    tags = tags.filter((t) => t.label !== tag.label);
+    onValueChange(tags);
+  };
 </script>
 
 <Card.Root>
   <div class="flex items-center gap-2 px-4 py-3 {wrapClass}">
-    {#each tagList as tag}
-      <BadgeTag {tag} handleClick={() => handleClick(tag)} />
+    {#each tags as tag}
+      <BadgeTag {tag} handleClick={() => remove(tag)} />
     {/each}
     {#if !disabled}
       <Popover.Root>
-        <Popover.Trigger disabled={tagList.length >= max}>
-          {#if plus_button}
+        <Popover.Trigger disabled={tags.length >= max}>
+          {#if mode === "button"}
             <Button variant="ghost">&plus;</Button>
           {:else}
-            <Input placeholder="Search tags..." type="text" bind:value={searchText} />
+            <Input placeholder="Search tags..." type="text" bind:value={terms} />
           {/if}
         </Popover.Trigger>
         <Popover.Content class="w-full p-0">
-          <Command.Root class="w-64">
-            {#if plus_button}
-              <Command.Input placeholder="Search tags..." bind:value={searchText} disabled={tagList.length >= max} />
+          <Command.Root class="flex w-56 flex-col self-start overflow-hidden rounded-xl bg-background">
+            {#if search}
+              <Command.Input placeholder="Search tags..." bind:value={$terms} disabled={tags.length >= max} class="focus-override h-input placeholder:text-foreground-alt/50 inline-flex w-[296px] truncate rounded-xl bg-background px-4 py-2.5 text-sm transition-colors focus:outline-none focus:ring-0" />
             {/if}
-            <Command.List>
-              <Command.Group>
-                {#if searchText.length > 0}
-                  <Command.Item>
-                    <button
-                      class="flex h-8 cursor-pointer items-center gap-2 transition-colors hover:bg-muted"
-                      onclick={() => {
-                        if (tagList.length >= max) return;
-                        tagList.push({
-                          label: searchText,
-                          color: "bg-gray-500",
-                          disabled: false
-                        });
-                      }}>
-                      <div class="select-none">
-                        Create tag&nbsp;
-                        <span class="rounded-full border border-muted-foreground bg-gray-500 p-1">{searchText}</span>
-                      </div>
-                    </button>
-                  </Command.Item>
-                {/if}
-                {#if filteredTags.length > 0}
-                  {#each filteredTags as suggestion}
-                    <Command.Item>
-                      <button
-                        class="flex h-8 cursor-pointer items-center gap-2 transition-colors hover:bg-muted"
-                        disabled={suggestion.disabled}
-                        onclick={() => {
-                          if (tagList.length >= max) return;
-                          if (tagList.some((t) => t.label === suggestion.label)) return;
-                          tagList.push({
-                            label: suggestion.label,
-                            color: suggestion.color,
-                            disabled: false
-                          });
-                        }}>
-                        <div class="h-4 w-4 rounded-full border border-muted-foreground {suggestion.color}"></div>
-                        <span class="select-none">{suggestion.label}</span>
-                      </button>
-                    </Command.Item>
-                  {/each}
-                {:else}
-                  <Command.Empty>No results found.</Command.Empty>
-                {/if}
-              </Command.Group>
+            <Command.List class="max-h-[200px] overflow-y-auto overflow-x-hidden">
+              <Command.Viewport>
+                <Command.Empty class="flex w-full select-none flex-col items-center justify-center gap-2 pb-4 text-sm text-muted-foreground">
+                  No results found.
+                  <Button
+                    class="flex h-8 w-full cursor-pointer items-center gap-3 bg-green-500 text-white transition-colors hover:bg-green-600"
+                    onclick={() => {
+                      add({
+                        label: $terms,
+                        color: "bg-gray-500",
+                        disabled: false
+                      });
+                      terms.set("");
+                    }}>
+                    Create tag "{$terms}"
+                  </Button>
+                </Command.Empty>
+                <Command.Group>
+                  {#if filtered.length > 0}
+                    {#each filtered as suggestion}
+                      <Command.Item class="rounded-button flex h-10 cursor-pointer select-none items-center gap-2 px-3 py-2.5 text-sm capitalize outline-none data-[selected]:bg-muted">
+                        <button class="flex h-8 cursor-pointer items-center gap-2 transition-colors hover:bg-muted" disabled={suggestion.disabled} onclick={() => add(suggestion)}>
+                          <div class="h-4 w-4 rounded-md {suggestion.color}"></div>
+                          <span class="select-none text-sm">{suggestion.label}</span>
+                        </button>
+                      </Command.Item>
+                    {/each}
+                  {:else}
+                    <Command.Empty>No results found.</Command.Empty>
+                  {/if}
+                </Command.Group>
+                {#if createable}{/if}
+              </Command.Viewport>
             </Command.List>
           </Command.Root>
         </Popover.Content>

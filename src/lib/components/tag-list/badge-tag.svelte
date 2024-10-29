@@ -36,7 +36,7 @@
 
 <style lang="postcss">
   button {
-    @apply flex w-max items-center gap-1 rounded-full px-[10px] py-1 text-xs font-semibold text-white transition-all hover:brightness-[1.15];
+    @apply flex w-max items-center gap-1 rounded-md px-[10px] py-1 text-xs font-semibold text-white transition-all hover:brightness-[1.15];
   }
   .disabled {
     @apply cursor-not-allowed opacity-50 brightness-90 hover:brightness-100;
