@@ -2,17 +2,18 @@
   import * as Integration from "$lib/components/integrations";
   import { getIntegrationsByCategory, IntegrationCategory } from "$lib/components/integrations/integration";
   import * as Layout from "$lib/components/layout";
-  import Scrollarea from "$lib/components/scrollarea/scrollarea.svelte";
+  import { ScrollArea } from "bits-ui";
   import { Badge } from "$lib/components/ui/badge";
   import { Button } from "$lib/components/ui/button";
   import IconifyWrapper from "$lib/shared/icons/iconify-wrapper.svelte";
   import { modalManager } from "$lib/shared/modals";
   import { X } from "lucide-svelte";
+  import Scrollarea from "../scrollarea/scrollarea.svelte";
 
   const links = [{ name: "Cloud Providers", count: 6 }, { name: "Databases", count: 3 }, { name: "Other" }];
 </script>
 
-<div class="flex max-h-[70vh] w-[1100px] flex-col gap-4 overflow-hidden rounded-lg border-2 border-slate-800 bg-zinc-950 p-2">
+<div class="relative flex h-[70vh] w-[1100px] flex-col gap-4 overflow-clip rounded-lg border-2 border-slate-800 bg-zinc-950 p-2">
   <Layout.Header>
     <Layout.Left>
       <Layout.Icon tooltip="Components are the building blocks of your service catalog and CMDB such as cloud resources, applications, services, etc.">
@@ -50,8 +51,8 @@
         {/each}
       </nav>
     </div>
-    <div class="flex flex-1">
-      <Scrollarea class="h-full">
+    <div class="relative top-0 flex h-[80%] flex-1">
+      <Scrollarea>
         <div class="grid h-full grid-cols-4 gap-6">
           {#each getIntegrationsByCategory(IntegrationCategory.CLOUD) as integration}
             <Integration.Card {integration} />
@@ -61,3 +62,9 @@
     </div>
   </div>
 </div>
+
+<style lang="postcss">
+  :global(body) {
+    @apply overflow-y-hidden;
+  }
+</style>

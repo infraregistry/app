@@ -3,6 +3,7 @@
   import { openIntegrationsModal } from "$lib/components/integrations/api";
   import { getIntegrationsByCategory, IntegrationCategory } from "$lib/components/integrations/integration";
   import * as Layout from "$lib/components/layout";
+  import Scrollarea from "$lib/components/scrollarea/scrollarea.svelte";
   import { Badge } from "$lib/components/ui/badge";
   import { Button } from "$lib/components/ui/button";
   import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
