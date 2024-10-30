@@ -61,7 +61,7 @@
     "@types/node": "^22.8.2",
     "@xyflow/svelte": "^0.1.21",
     "autoprefixer": "^10.4.20",
-    "bits-ui": "1.0.0-next.31",
+    "bits-ui": "^1.0.0-next.32",
     "clsx": "^2.1.1",
     "cmdk-sv": "^0.0.18",
     "codemirror": "^6.0.1",
