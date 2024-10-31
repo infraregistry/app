@@ -30,3 +30,9 @@ export interface MessageEntry extends TimelineEntryBase {
 }
 
 export type TimelineEntry = ChangeEntry | MessageEntry;
+
+export interface Tag {
+  label: string;
+  color: string;
+  disabled: boolean;
+}
