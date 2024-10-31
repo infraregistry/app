@@ -131,15 +131,19 @@
   });
 </script>
 
-<div class="tiptap-editor">
+<div class="tiptap-editor h-full">
   {#if editor}
     <div class="editor-menu">
-      <button on:click={() => editor.chain().focus().toggleHeading({ level: 1 }).run()} class:active={editor.isActive("heading", { level: 1 })} aria-label="Toggle Heading 1"> H1 </button>
-      <button on:click={() => editor.chain().focus().toggleHeading({ level: 2 }).run()} class:active={editor.isActive("heading", { level: 2 })} aria-label="Toggle Heading 2"> H2 </button>
+      <button on:click={() => editor.chain().focus().toggleHeading({ level: 1 }).run()} class:active={editor.isActive("heading", { level: 1 })} aria-label="Toggle Heading 1">
+        H1
+      </button>
+      <button on:click={() => editor.chain().focus().toggleHeading({ level: 2 }).run()} class:active={editor.isActive("heading", { level: 2 })} aria-label="Toggle Heading 2">
+        H2
+      </button>
       <button on:click={() => editor.chain().focus().setParagraph().run()} class:active={editor.isActive("paragraph")} aria-label="Set Paragraph"> P </button>
     </div>
   {/if}
-  <div bind:this={element} />
+  <div class="h-full" bind:this={element} />
 </div>
 
 <style>

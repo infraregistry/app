@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Empty from "./empty.svelte";
+  import Editor from "../editor/editor.svelte";
   import Navigator from "./navigator.svelte";
 
   let data = [
@@ -37,6 +37,7 @@
     <Navigator {data} />
   </div>
   <div class="flex flex-1 items-center justify-center rounded-lg border p-2">
-    <Empty />
+    <!-- <Empty /> -->
+    <Editor />
   </div>
 </div>

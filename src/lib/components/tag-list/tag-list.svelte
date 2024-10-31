@@ -1,5 +1,4 @@
 <script lang="ts">
-  import * as Card from "$lib/components/ui/card";
   import * as Popover from "$lib/components/ui/popover";
   import type { Tag } from "$lib/types";
   import { Command } from "bits-ui";
@@ -42,10 +41,13 @@
   };
 </script>
 
-<Card.Root>
-  <div class="flex items-center gap-2 px-4 py-3 {wrapClass}">
+<div class="flex items-center gap-2 p-2">
+  <div class="text-sm font-medium text-slate-500">Tags:</div>
+  <div class="flex items-center gap-2 {wrapClass}">
     {#each tags as tag}
-      <BadgeTag {tag} handleClick={() => remove(tag)} />
+      <BadgeTag
+        {tag}
+        handleClick={() => remove(tag)} />
     {/each}
     {#if !disabled}
       <Popover.Root>
@@ -53,13 +55,20 @@
           {#if mode === "button"}
             <Button variant="ghost">&plus;</Button>
           {:else}
-            <Input placeholder="Search tags..." type="text" bind:value={terms} />
+            <Input
+              placeholder="Search tags..."
+              type="text"
+              bind:value={terms} />
           {/if}
         </Popover.Trigger>
         <Popover.Content class="w-full p-0">
           <Command.Root class="flex w-56 flex-col self-start overflow-hidden rounded-xl bg-background">
             {#if search}
-              <Command.Input placeholder="Search tags..." bind:value={terms} disabled={tags.length >= max} class="focus-override h-input placeholder:text-foreground-alt/50 inline-flex w-[296px] truncate rounded-xl bg-background px-4 py-2.5 text-sm transition-colors focus:outline-none focus:ring-0" />
+              <Command.Input
+                placeholder="Search tags..."
+                bind:value={terms}
+                disabled={tags.length >= max}
+                class="focus-override h-input placeholder:text-foreground-alt/50 inline-flex w-[296px] truncate rounded-xl bg-background px-4 py-2.5 text-sm transition-colors focus:outline-none focus:ring-0" />
             {/if}
             <Command.List class="max-h-[200px] overflow-y-auto overflow-x-hidden">
               <Command.Viewport>
@@ -82,8 +91,12 @@
                 <Command.Group>
                   {#if filtered.length > 0}
                     {#each filtered as suggestion}
-                      <Command.Item class="rounded-button flex h-10 select-none items-center gap-2 px-3 py-2.5 text-sm capitalize outline-none data-[selected]:bg-muted">
-                        <button class="flex h-8 w-full items-center gap-2 transition-colors hover:enabled:cursor-pointer hover:enabled:bg-muted disabled:opacity-50" disabled={is_tag_added(suggestion)} onclick={() => add(suggestion)}>
+                      <Command.Item
+                        class="rounded-button flex h-10 select-none items-center gap-2 px-3 py-2.5 text-sm capitalize outline-none data-[selected]:bg-muted">
+                        <button
+                          class="flex h-8 w-full items-center gap-2 transition-colors hover:enabled:cursor-pointer hover:enabled:bg-muted disabled:opacity-50"
+                          disabled={is_tag_added(suggestion)}
+                          onclick={() => add(suggestion)}>
                           <div class="h-4 w-4 rounded-md {suggestion.color}"></div>
                           <span class="select-none text-sm">{suggestion.label}</span>
                         </button>
@@ -101,4 +114,4 @@
       </Popover.Root>
     {/if}
   </div>
-</Card.Root>
+</div>
