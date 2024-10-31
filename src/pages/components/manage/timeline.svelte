@@ -96,7 +96,6 @@
 {/snippet}
 
 {#snippet entryContainer(item: TimelineEntry)}
-<<<<<<< HEAD
   <div class="mx-2 flex items-center" class:flex-row-reverse={item.kind === "change"}>
     <div>
       {#if item.kind === "change"}
@@ -105,48 +104,18 @@
         {@render messageEntry(item.content, item.date)}
       {/if}
     </div>
-||||||| 4e58973
-  <div class="mx-2 flex items-center" class:flex-row-reverse={item.kind === "change"}>
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="9" cy="9" r="7.5" fill="#0284C7" stroke="#D1D5DB" stroke-width="3" />
-    </svg>
-    <svg width="18" height="3" viewBox="0 0 18 3" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line y1="1.5" x2="18" y2="1.5" stroke="#D4D4D8" stroke-width="3" />
-    </svg>
-    <button class="flex w-72 gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent">
-      <div class="flex w-full">
-        {#if item.kind === "change"}
-          {@render changeEntry(item.content, item.date)}
-        {:else}
-          {@render messageEntry(item.content, item.date)}
-        {/if}
-      </div>
-    </button>
-=======
-  <div class="flex items-center" class:flex-row-reverse={item.kind === "change"}>
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="9" cy="9" r="7.5" fill="#0284C7" stroke="#D1D5DB" stroke-width="3" />
-    </svg>
-    <svg width="18" height="3" viewBox="0 0 18 3" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line y1="1.5" x2="18" y2="1.5" stroke="#D4D4D8" stroke-width="3" />
-    </svg>
-    <button class="flex w-[286px] gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent">
-      <div class="flex w-full">
-        {#if item.kind === "change"}
-          {@render changeEntry(item.content, item.date)}
-        {:else}
-          {@render messageEntry(item.content, item.date)}
-        {/if}
-      </div>
-    </button>
->>>>>>> origin/3-timeline-entry-alignments
   </div>
 {/snippet}
 
 <div class="flex h-[calc(100vh-312px)] flex-1 flex-col gap-4 overflow-x-hidden overflow-y-scroll">
   <div class="flex flex-col items-center justify-between gap-2 pt-2">
     <svg class="h-8 w-8 text-slate-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-      <path fill="currentColor" fill-rule="evenodd" d="M2 6a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7.333L4 21.5c-.824.618-2 .03-2-1z" class="duoicon-secondary-layer" opacity="0.3" />
+      <path
+        fill="currentColor"
+        fill-rule="evenodd"
+        d="M2 6a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7.333L4 21.5c-.824.618-2 .03-2-1z"
+        class="duoicon-secondary-layer"
+        opacity="0.3" />
       <path fill="currentColor" fill-rule="evenodd" d="M8 12a1 1 0 1 0 0 2h3a1 1 0 1 0 0-2zM7 9a1 1 0 0 1 1-1h8a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1" class="duoicon-primary-layer" />
     </svg>
     <div class="text-sm text-slate-600">This is the beginning of the timeline.</div>
@@ -157,7 +126,12 @@
   <div class="flex flex-col items-center justify-between gap-2 pt-2">
     <div class="text-sm text-slate-600">This is the end of the timeline.</div>
     <svg class="h-8 w-8 text-slate-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-      <path fill="currentColor" fill-rule="evenodd" d="M2 6a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7.333L4 21.5c-.824.618-2 .03-2-1z" class="duoicon-secondary-layer" opacity="0.3" />
+      <path
+        fill="currentColor"
+        fill-rule="evenodd"
+        d="M2 6a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7.333L4 21.5c-.824.618-2 .03-2-1z"
+        class="duoicon-secondary-layer"
+        opacity="0.3" />
       <path fill="currentColor" fill-rule="evenodd" d="M8 12a1 1 0 1 0 0 2h3a1 1 0 1 0 0-2zM7 9a1 1 0 0 1 1-1h8a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1" class="duoicon-primary-layer" />
     </svg>
   </div>
