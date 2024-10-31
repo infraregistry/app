@@ -4,9 +4,12 @@
   import { onDestroy, onMount } from "svelte";
   import "tippy.js/dist/tippy.css";
   import { defaultExtensions } from "./extensions";
+  import { Link } from "lucide-svelte";
+  import Separator from "../ui/separator/separator.svelte";
+  import { writable } from "svelte/store";
 
-  let element: HTMLElement;
-  let editor: Editor;
+  let element = $state<Element>();
+  let editor = writable<Editor>();
 
   const SlashCommands = Extension.create({
     name: "slashCommands",
@@ -58,8 +61,13 @@
   ];
 
   onMount(() => {
-    editor = new Editor({
-      element: element,
+    $editor = new Editor({
+      element,
+      editorProps: {
+        attributes: {
+          class: "p-1 border-none outline-none h-full w-full"
+        }
+      },
       extensions: [
         ...defaultExtensions
         //   StarterKit,
@@ -119,55 +127,135 @@
       content: '<p>Hello World! 🌍️ Try typing "/" to see the slash command menu.</p>',
       onTransaction: () => {
         // force re-render so `editor.isActive` works as expected
-        editor = editor;
+        $editor = $editor;
       }
     });
   });
 
   onDestroy(() => {
-    if (editor) {
-      editor.destroy();
+    if ($editor) {
+      $editor.destroy();
     }
   });
 </script>
 
-<div class="tiptap-editor h-full">
-  {#if editor}
+{#snippet hr()}
+  <Separator
+    orientation="vertical"
+    class="mr-2 flex h-8" />
+{/snippet}
+
+<div class="tiptap-editor h-full w-full">
+  {#if $editor}
     <div class="editor-menu">
-      <button on:click={() => editor.chain().focus().toggleHeading({ level: 1 }).run()} class:active={editor.isActive("heading", { level: 1 })} aria-label="Toggle Heading 1">
+      <button
+        onclick={() => $editor?.chain().focus().toggleHeading({ level: 1 }).run()}
+        class:active={$editor.isActive("heading", { level: 1 })}
+        aria-label="Toggle Heading 1">
         H1
       </button>
-      <button on:click={() => editor.chain().focus().toggleHeading({ level: 2 }).run()} class:active={editor.isActive("heading", { level: 2 })} aria-label="Toggle Heading 2">
+      <button
+        onclick={() => $editor?.chain().focus().toggleHeading({ level: 2 }).run()}
+        class:active={$editor.isActive("heading", { level: 2 })}
+        aria-label="Toggle Heading 2">
         H2
       </button>
-      <button on:click={() => editor.chain().focus().setParagraph().run()} class:active={editor.isActive("paragraph")} aria-label="Set Paragraph"> P </button>
+      <button
+        onclick={() => $editor?.chain().focus().toggleHeading({ level: 3 }).run()}
+        class:active={$editor.isActive("heading", { level: 3 })}
+        aria-label="Toggle Heading 3">
+        H3
+      </button>
+      <button
+        onclick={() => $editor?.chain().focus().setParagraph().run()}
+        class:active={$editor.isActive("paragraph")}
+        aria-label="Set Paragraph">
+        P
+      </button>
+      {@render hr()}
+      <button
+        onclick={() => $editor?.chain().focus().toggleBold().run()}
+        class:active={$editor.isActive("bold")}
+        aria-label="Set Bold">
+        <b>B</b>
+      </button>
+      <button
+        onclick={() => $editor?.chain().focus().toggleItalic().run()}
+        class:active={$editor.isActive("italic")}
+        aria-label="Set Italic">
+        <i>I</i>
+      </button>
+      <button
+        onclick={() => $editor?.chain().focus().toggleUnderline().run()}
+        class:active={$editor.isActive("underline")}
+        aria-label="Set Underline">
+        <u>U</u>
+      </button>
+      {@render hr()}
+      <button
+        onclick={() => $editor?.chain().focus().setHorizontalRule().run()}
+        class:active={$editor.isActive("hr")}
+        aria-label="Add line break">
+        <svg
+          viewBox="0 0 32 32"
+          xmlns="http://www.w3.org/2000/svg">
+          <line
+            x1="2"
+            y1="16"
+            x2="30"
+            y2="16"
+            class="stroke-black dark:stroke-white" />
+        </svg>
+      </button>
+      <button
+        onclick={() => $editor?.chain().focus().toggleLink({ href: "#", target: "_blank" }).run()}
+        class:active={$editor.isActive("link")}
+        aria-label="Hyperlink">
+        <Link class="h-4 w-4" />
+      </button>
     </div>
   {/if}
-  <div class="h-full" bind:this={element} />
+  <div
+    class="h-full outline-none"
+    bind:this={element}>
+  </div>
 </div>
 
-<style>
+<style lang="postcss">
+  :global(.tiptap > h1) {
+    @apply text-3xl font-bold;
+  }
+  :global(.tiptap > h2) {
+    @apply text-2xl font-bold;
+  }
+  :global(.tiptap > h3) {
+    @apply text-xl font-bold;
+  }
+  :global(.tiptap > i) {
+    @apply italic;
+  }
+  :global(.tiptap > b) {
+    @apply font-bold;
+  }
+  :global(.tiptap > p > code) {
+    @apply rounded-md bg-neutral-500/10 px-1;
+  }
+  :global(.tiptap > p > a) {
+    @apply cursor-pointer underline hover:text-blue-500;
+  }
   .tiptap-editor {
-    border: 1px solid #666;
-    border-radius: 4px;
-    padding: 1rem;
+    @apply rounded-sm border border-[#666] p-4;
   }
 
   .editor-menu {
-    margin-bottom: 0.5rem;
+    @apply mb-2 flex items-center overflow-x-auto;
   }
 
   button {
-    margin-right: 0.5rem;
-    padding: 0.25rem 0.5rem;
-    background-color: #333;
-    border: 1px solid #666;
-    border-radius: 4px;
-    cursor: pointer;
+    @apply mr-2 aspect-square w-8 cursor-pointer rounded-sm border border-[#666] bg-[#333] px-2 py-1 text-xs;
   }
 
   button.active {
-    background-color: #000;
-    color: #fff;
+    @apply bg-black text-white;
   }
 </style>
