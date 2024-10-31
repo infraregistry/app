@@ -3,7 +3,6 @@
   import { openIntegrationsModal } from "$lib/components/integrations/api";
   import { getIntegrationsByCategory, IntegrationCategory } from "$lib/components/integrations/integration";
   import * as Layout from "$lib/components/layout";
-  import Scrollarea from "$lib/components/scrollarea/scrollarea.svelte";
   import { Badge } from "$lib/components/ui/badge";
   import { Button } from "$lib/components/ui/button";
   import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
@@ -22,7 +21,9 @@
   <Layout.Header>
     <Layout.Left>
       <Layout.Icon tooltip="Components are the building blocks of your service catalog and CMDB such as cloud resources, applications, services, etc.">
-        <IconifyWrapper name="components" size={10} />
+        <IconifyWrapper
+          name="components"
+          size={10} />
       </Layout.Icon>
       <Layout.Titles>
         <Layout.Title>Integrations</Layout.Title>
@@ -30,7 +31,9 @@
       </Layout.Titles>
     </Layout.Left>
     <Layout.Actions>
-      <Button variant="outline" class="text-green-500">Add Integration</Button>
+      <Button
+        variant="outline"
+        class="text-green-500">Add Integration</Button>
       <DropdownMenu.Root>
         <DropdownMenu.Trigger>
           <Button variant="outline">
@@ -55,10 +58,15 @@
     <div class="flex h-full flex-col justify-between gap-2">
       <nav class="w-42 mt-10">
         {#each links as link}
-          <a use:route href={link.path} class="flex items-center justify-between gap-3 rounded-lg px-1 py-1.5 text-sm text-slate-400 transition-all hover:text-primary">
+          <a
+            use:route
+            href={link.path}
+            class="flex items-center justify-between gap-3 rounded-lg px-1 py-1.5 text-sm text-slate-400 transition-all hover:text-primary">
             <span>{link.name}</span>
             {#if link.count > 0}
-              <Badge variant="outline" class="ml-auto bg-secondary">{link.count}</Badge>
+              <Badge
+                variant="outline"
+                class="ml-auto bg-secondary">{link.count}</Badge>
             {/if}
           </a>
         {/each}
@@ -78,7 +86,9 @@
             <h3 class="text-2xl font-bold tracking-tight text-indigo-500">You have no integrations 😥</h3>
             <p class="text-sm text-muted-foreground">Add an integration to start tracking your change data and catalog things!</p>
           </div>
-          <Button variant="outline" onclick={openIntegrationsModal}>Add Integration</Button>
+          <Button
+            variant="outline"
+            onclick={openIntegrationsModal}>Add Integration</Button>
         </div>
       </main>
     </div>

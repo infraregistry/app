@@ -7,6 +7,7 @@
   import { Link } from "lucide-svelte";
   import Separator from "../ui/separator/separator.svelte";
   import { writable } from "svelte/store";
+  import ChevronRight from "svelte-radix/ChevronRight.svelte";
 
   let element = $state<Element>();
   let editor = writable<Editor>();
@@ -68,63 +69,8 @@
           class: "p-1 border-none outline-none h-full w-full"
         }
       },
-      extensions: [
-        ...defaultExtensions
-        //   StarterKit,
-        //   SlashCommands.configure({
-        //     suggestion: {
-        //       items: ({ query }) => {
-        //         return items.filter((item) => item.title.toLowerCase().includes(query.toLowerCase()));
-        //       },
-        //       render: () => {
-        //         let popup;
-        //         let component: SlashCommandList;
-
-        //         return {
-        //           onStart: (props: any) => {
-        //             component = new SlashCommandList({
-        //               target: document.createElement("div"),
-        //               props
-        //             });
-
-        //             const element = document.createElement("div");
-        //             mount(Slash, { target: element });
-
-        //             popup = tippy("body", {
-        //               getReferenceClientRect: props.clientRect,
-        //               appendTo: () => document.body,
-        //               content: element,
-        //               showOnCreate: true,
-        //               interactive: true,
-        //               trigger: "manual",
-        //               placement: "bottom-start"
-        //             });
-        //           },
-        //           onUpdate: (props) => {
-        //             component.$set(props);
-
-        //             popup[0].setProps({
-        //               getReferenceClientRect: props.clientRect
-        //             });
-        //           },
-        //           onKeyDown: (props) => {
-        //             if (props.event.key === "Escape") {
-        //               popup[0].hide();
-        //               return true;
-        //             }
-
-        //             return component.$handleKeyDown(props);
-        //           },
-        //           onExit: () => {
-        //             popup[0].destroy();
-        //             component.$destroy();
-        //           }
-        //         };
-        //       }
-        //     }
-        //   })
-      ],
-      content: '<p>Hello World! 🌍️ Try typing "/" to see the slash command menu.</p>',
+      extensions: [...defaultExtensions],
+      content: "Hello World! 🌍️ Try typing '/' to see the slash command menu.",
       onTransaction: () => {
         // force re-render so `editor.isActive` works as expected
         $editor = $editor;
@@ -147,7 +93,7 @@
 
 <div class="tiptap-editor h-full w-full">
   {#if $editor}
-    <div class="editor-menu">
+    <div class="editor-menu fixed">
       <button
         onclick={() => $editor?.chain().focus().toggleHeading({ level: 1 }).run()}
         class:active={$editor.isActive("heading", { level: 1 })}
@@ -193,6 +139,12 @@
       </button>
       {@render hr()}
       <button
+        onclick={() => $editor?.chain().focus().toggleBlockquote().run()}
+        class:active={$editor.isActive("blockquote")}
+        aria-label="Set blockquote">
+        <ChevronRight />
+      </button>
+      <button
         onclick={() => $editor?.chain().focus().setHorizontalRule().run()}
         class:active={$editor.isActive("hr")}
         aria-label="Add line break">
@@ -216,7 +168,7 @@
     </div>
   {/if}
   <div
-    class="h-full outline-none"
+    class="relative top-12 h-[85%] overflow-y-auto"
     bind:this={element}>
   </div>
 </div>
@@ -224,6 +176,9 @@
 <style lang="postcss">
   :global(.tiptap > h1) {
     @apply text-3xl font-bold;
+  }
+  :global(.tiptap > hr) {
+    @apply mb-2;
   }
   :global(.tiptap > h2) {
     @apply text-2xl font-bold;
@@ -243,6 +198,12 @@
   :global(.tiptap > p > a) {
     @apply cursor-pointer underline hover:text-blue-500;
   }
+  :global(.tiptap) {
+    @apply flex flex-col gap-2;
+  }
+  :global(.tiptap > blockquote) {
+    @apply border-l-2 border-[#444] bg-neutral-200/10 p-2 pl-3;
+  }
   .tiptap-editor {
     @apply rounded-sm border border-[#666] p-4;
   }
@@ -252,7 +213,7 @@
   }
 
   button {
-    @apply mr-2 aspect-square w-8 cursor-pointer rounded-sm border border-[#666] bg-[#333] px-2 py-1 text-xs;
+    @apply mr-2 flex aspect-square w-8 cursor-pointer items-center justify-center rounded-sm border border-[#666] bg-[#333] p-1 font-mono text-xs;
   }
 
   button.active {
