@@ -96,6 +96,7 @@
 {/snippet}
 
 {#snippet entryContainer(item: TimelineEntry)}
+<<<<<<< HEAD
   <div class="mx-2 flex items-center" class:flex-row-reverse={item.kind === "change"}>
     <div>
       {#if item.kind === "change"}
@@ -104,6 +105,41 @@
         {@render messageEntry(item.content, item.date)}
       {/if}
     </div>
+||||||| 4e58973
+  <div class="mx-2 flex items-center" class:flex-row-reverse={item.kind === "change"}>
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="9" cy="9" r="7.5" fill="#0284C7" stroke="#D1D5DB" stroke-width="3" />
+    </svg>
+    <svg width="18" height="3" viewBox="0 0 18 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line y1="1.5" x2="18" y2="1.5" stroke="#D4D4D8" stroke-width="3" />
+    </svg>
+    <button class="flex w-72 gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent">
+      <div class="flex w-full">
+        {#if item.kind === "change"}
+          {@render changeEntry(item.content, item.date)}
+        {:else}
+          {@render messageEntry(item.content, item.date)}
+        {/if}
+      </div>
+    </button>
+=======
+  <div class="flex items-center" class:flex-row-reverse={item.kind === "change"}>
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="9" cy="9" r="7.5" fill="#0284C7" stroke="#D1D5DB" stroke-width="3" />
+    </svg>
+    <svg width="18" height="3" viewBox="0 0 18 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line y1="1.5" x2="18" y2="1.5" stroke="#D4D4D8" stroke-width="3" />
+    </svg>
+    <button class="flex w-[286px] gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent">
+      <div class="flex w-full">
+        {#if item.kind === "change"}
+          {@render changeEntry(item.content, item.date)}
+        {:else}
+          {@render messageEntry(item.content, item.date)}
+        {/if}
+      </div>
+    </button>
+>>>>>>> origin/3-timeline-entry-alignments
   </div>
 {/snippet}
 
