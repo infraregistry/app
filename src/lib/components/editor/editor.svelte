@@ -1,4 +1,8 @@
 <script lang="ts">
+  import List from "lucide-svelte/icons/list";
+  import ListChecks from "lucide-svelte/icons/list-checks";
+  import Image from "lucide-svelte/icons/image";
+  import ListOrdered from "lucide-svelte/icons/list-ordered";
   import { Editor, Extension, type Range } from "@tiptap/core";
   import Suggestion from "@tiptap/suggestion";
   import { onDestroy, onMount } from "svelte";
@@ -85,7 +89,7 @@
   });
 </script>
 
-{#snippet hr()}
+{#snippet sep()}
   <Separator
     orientation="vertical"
     class="mr-2 flex h-8" />
@@ -118,7 +122,7 @@
         aria-label="Set Paragraph">
         P
       </button>
-      {@render hr()}
+      {@render sep()}
       <button
         onclick={() => $editor?.chain().focus().toggleBold().run()}
         class:active={$editor.isActive("bold")}
@@ -137,7 +141,13 @@
         aria-label="Set Underline">
         <u>U</u>
       </button>
-      {@render hr()}
+      <button
+        onclick={() => $editor?.chain().focus().toggleStrike().run()}
+        class:active={$editor.isActive("strike")}
+        aria-label="Set Strikethrough">
+        <strike>S</strike>
+      </button>
+      {@render sep()}
       <button
         onclick={() => $editor?.chain().focus().toggleBlockquote().run()}
         class:active={$editor.isActive("blockquote")}
@@ -159,11 +169,38 @@
             class="stroke-black dark:stroke-white" />
         </svg>
       </button>
+      <!-- TODO: Prompt for link -->
       <button
         onclick={() => $editor?.chain().focus().toggleLink({ href: "#", target: "_blank" }).run()}
         class:active={$editor.isActive("link")}
-        aria-label="Hyperlink">
+        aria-label="Set hyperlink">
         <Link class="h-4 w-4" />
+      </button>
+      <!-- TODO: Prompt for image link -->
+      <button
+        onclick={() => $editor?.chain().focus().setImage({ src: "", alt: "Image that comes from [src here]" }).run()}
+        class:active={$editor.isActive("image")}
+        aria-label="Add image">
+        <Image class="h-4 w-4" />
+      </button>
+      {@render sep()}
+      <button
+        onclick={() => $editor?.chain().focus().toggleBulletList().run()}
+        class:active={$editor.isActive("bulletList")}
+        aria-label="Toggle bullet list">
+        <List class="h-4 w-4" />
+      </button>
+      <button
+        onclick={() => $editor?.chain().focus().toggleOrderedList().run()}
+        class:active={$editor.isActive("orderedList")}
+        aria-label="Toggle numbered list">
+        <ListOrdered class="h-4 w-4" />
+      </button>
+      <button
+        onclick={() => $editor?.chain().focus().toggleTaskList().run()}
+        class:active={$editor.isActive("taskList")}
+        aria-label="Toggle task list">
+        <ListChecks class="h-4 w-4" />
       </button>
     </div>
   {/if}
@@ -203,6 +240,12 @@
   }
   :global(.tiptap > blockquote) {
     @apply border-l-2 border-[#444] bg-neutral-200/10 p-2 pl-3;
+  }
+  :global(.tiptap > ul) {
+    @apply list-disc;
+  }
+  :global(.tiptap > ul > li) {
+    @apply flex items-center gap-1;
   }
   .tiptap-editor {
     @apply rounded-sm border border-[#666] p-4;

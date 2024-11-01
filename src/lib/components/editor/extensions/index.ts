@@ -22,9 +22,7 @@ export const defaultExtensions = [
   TaskList,
   TaskItem,
   TextAlign,
-  Placeholder.configure({
-    placeholder: ""
-  }),
+  Placeholder,
   Image,
   Link,
   YouTube,
