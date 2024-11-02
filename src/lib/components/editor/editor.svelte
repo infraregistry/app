@@ -16,6 +16,8 @@
   let element = $state<Element>();
   let editor = writable<Editor>();
 
+  const urlRegex = /[-a-zA-Z0-9@:%._+~#=]{1,256}.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/gi;
+
   const SlashCommands = Extension.create({
     name: "slashCommands",
     addOptions() {
@@ -169,16 +171,35 @@
             class="stroke-black dark:stroke-white" />
         </svg>
       </button>
-      <!-- TODO: Prompt for link -->
       <button
-        onclick={() => $editor?.chain().focus().toggleLink({ href: "#", target: "_blank" }).run()}
+        onclick={() => {
+          const href = window.prompt("Enter the link URL:");
+          if (!href) return;
+          if (!href.match(urlRegex)) {
+            alert("Invalid URL!");
+            return;
+          }
+          $editor?.chain().focus().toggleLink({ href, target: "_blank" }).run();
+        }}
         class:active={$editor.isActive("link")}
         aria-label="Set hyperlink">
         <Link class="h-4 w-4" />
       </button>
-      <!-- TODO: Prompt for image link -->
       <button
-        onclick={() => $editor?.chain().focus().setImage({ src: "", alt: "Image that comes from [src here]" }).run()}
+        onclick={() => {
+          const src = window.prompt("Enter the image URL:");
+          if (!src) return;
+          if (!src.match(urlRegex)) {
+            alert("Invalid URL!");
+            return;
+          }
+          const split = src.split("/");
+          $editor
+            ?.chain()
+            .focus()
+            .setImage({ src, alt: `Image that links to ${split[split.length - 1]}` })
+            .run();
+        }}
         class:active={$editor.isActive("image")}
         aria-label="Add image">
         <Image class="h-4 w-4" />
