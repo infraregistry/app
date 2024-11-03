@@ -1,7 +1,7 @@
 export class TreeItem {
   label = $state("");
-  expanded = $state(false);
-  children = $state<TreeItem[]>([]);
+  expanded? = $state(false);
+  children? = $state<TreeItem[]>([]);
 
   constructor(data: TreeItem) {
     console.log("data", data);

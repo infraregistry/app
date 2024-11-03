@@ -67,7 +67,7 @@
         </DropdownMenu.Content>
       </DropdownMenu.Root> -->
     </div>
-    <Button on:click={() => push("/components")} variant="outline" size="icon" class="">
+    <Button on:click={() => goto("/components")} variant="outline" size="icon" class="">
       <Icon icon="material-symbols:navigate-next" class="h-5 w-5 text-zinc-700" />
     </Button>
   </div>

@@ -3,10 +3,10 @@ import { Subject, type Observable } from "rxjs";
 import type { Snippet } from "svelte";
 import SelectorModal from "./selector-modal.svelte";
 
-export type SelectorConfig<T, H> = {
+export type SelectorConfig<T> = {
   title?: string;
   data: T[];
-  header?: Snippet<H[]>;
+  header?: Snippet;
   search?: {
     placeholder?: string;
     onChange?: (value: string) => void;
@@ -18,7 +18,7 @@ export interface SelectorItem<T> {
   value: T;
 }
 
-export const openSelector = <T, H>(config: SelectorConfig<T, H>): Observable<T[]> => {
+export const openSelector = <T, H>(config: SelectorConfig<T>): Observable<T[]> => {
   const subject = new Subject<T[]>();
 
   let selections = $state<T[]>([]);

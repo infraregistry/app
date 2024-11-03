@@ -11,8 +11,11 @@
 
 <div class="flex justify-end">
   <DropdownMenu.Root>
-    <DropdownMenu.Trigger asChild let:builder>
-      <Button variant="ghost" builders={[builder]} size="icon" class="relative h-8 w-8 p-0">
+    <DropdownMenu.Trigger>
+      <Button
+        variant="ghost"
+        size="icon"
+        class="relative h-8 w-8 p-0">
         <span class="sr-only">Open menu</span>
         <MoreHorizontal class="h-4 w-4" />
       </Button>
@@ -20,7 +23,7 @@
     <DropdownMenu.Content>
       <DropdownMenu.Group>
         <DropdownMenu.Label class="text-muted-foreground">Actions</DropdownMenu.Label>
-        <DropdownMenu.Item on:click={() => navigator.clipboard.writeText(data.id)}>Copy camera ID</DropdownMenu.Item>
+        <DropdownMenu.Item onclick={() => navigator.clipboard.writeText(data.id)}>Copy camera ID</DropdownMenu.Item>
         <DropdownMenu.Item>View Camera</DropdownMenu.Item>
       </DropdownMenu.Group>
       <DropdownMenu.Separator />

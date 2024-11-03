@@ -11,14 +11,11 @@
 </script>
 
 <div class="h-[300px]">
-  <SvelteFlow class=" !bg-black" {nodes} {edges} fitView minZoom={0.1} maxZoom={2.5}></SvelteFlow>
+  <SvelteFlow
+    class=" !bg-black"
+    {nodes}
+    {edges}
+    fitView={true}
+    minZoom={0.1}
+    maxZoom={2.5}></SvelteFlow>
 </div>
-
-<style>
-  main {
-  }
-  /*
-  :global(.svelte-flow) {
-    background-color: rgba(220, 220, 255, 0.4);
-  } */
-</style>

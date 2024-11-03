@@ -57,7 +57,11 @@
     </div>
   </div>
   {#if $confettiStore}
-    <Confetti x={[0.25, 1]} y={[0.75, 3]} amount={200} delay={[0, 2000]} />
+    <Confetti
+      x={[0.25, 1]}
+      y={[0.75, 3]}
+      amount={200}
+      delay={[0, 2000]} />
   {/if}
 {:else}
   <Sessions />

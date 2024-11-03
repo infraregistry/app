@@ -29,7 +29,6 @@
         kind: "change",
         date: new Date("2024/10/23 13:15:00"),
         content: {
-          author: "aws",
           field: "IP Address",
           value: {
             previous: "192.168.1.101",
@@ -42,7 +41,6 @@
         kind: "change",
         date: new Date("2024/10/23 13:50:00"),
         content: {
-          author: "aws",
           field: "IP Address",
           value: {
             previous: "192.168.1.101",
@@ -87,16 +85,16 @@
       </div>
     </div>
     <div class="flex items-center justify-end gap-1 text-xs text-slate-500">
-      <div class="font-semibold text-purple-500">
-        @{content.author}
-      </div>
+      <div class="font-semibold text-purple-500">@azure</div>
       {timeSince(date)}
     </div>
   </div>
 {/snippet}
 
 {#snippet entryContainer(item: TimelineEntry)}
-  <div class="mx-2 flex items-center" class:flex-row-reverse={item.kind === "change"}>
+  <div
+    class="mx-2 flex items-center"
+    class:flex-row-reverse={item.kind === "change"}>
     <div>
       {#if item.kind === "change"}
         {@render changeEntry(item.content, item.date)}
@@ -109,14 +107,21 @@
 
 <div class="flex h-[calc(100vh-312px)] flex-1 flex-col gap-4 overflow-x-hidden overflow-y-scroll">
   <div class="flex flex-col items-center justify-between gap-2 pt-2">
-    <svg class="h-8 w-8 text-slate-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <svg
+      class="h-8 w-8 text-slate-500"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24">
       <path
         fill="currentColor"
         fill-rule="evenodd"
         d="M2 6a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7.333L4 21.5c-.824.618-2 .03-2-1z"
         class="duoicon-secondary-layer"
         opacity="0.3" />
-      <path fill="currentColor" fill-rule="evenodd" d="M8 12a1 1 0 1 0 0 2h3a1 1 0 1 0 0-2zM7 9a1 1 0 0 1 1-1h8a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1" class="duoicon-primary-layer" />
+      <path
+        fill="currentColor"
+        fill-rule="evenodd"
+        d="M8 12a1 1 0 1 0 0 2h3a1 1 0 1 0 0-2zM7 9a1 1 0 0 1 1-1h8a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1"
+        class="duoicon-primary-layer" />
     </svg>
     <div class="text-sm text-slate-600">This is the beginning of the timeline.</div>
   </div>
@@ -125,23 +130,21 @@
   {/each}
   <div class="flex flex-col items-center justify-between gap-2 pt-2">
     <div class="text-sm text-slate-600">This is the end of the timeline.</div>
-    <svg class="h-8 w-8 text-slate-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <svg
+      class="h-8 w-8 text-slate-500"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24">
       <path
         fill="currentColor"
         fill-rule="evenodd"
         d="M2 6a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7.333L4 21.5c-.824.618-2 .03-2-1z"
         class="duoicon-secondary-layer"
         opacity="0.3" />
-      <path fill="currentColor" fill-rule="evenodd" d="M8 12a1 1 0 1 0 0 2h3a1 1 0 1 0 0-2zM7 9a1 1 0 0 1 1-1h8a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1" class="duoicon-primary-layer" />
+      <path
+        fill="currentColor"
+        fill-rule="evenodd"
+        d="M8 12a1 1 0 1 0 0 2h3a1 1 0 1 0 0-2zM7 9a1 1 0 0 1 1-1h8a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1"
+        class="duoicon-primary-layer" />
     </svg>
   </div>
 </div>
-
-<style lang="postcss">
-  .badge {
-    @apply rounded-md border px-[8px] py-[1px] font-semibold;
-  }
-  .secondary {
-    @apply border-0 bg-foreground text-background;
-  }
-</style>

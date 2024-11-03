@@ -12,14 +12,22 @@
     <div class="grid gap-6">
       <div class="grid gap-3">
         <Label for="status">Status</Label>
-        <Select.Root>
-          <Select.Trigger id="status" aria-label="Select status">
+        <Select.Root type="single">
+          <Select.Trigger
+            id="status"
+            aria-label="Select status">
             <Select.Value placeholder="Select status" />
           </Select.Trigger>
           <Select.Content>
-            <Select.Item value="draft" label="Draft">Draft</Select.Item>
-            <Select.Item value="published" label="Active">Active</Select.Item>
-            <Select.Item value="archived" label="Archived">Archived</Select.Item>
+            <Select.Item
+              value="draft"
+              label="Draft">Draft</Select.Item>
+            <Select.Item
+              value="published"
+              label="Active">Active</Select.Item>
+            <Select.Item
+              value="archived"
+              label="Archived">Archived</Select.Item>
           </Select.Content>
         </Select.Root>
       </div>

@@ -4,26 +4,16 @@
   import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
   import IconifyWrapper from "$lib/shared/icons/iconify-wrapper.svelte";
   import { DownloadCloud, EllipsisVertical, LifeBuoy, Link } from "lucide-svelte";
-  import { writable } from "svelte/store";
-  import { Component, componentsClient } from "../../../api/components";
   import Search from "./search/search.svelte";
-
-  const operation = componentsClient.search();
-  const components = writable<Component[]>([]);
-
-  // operation.pipe(waitForLoading()).subscribe((result) => {
-  operation.subscribe((result) => {
-    components.set(result.data);
-    console.log(result.data);
-  });
-  const tab = writable<string>("table");
 </script>
 
 <div class="flex h-full flex-col gap-4 p-3">
   <Layout.Header>
     <Layout.Left>
       <Layout.Icon tooltip="Components are the building blocks of your service catalog and CMDB such as cloud resources, applications, services, etc.">
-        <IconifyWrapper name="components" size={10} />
+        <IconifyWrapper
+          name="components"
+          size={10} />
       </Layout.Icon>
       <Layout.Titles>
         <Layout.Title>Components</Layout.Title>
@@ -31,7 +21,9 @@
       </Layout.Titles>
     </Layout.Left>
     <Layout.Actions>
-      <Button variant="outline" class="text-green-500">Create</Button>
+      <Button
+        variant="outline"
+        class="text-green-500">Create</Button>
       <DropdownMenu.Root>
         <DropdownMenu.Trigger>
           <Button variant="outline">

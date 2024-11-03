@@ -34,9 +34,12 @@
 
 <div class="flex flex-col gap-1">
   {#each items as item}
-    <div class="text-[13px] text-slate-300" style={`padding-left:${item.children ? level * 15 : 0}px`}>
+    <div
+      class="text-[13px] text-slate-300"
+      style={`padding-left:${item.children ? level * 15 : 0}px`}>
       <div
         class="flex cursor-pointer gap-0.5"
+        role="button"
         onclick={() => {
           item.expanded = !item.expanded;
         }}>
@@ -52,7 +55,9 @@
         <div class="">{item.label}</div>
       </div>
       {#if item.children && items.length > 0 && item.expanded}
-        <svelte:self data={item.children} level={level + 1} />
+        <svelte:self
+          data={item.children}
+          level={level + 1} />
       {/if}
     </div>
   {/each}

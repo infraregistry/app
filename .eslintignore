@@ -1,0 +1,3 @@
+cypress/**/*
+src/lib/components/ui/**/*
+src/lib/components/editor/extensions/custom/**/*

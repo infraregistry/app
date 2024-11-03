@@ -17,7 +17,10 @@
     <div class="grid gap-0.5">
       <Card.Title class="group flex items-center gap-2 text-lg">
         Order Oe31b70H
-        <Button size="icon" variant="outline" class="h-6 w-6 opacity-0 transition-opacity group-hover:opacity-100">
+        <Button
+          size="icon"
+          variant="outline"
+          class="h-6 w-6 opacity-0 transition-opacity group-hover:opacity-100">
           <Copy class="h-3 w-3" />
           <span class="sr-only">Copy Order ID</span>
         </Button>
@@ -25,13 +28,19 @@
       <Card.Description>Date: November 23, 2023</Card.Description>
     </div>
     <div class="ml-auto flex items-center gap-1">
-      <Button size="sm" variant="outline" class="h-8 gap-1">
+      <Button
+        size="sm"
+        variant="outline"
+        class="h-8 gap-1">
         <Truck class="h-3.5 w-3.5" />
         <span class="lg:sr-only xl:not-sr-only xl:whitespace-nowrap"> Track Order </span>
       </Button>
       <DropdownMenu.Root>
-        <DropdownMenu.Trigger asChild let:builder>
-          <Button builders={[builder]} size="icon" variant="outline" class="h-8 w-8">
+        <DropdownMenu.Trigger>
+          <Button
+            size="icon"
+            variant="outline"
+            class="h-8 w-8">
             <EllipsisVertical class="h-3.5 w-3.5" />
             <span class="sr-only">More</span>
           </Button>
@@ -137,16 +146,24 @@
     <div class="text-xs text-muted-foreground">
       Updated <time dateTime="2023-11-23">November 23, 2023</time>
     </div>
-    <Pagination.Root count={10} class="ml-auto mr-0 w-auto">
+    <Pagination.Root
+      count={10}
+      class="ml-auto mr-0 w-auto">
       <Pagination.Content>
         <Pagination.Item>
-          <Button size="icon" variant="outline" class="h-6 w-6">
+          <Button
+            size="icon"
+            variant="outline"
+            class="h-6 w-6">
             <ChevronLeft class="h-3.5 w-3.5" />
             <span class="sr-only">Previous Order</span>
           </Button>
         </Pagination.Item>
         <Pagination.Item>
-          <Button size="icon" variant="outline" class="h-6 w-6">
+          <Button
+            size="icon"
+            variant="outline"
+            class="h-6 w-6">
             <ChevronRight class="h-3.5 w-3.5" />
             <span class="sr-only">Next Order</span>
           </Button>

@@ -1,8 +1,9 @@
 <script lang="ts">
   import Editor from "../editor/editor.svelte";
+  import type { TreeItem } from "../tree/types";
   import Navigator from "./navigator.svelte";
 
-  let data = [
+  let data: TreeItem[] = [
     {
       label: "Child 1",
       expanded: false,

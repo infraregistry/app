@@ -42,9 +42,6 @@
   },
   "include": [
     "src/**/*.ts",
-    "src/**/*.js",
     "src/**/*.svelte",
-    "src/lib/components/integrations",
-    "src/lib/components/integrations"
-  ],
+  ]
 }

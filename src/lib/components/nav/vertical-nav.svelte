@@ -25,25 +25,37 @@
 <aside class="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background pt-4 sm:flex">
   <nav class="flex flex-col items-center gap-4">
     <div class="-mt-2 h-7">
-      <a use:route href="/">
-        <IconifyWrapper name="logo" size={10} />
+      <a
+        use:route
+        href="/">
+        <IconifyWrapper
+          name="logo"
+          size={10} />
       </a>
     </div>
-    <div class="h-px w-full bg-zinc-800" />
+    <div class="h-px w-full bg-zinc-800"></div>
   </nav>
   <nav class="flex flex-1 flex-col items-center gap-3.5 px-2 py-4">
     {#each links as l}
       <Tooltip.Provider>
         <Tooltip.Root delayDuration={200}>
           <Tooltip.Trigger class="">
-            <a use:route href={l.href}>
-              <IconifyWrapper name={l.icon} size={7} />
+            <a
+              use:route
+              href={l.href}>
+              <IconifyWrapper
+                name={l.icon}
+                size={7} />
             </a>
           </Tooltip.Trigger>
-          <Tooltip.Content forceMount side="right">
+          <Tooltip.Content
+            forceMount
+            side="right">
             {#snippet child({ props, open })}
               {#if open}
-                <div {...props} transition:slide>
+                <div
+                  {...props}
+                  transition:slide>
                   <div
                     class="border-dark-10 z-0 flex items-center justify-center rounded-lg border bg-background p-2 text-xs font-medium text-slate-400 shadow-popover outline-none">
                     {l.tooltip}
@@ -62,7 +74,9 @@
         <Tooltip.Trigger>
           <DropdownMenu.Root>
             <DropdownMenu.Trigger>
-              <IconifyWrapper name="help" size={7} />
+              <IconifyWrapper
+                name="help"
+                size={7} />
             </DropdownMenu.Trigger>
             <DropdownMenu.Content>
               <DropdownMenu.Group>
@@ -76,11 +90,16 @@
             </DropdownMenu.Content>
           </DropdownMenu.Root>
         </Tooltip.Trigger>
-        <Tooltip.Content forceMount align="start">
+        <Tooltip.Content
+          forceMount
+          align="start">
           {#snippet child({ props, open })}
             {#if open}
-              <div {...props} transition:slide>
-                <div class="border-dark-10 z-0 flex items-center justify-center rounded-lg border bg-background p-2 text-xs font-medium text-slate-400 shadow-popover outline-none">
+              <div
+                {...props}
+                transition:slide>
+                <div
+                  class="border-dark-10 z-0 flex items-center justify-center rounded-lg border bg-background p-2 text-xs font-medium text-slate-400 shadow-popover outline-none">
                   Help & Support
                 </div>
               </div>
@@ -92,15 +111,24 @@
     <Tooltip.Provider>
       <Tooltip.Root delayDuration={200}>
         <Tooltip.Trigger>
-          <a use:route href="/settings">
-            <IconifyWrapper name="settings" size={7} />
+          <a
+            use:route
+            href="/settings">
+            <IconifyWrapper
+              name="settings"
+              size={7} />
           </a>
         </Tooltip.Trigger>
-        <Tooltip.Content forceMount side="right">
+        <Tooltip.Content
+          forceMount
+          side="right">
           {#snippet child({ props, open })}
             {#if open}
-              <div {...props} transition:slide>
-                <div class="border-dark-10 z-0 flex items-center justify-center rounded-lg border bg-background p-2 text-xs font-medium text-slate-400 shadow-popover outline-none">
+              <div
+                {...props}
+                transition:slide>
+                <div
+                  class="border-dark-10 z-0 flex items-center justify-center rounded-lg border bg-background p-2 text-xs font-medium text-slate-400 shadow-popover outline-none">
                   Settings
                 </div>
               </div>
@@ -116,7 +144,9 @@
         <Tooltip.Trigger>
           <DropdownMenu.Root>
             <DropdownMenu.Trigger>
-              <IconifyWrapper name="user" size={8} />
+              <IconifyWrapper
+                name="user"
+                size={8} />
             </DropdownMenu.Trigger>
             <DropdownMenu.Content>
               <DropdownMenu.Group>
@@ -136,11 +166,16 @@
             </DropdownMenu.Content>
           </DropdownMenu.Root>
         </Tooltip.Trigger>
-        <Tooltip.Content forceMount side="right">
+        <Tooltip.Content
+          forceMount
+          side="right">
           {#snippet child({ props, open })}
             {#if open}
-              <div {...props} transition:slide>
-                <div class="border-dark-10 z-0 flex items-center justify-center rounded-lg border bg-background p-2 text-xs font-medium text-slate-400 shadow-popover outline-none">
+              <div
+                {...props}
+                transition:slide>
+                <div
+                  class="border-dark-10 z-0 flex items-center justify-center rounded-lg border bg-background p-2 text-xs font-medium text-slate-400 shadow-popover outline-none">
                   My Account & Settings
                 </div>
               </div>

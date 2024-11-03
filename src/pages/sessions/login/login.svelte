@@ -8,7 +8,7 @@
   import { GithubIcon, LoaderCircleIcon } from "lucide-svelte";
   import { toast } from "svelte-sonner";
 
-  let form: FormInstance;
+  let form = $state<FormInstance>();
 
   const controls = $state([
     {
@@ -25,7 +25,7 @@
 
   const login = () => {
     isLoading = "email";
-    sessions.login(form.values.email, form.values.password).subscribe((result) => {
+    sessions.login(form!.values.email, form!.values.password).subscribe((result) => {
       toast.success("Welcome back!");
       goto("/");
     });
@@ -36,29 +36,44 @@
   <BrandCard />
   <div class="mx-auto lg:p-8">
     <div class="absolute right-12 top-10">
-      <Button href="/#/register" variant="ghost" size="sm">Register</Button>
+      <Button
+        href="/#/register"
+        variant="ghost"
+        size="sm">Register</Button>
     </div>
     <div class="mx-auto flex w-full flex-col space-y-6 sm:w-[350px]">
       <div class="flex flex-col space-y-2">
         <h1 class="text-2xl font-semibold tracking-tight">Login to infraregistry</h1>
         <p class="text-sm text-muted-foreground">
           Forgot your password?
-          <a href="/#/reset" class="underline underline-offset-4 hover:text-primary"> Click here</a>
+          <a
+            href="/#/reset"
+            class="underline underline-offset-4 hover:text-primary">
+            Click here</a>
           to reset it!
         </p>
       </div>
       <div class="">
         <div class="grid">
           <div class="grid gap-2">
-            <Form.Root bind:form {controls}>
+            <Form.Root
+              bind:form={form!}
+              {controls}>
               <Form.Group>
                 <Form.Field>
-                  <Form.Controls.Input {form} name="email" placeholder="Enter your email address.." />
-                  <Form.Controls.Input {form} name="password" placeholder="Enter your password.." type="password" />
+                  <Form.Controls.Input
+                    name="email"
+                    placeholder="Enter your email address.." />
+                  <Form.Controls.Input
+                    name="password"
+                    placeholder="Enter your password.."
+                    type="password" />
                 </Form.Field>
               </Form.Group>
             </Form.Root>
-            <Button disabled={!form.valid || !form.values.email || isLoading} onclick={login}>
+            <Button
+              disabled={!form!.valid || !form!.values.email || isLoading}
+              onclick={login}>
               {#if isLoading}
                 <LoaderCircleIcon class="mr-2 h-4 w-4 animate-spin" />
               {/if}
@@ -74,7 +89,10 @@
             </div>
           </div>
           <div class="flex flex-col gap-4">
-            <Button variant="outline" type="button" disabled={isLoading}>
+            <Button
+              variant="outline"
+              type="button"
+              disabled={isLoading}>
               {#if isLoading === "google"}
                 <LoaderCircleIcon class="mr-2 h-4 w-4 animate-spin" />
               {:else}
@@ -82,7 +100,10 @@
               {/if}
               Google
             </Button>
-            <Button variant="outline" type="button" disabled={isLoading}>
+            <Button
+              variant="outline"
+              type="button"
+              disabled={isLoading}>
               {#if isLoading === "github"}
                 <LoaderCircleIcon class="mr-2 h-4 w-4 animate-spin" />
               {:else}
@@ -95,9 +116,19 @@
       </div>
       <p class="px-8 text-center text-sm text-muted-foreground">
         By clicking continue, you agree to our
-        <a href="https://infraregistry.com/terms" target="_blank" class="underline underline-offset-4 hover:text-primary"> Terms of Service </a>
+        <a
+          href="https://infraregistry.com/terms"
+          target="_blank"
+          class="underline underline-offset-4 hover:text-primary">
+          Terms of Service
+        </a>
         and
-        <a href="https://infraregistry.com/privacy" target="_blank" class="underline underline-offset-4 hover:text-primary"> Privacy Policy </a>
+        <a
+          href="https://infraregistry.com/privacy"
+          target="_blank"
+          class="underline underline-offset-4 hover:text-primary">
+          Privacy Policy
+        </a>
         .
       </p>
     </div>
