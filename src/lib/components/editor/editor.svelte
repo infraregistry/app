@@ -40,33 +40,6 @@
     }
   });
 
-  const items = [
-    {
-      title: "Heading 1",
-      command: ({ editor, range }: { editor: Editor; range: Range }) => {
-        editor.chain().focus().deleteRange(range).setNode("heading", { level: 1 }).run();
-      }
-    },
-    {
-      title: "Heading 2",
-      command: ({ editor, range }: { editor: Editor; range: Range }) => {
-        editor.chain().focus().deleteRange(range).setNode("heading", { level: 2 }).run();
-      }
-    },
-    {
-      title: "Bullet List",
-      command: ({ editor, range }: { editor: Editor; range: Range }) => {
-        editor.chain().focus().deleteRange(range).toggleBulletList().run();
-      }
-    },
-    {
-      title: "Numbered List",
-      command: ({ editor, range }: { editor: Editor; range: Range }) => {
-        editor.chain().focus().deleteRange(range).toggleOrderedList().run();
-      }
-    }
-  ];
-
   onMount(() => {
     $editor = new Editor({
       element,
@@ -175,7 +148,9 @@
         onclick={() => {
           const href = window.prompt("Enter the link URL:");
           if (!href) return;
-          if (!href.match(urlRegex)) {
+          try {
+            new URL(href);
+          } catch {
             alert("Invalid URL!");
             return;
           }
@@ -189,7 +164,9 @@
         onclick={() => {
           const src = window.prompt("Enter the image URL:");
           if (!src) return;
-          if (!src.match(urlRegex)) {
+          try {
+            new URL(src);
+          } catch {
             alert("Invalid URL!");
             return;
           }

@@ -55,7 +55,7 @@
     {#each items as { title, subtitle, command }, i}
       <li>
         <button
-          class="cursor-pointer select-none p-4 text-sm text-gray-900 dark:text-white {i == selectedIndex
+          class="w-full cursor-pointer select-none p-4 text-left text-sm text-gray-900 dark:text-white {i == selectedIndex
             ? 'bg-gray-100 dark:bg-neutral-900'
             : 'bg-white dark:bg-black'}"
           id="listbox-option-0"
