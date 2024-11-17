@@ -6,7 +6,7 @@
 
   let { editor, range, items }: Props = $props();
 
-  let selectedIndex = 0;
+  let selectedIndex = $state(0);
   let elements: HTMLElement[] = [];
   $effect(() => {
     if (elements[0] != null) {
@@ -42,31 +42,40 @@
   }
 </script>
 
-<svelte:window on:keydown={handleKeydown} />
+<svelte:window onkeydown={handleKeydown} />
 
-<div class="z-50 h-96 w-96 max-w-full overflow-scroll rounded-lg border bg-white shadow-xl">
+<div class="z-50 h-96 w-96 max-w-full overflow-scroll rounded-lg border bg-white shadow-xl dark:bg-black">
   <div class="p-2 text-sm text-gray-500">BLOCKS</div>
-  <ul class="mt-2 divide-y divide-gray-200 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" tabindex="-1" role="listbox" aria-labelledby="slash-command-menu" aria-activedescendant="listbox-option-0">
+  <ul
+    class="mt-2 divide-y divide-gray-200 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-black"
+    tabindex="-1"
+    role="listbox"
+    aria-labelledby="slash-command-menu"
+    aria-activedescendant="listbox-option-0">
     {#each items as { title, subtitle, command }, i}
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-      <li
-        class="cursor-pointer select-none p-4 text-sm text-gray-900 {i == selectedIndex ? 'bg-gray-100' : 'bg-white'}"
-        id="listbox-option-0"
-        on:mouseenter={() => (selectedIndex = i)}
-        on:click={() => {
-          command({ editor, range });
-        }}
-        bind:this={elements[i]}>
-        <div class="flex flex-col">
-          <div class="flex justify-between">
-            <p class="font-normal">{title}</p>
+      <li>
+        <button
+          class="w-full cursor-pointer select-none p-4 text-left text-sm text-gray-900 dark:text-white {i == selectedIndex
+            ? 'bg-gray-100 dark:bg-neutral-900'
+            : 'bg-white dark:bg-black'}"
+          id="listbox-option-0"
+          onmouseenter={() => (selectedIndex = i)}
+          onclick={() => {
+            command({ editor, range });
+          }}
+          bind:this={elements[i]}>
+          <div class="flex flex-col">
+            <div class="flex justify-between">
+              <p class="font-normal">{title}</p>
+            </div>
+            <p class="mt-2 text-gray-500">{subtitle}</p>
           </div>
-          <p class="mt-2 text-gray-500">{subtitle}</p>
-        </div>
+        </button>
       </li>
     {/each}
   </ul>
 </div>
 
-<svelte:options accessors={true} />
+<!--
+  <svelte:options accessors={true} />
+-->

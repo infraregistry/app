@@ -1,12 +1,22 @@
 <script lang="ts">
+  import List from "lucide-svelte/icons/list";
+  import ListChecks from "lucide-svelte/icons/list-checks";
+  import Image from "lucide-svelte/icons/image";
+  import ListOrdered from "lucide-svelte/icons/list-ordered";
   import { Editor, Extension, type Range } from "@tiptap/core";
   import Suggestion from "@tiptap/suggestion";
   import { onDestroy, onMount } from "svelte";
   import "tippy.js/dist/tippy.css";
   import { defaultExtensions } from "./extensions";
+  import { Link } from "lucide-svelte";
+  import Separator from "../ui/separator/separator.svelte";
+  import { writable } from "svelte/store";
+  import ChevronRight from "svelte-radix/ChevronRight.svelte";
 
-  let element: HTMLElement;
-  let editor: Editor;
+  let element = $state<Element>();
+  let editor = writable<Editor>();
+
+  const urlRegex = /[-a-zA-Z0-9@:%._+~#=]{1,256}.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/gi;
 
   const SlashCommands = Extension.create({
     name: "slashCommands",
@@ -30,144 +40,224 @@
     }
   });
 
-  const items = [
-    {
-      title: "Heading 1",
-      command: ({ editor, range }: { editor: Editor; range: Range }) => {
-        editor.chain().focus().deleteRange(range).setNode("heading", { level: 1 }).run();
-      }
-    },
-    {
-      title: "Heading 2",
-      command: ({ editor, range }: { editor: Editor; range: Range }) => {
-        editor.chain().focus().deleteRange(range).setNode("heading", { level: 2 }).run();
-      }
-    },
-    {
-      title: "Bullet List",
-      command: ({ editor, range }: { editor: Editor; range: Range }) => {
-        editor.chain().focus().deleteRange(range).toggleBulletList().run();
-      }
-    },
-    {
-      title: "Numbered List",
-      command: ({ editor, range }: { editor: Editor; range: Range }) => {
-        editor.chain().focus().deleteRange(range).toggleOrderedList().run();
-      }
-    }
-  ];
-
   onMount(() => {
-    editor = new Editor({
-      element: element,
-      extensions: [
-        ...defaultExtensions
-        //   StarterKit,
-        //   SlashCommands.configure({
-        //     suggestion: {
-        //       items: ({ query }) => {
-        //         return items.filter((item) => item.title.toLowerCase().includes(query.toLowerCase()));
-        //       },
-        //       render: () => {
-        //         let popup;
-        //         let component: SlashCommandList;
-
-        //         return {
-        //           onStart: (props: any) => {
-        //             component = new SlashCommandList({
-        //               target: document.createElement("div"),
-        //               props
-        //             });
-
-        //             const element = document.createElement("div");
-        //             mount(Slash, { target: element });
-
-        //             popup = tippy("body", {
-        //               getReferenceClientRect: props.clientRect,
-        //               appendTo: () => document.body,
-        //               content: element,
-        //               showOnCreate: true,
-        //               interactive: true,
-        //               trigger: "manual",
-        //               placement: "bottom-start"
-        //             });
-        //           },
-        //           onUpdate: (props) => {
-        //             component.$set(props);
-
-        //             popup[0].setProps({
-        //               getReferenceClientRect: props.clientRect
-        //             });
-        //           },
-        //           onKeyDown: (props) => {
-        //             if (props.event.key === "Escape") {
-        //               popup[0].hide();
-        //               return true;
-        //             }
-
-        //             return component.$handleKeyDown(props);
-        //           },
-        //           onExit: () => {
-        //             popup[0].destroy();
-        //             component.$destroy();
-        //           }
-        //         };
-        //       }
-        //     }
-        //   })
-      ],
-      content: '<p>Hello World! 🌍️ Try typing "/" to see the slash command menu.</p>',
+    $editor = new Editor({
+      element,
+      editorProps: {
+        attributes: {
+          class: "p-1 border-none outline-none h-full w-full"
+        }
+      },
+      extensions: [...defaultExtensions],
+      content: "Hello World! 🌍️ Try typing '/' to see the slash command menu.",
       onTransaction: () => {
         // force re-render so `editor.isActive` works as expected
-        editor = editor;
+        $editor = $editor;
       }
     });
   });
 
   onDestroy(() => {
-    if (editor) {
-      editor.destroy();
+    if ($editor) {
+      $editor.destroy();
     }
   });
 </script>
 
-<div class="tiptap-editor h-full">
-  {#if editor}
-    <div class="editor-menu">
-      <button on:click={() => editor.chain().focus().toggleHeading({ level: 1 }).run()} class:active={editor.isActive("heading", { level: 1 })} aria-label="Toggle Heading 1">
+{#snippet sep()}
+  <Separator
+    orientation="vertical"
+    class="mr-2 flex h-8" />
+{/snippet}
+
+<div class="tiptap-editor h-full w-full">
+  {#if $editor}
+    <div class="editor-menu fixed">
+      <button
+        onclick={() => $editor?.chain().focus().toggleHeading({ level: 1 }).run()}
+        class:active={$editor.isActive("heading", { level: 1 })}
+        aria-label="Toggle Heading 1">
         H1
       </button>
-      <button on:click={() => editor.chain().focus().toggleHeading({ level: 2 }).run()} class:active={editor.isActive("heading", { level: 2 })} aria-label="Toggle Heading 2">
+      <button
+        onclick={() => $editor?.chain().focus().toggleHeading({ level: 2 }).run()}
+        class:active={$editor.isActive("heading", { level: 2 })}
+        aria-label="Toggle Heading 2">
         H2
       </button>
-      <button on:click={() => editor.chain().focus().setParagraph().run()} class:active={editor.isActive("paragraph")} aria-label="Set Paragraph"> P </button>
+      <button
+        onclick={() => $editor?.chain().focus().toggleHeading({ level: 3 }).run()}
+        class:active={$editor.isActive("heading", { level: 3 })}
+        aria-label="Toggle Heading 3">
+        H3
+      </button>
+      <button
+        onclick={() => $editor?.chain().focus().setParagraph().run()}
+        class:active={$editor.isActive("paragraph")}
+        aria-label="Set Paragraph">
+        P
+      </button>
+      {@render sep()}
+      <button
+        onclick={() => $editor?.chain().focus().toggleBold().run()}
+        class:active={$editor.isActive("bold")}
+        aria-label="Set Bold">
+        <b>B</b>
+      </button>
+      <button
+        onclick={() => $editor?.chain().focus().toggleItalic().run()}
+        class:active={$editor.isActive("italic")}
+        aria-label="Set Italic">
+        <i>I</i>
+      </button>
+      <button
+        onclick={() => $editor?.chain().focus().toggleUnderline().run()}
+        class:active={$editor.isActive("underline")}
+        aria-label="Set Underline">
+        <u>U</u>
+      </button>
+      <button
+        onclick={() => $editor?.chain().focus().toggleStrike().run()}
+        class:active={$editor.isActive("strike")}
+        aria-label="Set Strikethrough">
+        <strike>S</strike>
+      </button>
+      {@render sep()}
+      <button
+        onclick={() => $editor?.chain().focus().toggleBlockquote().run()}
+        class:active={$editor.isActive("blockquote")}
+        aria-label="Set blockquote">
+        <ChevronRight />
+      </button>
+      <button
+        onclick={() => $editor?.chain().focus().setHorizontalRule().run()}
+        class:active={$editor.isActive("hr")}
+        aria-label="Add line break">
+        <svg
+          viewBox="0 0 32 32"
+          xmlns="http://www.w3.org/2000/svg">
+          <line
+            x1="2"
+            y1="16"
+            x2="30"
+            y2="16"
+            class="stroke-black dark:stroke-white" />
+        </svg>
+      </button>
+      <button
+        onclick={() => {
+          const href = window.prompt("Enter the link URL:");
+          if (!href) return;
+          try {
+            new URL(href);
+          } catch {
+            alert("Invalid URL!");
+            return;
+          }
+          $editor?.chain().focus().toggleLink({ href, target: "_blank" }).run();
+        }}
+        class:active={$editor.isActive("link")}
+        aria-label="Set hyperlink">
+        <Link class="h-4 w-4" />
+      </button>
+      <button
+        onclick={() => {
+          const src = window.prompt("Enter the image URL:");
+          if (!src) return;
+          try {
+            new URL(src);
+          } catch {
+            alert("Invalid URL!");
+            return;
+          }
+          const split = src.split("/");
+          $editor
+            ?.chain()
+            .focus()
+            .setImage({ src, alt: `Image that links to ${split[split.length - 1]}` })
+            .run();
+        }}
+        class:active={$editor.isActive("image")}
+        aria-label="Add image">
+        <Image class="h-4 w-4" />
+      </button>
+      {@render sep()}
+      <button
+        onclick={() => $editor?.chain().focus().toggleBulletList().run()}
+        class:active={$editor.isActive("bulletList")}
+        aria-label="Toggle bullet list">
+        <List class="h-4 w-4" />
+      </button>
+      <button
+        onclick={() => $editor?.chain().focus().toggleOrderedList().run()}
+        class:active={$editor.isActive("orderedList")}
+        aria-label="Toggle numbered list">
+        <ListOrdered class="h-4 w-4" />
+      </button>
+      <button
+        onclick={() => $editor?.chain().focus().toggleTaskList().run()}
+        class:active={$editor.isActive("taskList")}
+        aria-label="Toggle task list">
+        <ListChecks class="h-4 w-4" />
+      </button>
     </div>
   {/if}
-  <div class="h-full" bind:this={element} />
+  <div
+    class="relative top-12 h-[85%] overflow-y-auto"
+    bind:this={element}>
+  </div>
 </div>
 
-<style>
+<style lang="postcss">
+  :global(.tiptap > h1) {
+    @apply text-3xl font-bold;
+  }
+  :global(.tiptap > hr) {
+    @apply mb-2;
+  }
+  :global(.tiptap > h2) {
+    @apply text-2xl font-bold;
+  }
+  :global(.tiptap > h3) {
+    @apply text-xl font-bold;
+  }
+  :global(.tiptap > i) {
+    @apply italic;
+  }
+  :global(.tiptap > b) {
+    @apply font-bold;
+  }
+  :global(.tiptap > p > code) {
+    @apply rounded-md bg-neutral-500/10 px-1;
+  }
+  :global(.tiptap > p > a) {
+    @apply cursor-pointer underline hover:text-blue-500;
+  }
+  :global(.tiptap) {
+    @apply flex flex-col gap-2;
+  }
+  :global(.tiptap > blockquote) {
+    @apply border-l-2 border-[#444] bg-neutral-200/10 p-2 pl-3;
+  }
+  :global(.tiptap > ul) {
+    @apply list-disc;
+  }
+  :global(.tiptap > ul > li) {
+    @apply flex items-center gap-1;
+  }
   .tiptap-editor {
-    border: 1px solid #666;
-    border-radius: 4px;
-    padding: 1rem;
+    @apply rounded-sm border border-[#666] p-4;
   }
 
   .editor-menu {
-    margin-bottom: 0.5rem;
+    @apply mb-2 flex items-center overflow-x-auto;
   }
 
   button {
-    margin-right: 0.5rem;
-    padding: 0.25rem 0.5rem;
-    background-color: #333;
-    border: 1px solid #666;
-    border-radius: 4px;
-    cursor: pointer;
+    @apply mr-2 flex aspect-square w-8 cursor-pointer items-center justify-center rounded-sm border border-[#666] bg-[#333] p-1 font-mono text-xs;
   }
 
   button.active {
-    background-color: #000;
-    color: #fff;
+    @apply bg-black text-white;
   }
 </style>

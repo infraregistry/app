@@ -33,11 +33,11 @@
   ];
 </script>
 
-<div class="flex h-full gap-2">
+<div class="flex h-[75vh] gap-2">
   <div class="w-64 rounded-lg border">
     <Navigator {data} />
   </div>
-  <div class="flex flex-1 items-center justify-center rounded-lg border p-2">
+  <div class="flex max-h-full flex-1 items-center justify-center rounded-lg border p-2">
     <!-- <Empty /> -->
     <Editor />
   </div>
