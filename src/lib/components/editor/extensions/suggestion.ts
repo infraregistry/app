@@ -130,6 +130,13 @@ export default {
             .setImage({ src, alt: `Image that links to ${split[split.length - 1]}` })
             .run();
         }
+      },
+      {
+        title: "Component",
+        subtitle: "Embeds a link to a component",
+        command: ({ editor, range }: BaseProps) => {
+          editor.chain().deleteRange(range).focus().setHorizontalRule().run();
+        }
       }
     ]
       .filter((item) => item.title.toLowerCase().startsWith(query.toLowerCase()))

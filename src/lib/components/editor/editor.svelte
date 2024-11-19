@@ -1,6 +1,8 @@
 <script lang="ts">
+  import VmComponent from "./../vm-component/vm-component.svelte";
   import List from "lucide-svelte/icons/list";
   import ListChecks from "lucide-svelte/icons/list-checks";
+  import Computer from "lucide-svelte/icons/computer";
   import Image from "lucide-svelte/icons/image";
   import ListOrdered from "lucide-svelte/icons/list-ordered";
   import { Editor, Extension, type Range } from "@tiptap/core";
@@ -181,6 +183,12 @@
         aria-label="Add image">
         <Image class="h-4 w-4" />
       </button>
+      <button
+        onclick={() => $editor?.chain().focus().insertEmbedComponent()}
+        class:active={$editor.isActive("hr")}
+        aria-label="Embed external component">
+        <Computer class="h-4 w-4" />
+      </button>
       {@render sep()}
       <button
         onclick={() => $editor?.chain().focus().toggleBulletList().run()}
@@ -206,6 +214,20 @@
     class="relative top-12 h-[85%] overflow-y-auto"
     bind:this={element}>
   </div>
+  <VmComponent
+    name="roamings-gaming-vm"
+    tags={[
+      {
+        label: "tag1",
+        color: "bg-yellow-500",
+        disabled: false
+      },
+      {
+        label: "tag2",
+        color: "bg-blue-500",
+        disabled: false
+      }
+    ]} />
 </div>
 
 <style lang="postcss">

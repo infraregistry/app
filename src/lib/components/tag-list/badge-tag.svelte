@@ -4,12 +4,12 @@
   import { cubicOut } from "svelte/easing";
   import { slide } from "svelte/transition";
 
-  let { tag, handleClick }: { tag: Tag; handleClick: () => void } = $props();
+  let { tag, handleClick }: { tag: Tag; handleClick?: () => void } = $props();
   let hovering = $state(false);
 
   function onclick() {
     hovering = false;
-    handleClick();
+    if (handleClick) handleClick();
   }
 
   function onmouseenter() {
@@ -23,7 +23,12 @@
   }
 </script>
 
-<button {onclick} class={tag.color} class:disabled={tag.disabled} {onmouseenter} {onmouseleave}>
+<button
+  {onclick}
+  class={tag.color}
+  class:disabled={tag.disabled}
+  {onmouseenter}
+  {onmouseleave}>
   <span class="select-none">
     {tag.label}
   </span>
