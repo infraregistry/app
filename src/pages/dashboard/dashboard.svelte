@@ -22,7 +22,8 @@
       <Card.Root class="sm:col-span-2">
         <Card.Header class="pb-3">
           <Card.Title>Your Orders</Card.Title>
-          <Card.Description class="max-w-lg text-balance leading-relaxed">Introducing Our Dynamic Orders Dashboard for Seamless Management and Insightful Analysis.</Card.Description>
+          <Card.Description class="max-w-lg text-balance leading-relaxed"
+            >Introducing Our Dynamic Orders Dashboard for Seamless Management and Insightful Analysis.</Card.Description>
         </Card.Header>
         <Card.Footer>
           <Button>Create New Order</Button>
@@ -37,7 +38,9 @@
           <div class="text-xs text-muted-foreground">+25% from last week</div>
         </Card.Content>
         <Card.Footer>
-          <Progress value={25} aria-label="25% increase" />
+          <Progress
+            value={25}
+            aria-label="25% increase" />
         </Card.Footer>
       </Card.Root>
       <Card.Root>
@@ -49,7 +52,9 @@
           <div class="text-xs text-muted-foreground">+10% from last month</div>
         </Card.Content>
         <Card.Footer>
-          <Progress value={12} aria-label="12% increase" />
+          <Progress
+            value={12}
+            aria-label="12% increase" />
         </Card.Footer>
       </Card.Root>
     </div>
@@ -63,7 +68,10 @@
         <div class="ml-auto flex items-center gap-2">
           <DropdownMenu.Root>
             <DropdownMenu.Trigger>
-              <Button variant="outline" size="sm" class="h-7 gap-1 text-sm">
+              <Button
+                variant="outline"
+                size="sm"
+                class="h-7 gap-1 text-sm">
                 <ListFilter class="h-3.5 w-3.5" />
                 <span class="sr-only sm:not-sr-only">Filter</span>
               </Button>
@@ -76,7 +84,10 @@
               <DropdownMenu.CheckboxItem>Refunded</DropdownMenu.CheckboxItem>
             </DropdownMenu.Content>
           </DropdownMenu.Root>
-          <Button size="sm" variant="outline" class="h-7 gap-1 text-sm">
+          <Button
+            size="sm"
+            variant="outline"
+            class="h-7 gap-1 text-sm">
             <File class="h-3.5 w-3.5" />
             <span class="sr-only sm:not-sr-only">Export</span>
           </Button>
@@ -107,7 +118,9 @@
                   </Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">Sale</Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">
-                    <Badge class="text-xs" variant="secondary">Fulfilled</Badge>
+                    <Badge
+                      class="text-xs"
+                      variant="secondary">Fulfilled</Badge>
                   </Table.Cell>
                   <Table.Cell class="hidden md:table-cell">2023-06-23</Table.Cell>
                   <Table.Cell class="text-right">$250.00</Table.Cell>
@@ -119,7 +132,9 @@
                   </Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">Refund</Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">
-                    <Badge class="text-xs" variant="outline">Declined</Badge>
+                    <Badge
+                      class="text-xs"
+                      variant="outline">Declined</Badge>
                   </Table.Cell>
                   <Table.Cell class="hidden md:table-cell">2023-06-24</Table.Cell>
                   <Table.Cell class="text-right">$150.00</Table.Cell>
@@ -131,7 +146,9 @@
                   </Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">Sale</Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">
-                    <Badge class="text-xs" variant="secondary">Fulfilled</Badge>
+                    <Badge
+                      class="text-xs"
+                      variant="secondary">Fulfilled</Badge>
                   </Table.Cell>
                   <Table.Cell class="hidden md:table-cell">2023-06-23</Table.Cell>
                   <Table.Cell class="text-right">$250.00</Table.Cell>
@@ -143,7 +160,9 @@
                   </Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">Subscription</Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">
-                    <Badge class="text-xs" variant="secondary">Fulfilled</Badge>
+                    <Badge
+                      class="text-xs"
+                      variant="secondary">Fulfilled</Badge>
                   </Table.Cell>
                   <Table.Cell class="hidden md:table-cell">2023-06-25</Table.Cell>
                   <Table.Cell class="text-right">$350.00</Table.Cell>
@@ -155,7 +174,9 @@
                   </Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">Subscription</Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">
-                    <Badge class="text-xs" variant="secondary">Fulfilled</Badge>
+                    <Badge
+                      class="text-xs"
+                      variant="secondary">Fulfilled</Badge>
                   </Table.Cell>
                   <Table.Cell class="hidden md:table-cell">2023-06-26</Table.Cell>
                   <Table.Cell class="text-right">$450.00</Table.Cell>
@@ -167,7 +188,9 @@
                   </Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">Sale</Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">
-                    <Badge class="text-xs" variant="secondary">Fulfilled</Badge>
+                    <Badge
+                      class="text-xs"
+                      variant="secondary">Fulfilled</Badge>
                   </Table.Cell>
                   <Table.Cell class="hidden md:table-cell">2023-06-23</Table.Cell>
                   <Table.Cell class="text-right">$250.00</Table.Cell>
@@ -179,7 +202,9 @@
                   </Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">Refund</Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">
-                    <Badge class="text-xs" variant="outline">Declined</Badge>
+                    <Badge
+                      class="text-xs"
+                      variant="outline">Declined</Badge>
                   </Table.Cell>
                   <Table.Cell class="hidden md:table-cell">2023-06-24</Table.Cell>
                   <Table.Cell class="text-right">$150.00</Table.Cell>
@@ -191,7 +216,9 @@
                   </Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">Sale</Table.Cell>
                   <Table.Cell class="hidden sm:table-cell">
-                    <Badge class="text-xs" variant="secondary">Fulfilled</Badge>
+                    <Badge
+                      class="text-xs"
+                      variant="secondary">Fulfilled</Badge>
                   </Table.Cell>
                   <Table.Cell class="hidden md:table-cell">2023-06-26</Table.Cell>
                   <Table.Cell class="text-right">$450.00</Table.Cell>
@@ -209,7 +236,10 @@
         <div class="grid gap-0.5">
           <Card.Title class="group flex items-center gap-2 text-lg">
             Order Oe31b70H
-            <Button size="icon" variant="outline" class="h-6 w-6 opacity-0 transition-opacity group-hover:opacity-100">
+            <Button
+              size="icon"
+              variant="outline"
+              class="h-6 w-6 opacity-0 transition-opacity group-hover:opacity-100">
               <Copy class="h-3 w-3" />
               <span class="sr-only">Copy Order ID</span>
             </Button>
@@ -217,13 +247,19 @@
           <Card.Description>Date: November 23, 2023</Card.Description>
         </div>
         <div class="ml-auto flex items-center gap-1">
-          <Button size="sm" variant="outline" class="h-8 gap-1">
+          <Button
+            size="sm"
+            variant="outline"
+            class="h-8 gap-1">
             <Truck class="h-3.5 w-3.5" />
             <span class="lg:sr-only xl:not-sr-only xl:whitespace-nowrap"> Track Order </span>
           </Button>
           <DropdownMenu.Root>
             <DropdownMenu.Trigger>
-              <Button size="icon" variant="outline" class="h-8 w-8">
+              <Button
+                size="icon"
+                variant="outline"
+                class="h-8 w-8">
                 <EllipsisVertical class="h-3.5 w-3.5" />
                 <span class="sr-only">More</span>
               </Button>

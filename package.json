@@ -104,10 +104,10 @@
     "vite": "^5.4.10",
     "y-partykit": "0.0.32",
     "y-protocols": "^1.0.6",
-    "yjs": "13.6.20"
-  },
-  "dependencies": {
+    "yjs": "13.6.20",
+    "@mateothegreat/svelte5-drag-and-drop": "^0.0.2",
     "@mateothegreat/svelte5-router": "^0.0.16",
     "vite-tsconfig-paths": "^5.1.0"
-  }
+  },
+  "dependencies": {}
 }

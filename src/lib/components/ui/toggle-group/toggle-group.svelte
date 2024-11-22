@@ -8,17 +8,11 @@
   type T = $$Generic<"single" | "multiple">;
   type $$Props = ToggleGroupPrimitive.Props<T> & VariantProps<typeof toggleVariants>;
 
-  
-  interface Props { [key: string]: any }
+  interface Props {
+    [key: string]: any;
+  }
 
-  let {
-    class: className = undefined,
-    variant = "default",
-    size = "default",
-    value = $bindable(undefined),
-    children,
-    ...rest
-  }: Props = $props();
+  let { class: className = undefined, variant = "default", size = "default", value = $bindable(undefined), children, ...rest }: Props = $props();
 
   setToggleGroupCtx({
     variant,
@@ -26,6 +20,10 @@
   });
 </script>
 
-<ToggleGroupPrimitive.Root class={cn("flex items-center justify-center gap-1", className)} bind:value {...rest} let:builder>
-  {@render children?.({ builder, })}
+<ToggleGroupPrimitive.Root
+  class={cn("flex items-center justify-center gap-1", className)}
+  bind:value
+  {...rest}
+  let:builder>
+  {@render children?.({ builder })}
 </ToggleGroupPrimitive.Root>

@@ -10,6 +10,8 @@
   </Card.Header>
   <Card.Content>
     <div></div>
-    <Button size="sm" variant="secondary">Archive Product</Button>
+    <Button
+      size="sm"
+      variant="secondary">Archive Product</Button>
   </Card.Content>
 </Card.Root>

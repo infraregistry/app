@@ -13,7 +13,9 @@
 <Tabs.Root value={selected}>
   <Tabs.List>
     {#each tabs as tab}
-      <Tabs.Trigger onclick={() => onValueChange?.(tab)} value={tab}>{tab}</Tabs.Trigger>
+      <Tabs.Trigger
+        onclick={() => onValueChange?.(tab)}
+        value={tab}>{tab}</Tabs.Trigger>
     {/each}
   </Tabs.List>
 </Tabs.Root>

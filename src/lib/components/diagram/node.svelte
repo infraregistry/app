@@ -15,6 +15,12 @@
       <div class="text-gray-500">{data.job}</div>
     </div>
   </div>
-  <Handle type="target" position={Position.Top} class="w-16 rounded-none border-none !bg-teal-500" />
-  <Handle type="source" position={Position.Bottom} class="w-16 rounded-none border-none !bg-teal-500" />
+  <Handle
+    type="target"
+    position={Position.Top}
+    class="w-16 rounded-none border-none !bg-teal-500" />
+  <Handle
+    type="source"
+    position={Position.Bottom}
+    class="w-16 rounded-none border-none !bg-teal-500" />
 </div>

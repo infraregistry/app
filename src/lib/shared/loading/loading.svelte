@@ -38,7 +38,10 @@
 </script>
 
 <div class="absolute bottom-0 left-0 right-0 top-0 z-[19999] flex items-center justify-center">
-  <Progress {value} max={100} class="absolute w-full bg-indigo-600/80" />
+  <Progress
+    {value}
+    max={100}
+    class="absolute w-full bg-indigo-600/80" />
   <div class="absolute flex w-[400px] flex-col items-center justify-center gap-6 rounded-lg border bg-black/90 p-4 text-sm text-slate-300">
     {instance.config.data.message || "Loading..."}
   </div>

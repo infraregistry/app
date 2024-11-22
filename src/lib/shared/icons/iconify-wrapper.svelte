@@ -16,5 +16,7 @@
 
 <div class={twMerge("flex items-center gap-1.5", className)}>
   {@render children?.()}
-  <Icon icon={iconStatics[name].value} class={twMerge(iconStatics[name].classes, `h-${size} w-${size}`)} />
+  <Icon
+    icon={iconStatics[name].value}
+    class={twMerge(iconStatics[name].classes, `h-${size} w-${size}`)} />
 </div>

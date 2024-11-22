@@ -67,8 +67,12 @@
 </script>
 
 <nav class={" flex w-full items-center justify-between border-b  p-2"}>
-  <div id="tsparticles" class="absolute -z-10 opacity-50">
-    <Particles options={particlesConfig} particlesInit={async (engine) => loadSlim(engine)} />
+  <div
+    id="tsparticles"
+    class="absolute -z-10 opacity-50">
+    <Particles
+      options={particlesConfig}
+      particlesInit={async (engine) => loadSlim(engine)} />
   </div>
   <div class="flex w-full justify-between">
     <div class="flex items-center gap-2 rounded-lg border bg-black/50 px-3">
@@ -104,7 +108,10 @@
     <div class="flex items-center gap-2 bg-black">
       <div class="flex max-w-xs flex-col items-center gap-2">
         <div class="relative w-full">
-          <Input type="email" placeholder="Search everything..." class="h-10 w-72" />
+          <Input
+            type="email"
+            placeholder="Search everything..."
+            class="h-10 w-72" />
           <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-xs font-semibold text-slate-600">
             ⌘
             <span class="mx-1">+</span>

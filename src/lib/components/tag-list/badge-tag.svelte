@@ -23,7 +23,12 @@
   }
 </script>
 
-<button {onclick} class={tag.color} class:disabled={tag.disabled} {onmouseenter} {onmouseleave}>
+<button
+  {onclick}
+  class={tag.color}
+  class:disabled={tag.disabled}
+  {onmouseenter}
+  {onmouseleave}>
   <span class="select-none">
     {tag.label}
   </span>

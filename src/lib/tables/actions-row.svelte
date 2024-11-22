@@ -4,7 +4,7 @@
   interface Props {
     message: string;
     colspan?: number;
-    children?: import('svelte').Snippet;
+    children?: import("svelte").Snippet;
   }
 
   let { message, colspan = 10, children }: Props = $props();

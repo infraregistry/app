@@ -1,9 +1,9 @@
-import type { Observable } from 'rxjs';
-import { type APIOperation } from '../helpers';
-import { APIClient, type BatchResult } from './client';
-import type { Location } from './locations';
-import type { SearchParams } from './search';
-import type { Tenant } from './tenants';
+import type { Observable } from "rxjs";
+import { type APIOperation } from "../helpers";
+import { APIClient, type BatchResult } from "./client";
+import type { Location } from "./locations";
+import type { SearchParams } from "./search";
+import type { Tenant } from "./tenants";
 
 export interface CameraCreate {
   name: string;
@@ -34,10 +34,10 @@ export interface Camera {
 }
 
 export enum CameraStatus {
-  PENDING = 'pending',
-  ONLINE = 'online',
-  OFFLINE = 'offline',
-  ERROR = 'error'
+  PENDING = "pending",
+  ONLINE = "online",
+  OFFLINE = "offline",
+  ERROR = "error"
 }
 
 export interface CameraThumbnails {
@@ -67,7 +67,7 @@ export interface CameraSearchParams extends SearchParams {
 
 export class CamerasClient extends APIClient {
   public search(params?: { [key: string]: string }): Observable<APIOperation<Camera[]>> {
-    return this._get('/cameras', params);
+    return this._get("/cameras", params);
   }
 
   public get(id: string): Observable<APIOperation<Camera>> {
@@ -75,7 +75,7 @@ export class CamerasClient extends APIClient {
   }
 
   public create(input: CameraCreate): Observable<APIOperation<Camera>> {
-    return this._post('/cameras', input);
+    return this._post("/cameras", input);
   }
 
   public update(id: string, input: Camera): Observable<APIOperation<BatchResult>> {

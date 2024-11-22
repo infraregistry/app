@@ -1,4 +1,3 @@
-
 export interface Dependency {
   id: string;
   name: string;
@@ -13,11 +12,11 @@ export const generateRandomDependencies = (max: number): Dependency[] => {
     dependencies.push({
       id: i.toString(),
       name: `Dependency ${i}`,
-      description: `Description of Dependency ${i}`,
+      description: `Description of Dependency ${i}`
     });
   }
   return dependencies;
-}
+};
 
 export const getDependencies = (id: string): Dependency[] => {
   return generateRandomDependencies(100);

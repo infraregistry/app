@@ -1,6 +1,6 @@
-import { Observable, Subject } from 'rxjs';
-import { modalManager } from '../modals';
-import Loading from './loading.svelte';
+import { Observable, Subject } from "rxjs";
+import { modalManager } from "../modals";
+import Loading from "./loading.svelte";
 
 export interface LoadingArgs {
   subject: Subject<void>;
@@ -12,7 +12,7 @@ export const loadingOpen = (message: string, duration: number): Observable<void>
   const subject = new Subject<void>();
 
   modalManager.open({
-    id: 'loading',
+    id: "loading",
     component: Loading,
     data: {
       subject,

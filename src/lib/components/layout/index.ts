@@ -5,4 +5,3 @@ export { default as Left } from "./left.svelte";
 export { default as Subtitle } from "./subtitle.svelte";
 export { default as Title } from "./title.svelte";
 export { default as Titles } from "./titles.svelte";
-

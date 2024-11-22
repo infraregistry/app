@@ -6,18 +6,11 @@
 
   type $$Props = ToggleGroupPrimitive.ItemProps & ToggleVariants;
 
+  interface Props {
+    [key: string]: any;
+  }
 
-  
-  interface Props { [key: string]: any }
-
-  let {
-    class: className = undefined,
-    variant = "default",
-    size = "default",
-    value,
-    children,
-    ...rest
-  }: Props = $props();
+  let { class: className = undefined, variant = "default", size = "default", value, children, ...rest }: Props = $props();
 
   const ctx = getToggleGroupCtx();
 </script>

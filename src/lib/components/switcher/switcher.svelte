@@ -31,10 +31,15 @@
 
 <Popover.Root>
   <Popover.Trigger>
-    <Button variant="outline" role="combobox" class="h-10 w-[250px] justify-between">
+    <Button
+      variant="outline"
+      role="combobox"
+      class="h-10 w-[250px] justify-between">
       {#if selected}
         <Avatar.Root class="mr-2 h-5 w-5">
-          <Avatar.Image src="https://avatar.vercel.sh/1.png" alt={selected.label} />
+          <Avatar.Image
+            src="https://avatar.vercel.sh/1.png"
+            alt={selected.label} />
           <Avatar.Fallback>SC</Avatar.Fallback>
         </Avatar.Root>
         {selected.label}
@@ -44,7 +49,9 @@
   </Popover.Trigger>
   <Popover.Content class="max-w-[250px] p-0">
     <Command.Root>
-      <Command.Input {placeholder} class="h-12" />
+      <Command.Input
+        {placeholder}
+        class="h-12" />
       <Command.List>
         <Command.Empty>No items found.</Command.Empty>
         {#each groups as group}
@@ -59,7 +66,9 @@
                   value={item.label}
                   class="h-10 w-[240px] text-sm">
                   <Avatar.Root class="mr-2 h-5 w-5">
-                    <Avatar.Image src="https://avatar.vercel.sh/user.png" alt={item.label} />
+                    <Avatar.Image
+                      src="https://avatar.vercel.sh/user.png"
+                      alt={item.label} />
                     <Avatar.Fallback>SC</Avatar.Fallback>
                   </Avatar.Root>
                   {item.label}

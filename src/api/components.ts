@@ -1,5 +1,5 @@
 import type { Camera } from "lucide-svelte";
-import { Observable, of } from 'rxjs';
+import { Observable, of } from "rxjs";
 import { APIClient, type BatchResult } from "./client";
 import type { APIOperation } from "./common";
 
@@ -44,7 +44,7 @@ export class ComponentsClient extends APIClient {
           description: "A modal component"
         }
       ]
-    })
+    });
   }
 
   public get(id: string): Observable<APIOperation<Camera>> {
@@ -52,7 +52,7 @@ export class ComponentsClient extends APIClient {
   }
 
   public create(input: Component): Observable<APIOperation<Camera>> {
-    return this._post('/components', input);
+    return this._post("/components", input);
   }
 
   public update(id: string, input: Camera): Observable<APIOperation<BatchResult>> {

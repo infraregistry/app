@@ -11,6 +11,11 @@
   let { class: className = undefined, children, ...rest }: Props = $props();
 </script>
 
-<th class={cn("text-muted-foreground h-10 px-2 text-left align-middle font-medium [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]", className)} {...rest}>
+<th
+  class={cn(
+    "h-10 px-2 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+    className
+  )}
+  {...rest}>
   {@render children?.()}
 </th>

@@ -19,6 +19,8 @@
     <Card.Description class="text-slate-400">{description}</Card.Description>
   </Card.Header>
   <Card.Content class="p-4">
-    <Button size="sm" class="w-full">{label}</Button>
+    <Button
+      size="sm"
+      class="w-full">{label}</Button>
   </Card.Content>
 </Card.Root>

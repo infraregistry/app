@@ -15,7 +15,9 @@
     isLoading = true;
     await new Promise<void>((resolve) => {
       setTimeout(() => {
-        sessions.register("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE5OTk5OTk5OTl9.0OKxx4Aq9H0v0u4k6Ey7-V0fuxAETl-Z_PAeP8nFLPg");
+        sessions.register(
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE5OTk5OTk5OTl9.0OKxx4Aq9H0v0u4k6Ey7-V0fuxAETl-Z_PAeP8nFLPg"
+        );
         resolve();
       }, 2000);
     }).finally(() => {
@@ -28,13 +30,31 @@
   <form {onsubmit}>
     <div class="grid gap-2">
       <div class="grid gap-1">
-        <Label class="sr-only" for="email">Email</Label>
-        <Input id="email" placeholder="name@example.com" type="email" autocapitalize="none" autocomplete="email" autocorrect="off" disabled={isLoading} />
+        <Label
+          class="sr-only"
+          for="email">Email</Label>
+        <Input
+          id="email"
+          placeholder="name@example.com"
+          type="email"
+          autocapitalize="none"
+          autocomplete="email"
+          autocorrect="off"
+          disabled={isLoading} />
         {#if context === FormContext.LOGIN}
-          <Input id="password" placeholder="*******************" type="password" autocapitalize="none" autocomplete="password" autocorrect="off" disabled={isLoading} />
+          <Input
+            id="password"
+            placeholder="*******************"
+            type="password"
+            autocapitalize="none"
+            autocomplete="password"
+            autocorrect="off"
+            disabled={isLoading} />
         {/if}
       </div>
-      <Button type="submit" disabled={isLoading}>
+      <Button
+        type="submit"
+        disabled={isLoading}>
         {#if isLoading}
           <LoaderCircleIcon class="mr-2 h-4 w-4 animate-spin" />
         {/if}
@@ -58,7 +78,10 @@
     </div>
   </div>
   <div class="flex flex-col gap-4">
-    <Button variant="outline" type="button" disabled={isLoading}>
+    <Button
+      variant="outline"
+      type="button"
+      disabled={isLoading}>
       {#if isLoading}
         <LoaderCircleIcon class="mr-2 h-4 w-4 animate-spin" />
       {:else}
@@ -66,7 +89,10 @@
       {/if}
       Google
     </Button>
-    <Button variant="outline" type="button" disabled={isLoading}>
+    <Button
+      variant="outline"
+      type="button"
+      disabled={isLoading}>
       {#if isLoading}
         <LoaderCircleIcon class="mr-2 h-4 w-4 animate-spin" />
       {:else}

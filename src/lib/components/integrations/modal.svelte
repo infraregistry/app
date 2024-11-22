@@ -17,7 +17,9 @@
   <Layout.Header>
     <Layout.Left>
       <Layout.Icon tooltip="Components are the building blocks of your service catalog and CMDB such as cloud resources, applications, services, etc.">
-        <IconifyWrapper name="components" size={10} />
+        <IconifyWrapper
+          name="components"
+          size={10} />
       </Layout.Icon>
       <Layout.Titles>
         <Layout.Title>Integrations Catalog</Layout.Title>
@@ -25,8 +27,12 @@
       </Layout.Titles>
     </Layout.Left>
     <Layout.Actions>
-      <Button variant="outline" class="text-green-500">Request Integration</Button>
-      <Button variant="outline" class="text-fuchsia-500">Get Help</Button>
+      <Button
+        variant="outline"
+        class="text-green-500">Request Integration</Button>
+      <Button
+        variant="outline"
+        class="text-fuchsia-500">Get Help</Button>
       <Button
         variant="ghost"
         class="text-green-500"
@@ -45,7 +51,9 @@
           <div class="flex cursor-pointer items-center justify-between gap-3 rounded-lg px-1 py-1.5 text-sm text-slate-400 transition-all hover:text-primary">
             <span>{link.name}</span>
             {#if link?.count && link.count > 0}
-              <Badge variant="outline" class="ml-auto bg-slate-800">{link.count}</Badge>
+              <Badge
+                variant="outline"
+                class="ml-auto bg-slate-800">{link.count}</Badge>
             {/if}
           </div>
         {/each}

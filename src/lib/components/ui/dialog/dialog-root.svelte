@@ -4,7 +4,7 @@
 
   interface Props {
     id: string;
-    children?: import('svelte').Snippet;
+    children?: import("svelte").Snippet;
   }
 
   let { id, children }: Props = $props();

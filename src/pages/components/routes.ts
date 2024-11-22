@@ -21,5 +21,5 @@ export const routes: Route[] = [
   {
     path: "",
     component: Dashboard
-  },
-]
+  }
+];

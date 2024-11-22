@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable } from "rxjs";
 import { APIClient } from "./client";
 
 export interface TagCreate {

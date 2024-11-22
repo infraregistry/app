@@ -60,9 +60,18 @@
 <div class="m-2 flex gap-16">
   <div class="">
     <nav class="grid gap-4 text-xs text-muted-foreground">
-      <a use:route href={`/components/${component.id}/settings/general`} class="font-semibold text-primary"> General </a>
-      <a use:route href={`/components/${component.id}/settings/integrations`}>Integrations</a>
-      <a use:route href={`/components/${component.id}/settings/advanced`}>Advanced</a>
+      <a
+        use:route
+        href={`/components/${component.id}/settings/general`}
+        class="font-semibold text-primary">
+        General
+      </a>
+      <a
+        use:route
+        href={`/components/${component.id}/settings/integrations`}>Integrations</a>
+      <a
+        use:route
+        href={`/components/${component.id}/settings/advanced`}>Advanced</a>
     </nav>
   </div>
   <div class="flex-1">

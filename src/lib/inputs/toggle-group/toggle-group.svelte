@@ -10,7 +10,10 @@
   let { toggles, value }: Props = $props();
 </script>
 
-<ToggleGroup.Root type="single" {value} variant="outline">
+<ToggleGroup.Root
+  type="single"
+  {value}
+  variant="outline">
   {#each toggles as { value, label }}
     <ToggleGroup.Item {value}>{label}</ToggleGroup.Item>
   {/each}

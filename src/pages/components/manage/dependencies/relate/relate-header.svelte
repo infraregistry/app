@@ -13,7 +13,10 @@
 </script>
 
 <div class="flex items-center gap-3">
-  <IconifyWrapper name="relationshipAdd" size={10} class="-mt-1" />
+  <IconifyWrapper
+    name="relationshipAdd"
+    size={10}
+    class="-mt-1" />
   <div class="flex flex-col gap-0.5">
     <div class="flex items-center gap-2 font-semibold text-white">
       {name}

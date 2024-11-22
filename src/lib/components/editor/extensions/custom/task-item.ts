@@ -4,21 +4,17 @@ export const inputRegex = /^\s*(\[([( |x])?\])\s$/;
 
 export const TaskItem = Node.create({
   name: "taskItem",
-
   addOptions() {
     return {
       nested: false,
-      HTMLAttributes: {},
+      HTMLAttributes: {}
     };
   },
-
   content() {
     return this.options.nested ? "paragraph block*" : "paragraph+";
   },
-
   defining: true,
   draggable: true,
-
   addAttributes() {
     return {
       checked: {
@@ -26,26 +22,24 @@ export const TaskItem = Node.create({
         keepOnSplit: false,
         parseHTML: (element) => element.getAttribute("data-checked") === "true",
         renderHTML: (attributes) => ({
-          "data-checked": attributes.checked,
-        }),
-      },
+          "data-checked": attributes.checked
+        })
+      }
     };
   },
-
   parseHTML() {
     return [
       {
         tag: `li[data-type="${this.name}"]`,
-        priority: 51,
-      },
+        priority: 51
+      }
     ];
   },
-
   renderHTML({ node, HTMLAttributes }) {
     return [
       "li",
       mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, {
-        "data-type": this.name,
+        "data-type": this.name
       }),
       [
         "label",
@@ -53,19 +47,18 @@ export const TaskItem = Node.create({
           "input",
           {
             type: "checkbox",
-            checked: node.attrs.checked ? "checked" : null,
-          },
+            checked: node.attrs.checked ? "checked" : null
+          }
         ],
-        ["span"],
+        ["span"]
       ],
-      ["div", 0],
+      ["div", 0]
     ];
   },
-
   addKeyboardShortcuts() {
     const shortcuts = {
       Enter: () => this.editor.commands.splitListItem(this.name),
-      "Shift-Tab": () => this.editor.commands.liftListItem(this.name),
+      "Shift-Tab": () => this.editor.commands.liftListItem(this.name)
     };
 
     if (!this.options.nested) {
@@ -74,10 +67,9 @@ export const TaskItem = Node.create({
 
     return {
       ...shortcuts,
-      Tab: () => this.editor.commands.sinkListItem(this.name),
+      Tab: () => this.editor.commands.sinkListItem(this.name)
     };
   },
-
   addNodeView() {
     return ({ node, HTMLAttributes, getPos, editor }) => {
       const listItem = document.createElement("li");
@@ -97,7 +89,7 @@ export const TaskItem = Node.create({
           return;
         }
 
-        const { checked } = event.target;
+        const { checked } = event.target as HTMLInputElement;
 
         if (editor.isEditable && typeof getPos === "function") {
           editor
@@ -109,7 +101,7 @@ export const TaskItem = Node.create({
 
               tr.setNodeMarkup(position, undefined, {
                 ...currentNode?.attrs,
-                checked,
+                checked
               });
 
               return true;
@@ -156,7 +148,7 @@ export const TaskItem = Node.create({
           }
 
           return true;
-        },
+        }
       };
     };
   },
@@ -167,11 +159,11 @@ export const TaskItem = Node.create({
         find: inputRegex,
         type: this.type,
         getAttributes: (match) => ({
-          checked: match[match.length - 1] === "x",
-        }),
-      }),
+          checked: match[match.length - 1] === "x"
+        })
+      })
     ];
-  },
+  }
 });
 
 export default TaskItem;

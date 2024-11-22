@@ -46,7 +46,9 @@
     <div class="flex flex-col">
       <div class="flex items-center gap-2">
         <div class={iconClass}>
-          <Icon {icon} class="h-8 w-8 text-blue-500" />
+          <Icon
+            {icon}
+            class="h-8 w-8 text-blue-500" />
         </div>
         <div class="flex flex-col">
           <Card.Title class="-mb-0.5 text-base text-slate-400">{title}</Card.Title>
@@ -58,15 +60,25 @@
       <Tooltip.Provider>
         <Tooltip.Root delayDuration={200}>
           <Tooltip.Trigger class="">
-            <Button variant="outline" onclick={() => relate(id)} class="flex items-center gap-1">
-              <Icon class="h-5 w-5" icon="material-symbols:add-link" />
+            <Button
+              variant="outline"
+              onclick={() => relate(id)}
+              class="flex items-center gap-1">
+              <Icon
+                class="h-5 w-5"
+                icon="material-symbols:add-link" />
             </Button>
           </Tooltip.Trigger>
-          <Tooltip.Content forceMount side="right">
+          <Tooltip.Content
+            forceMount
+            side="right">
             {#snippet child({ props, open })}
               {#if open}
-                <div {...props} transition:slide>
-                  <div class="border-dark-10 z-0 flex items-center justify-center rounded-lg border bg-background p-2 text-xs font-medium text-slate-400 shadow-popover outline-none">
+                <div
+                  {...props}
+                  transition:slide>
+                  <div
+                    class="border-dark-10 z-0 flex items-center justify-center rounded-lg border bg-background p-2 text-xs font-medium text-slate-400 shadow-popover outline-none">
                     {types[type].tooltip}
                   </div>
                 </div>
@@ -82,7 +94,9 @@
       <div class="flex items-center gap-2">
         <DropdownMenu.Root>
           <DropdownMenu.Trigger>
-            <Button variant="outline" class="h-7 px-2"><Icon icon="rivet-icons:ellipsis-vertical" /></Button>
+            <Button
+              variant="outline"
+              class="h-7 px-2"><Icon icon="rivet-icons:ellipsis-vertical" /></Button>
           </DropdownMenu.Trigger>
           <DropdownMenu.Content class="w-56">
             <DropdownMenu.Group>

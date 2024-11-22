@@ -4,9 +4,9 @@
 </script>
 
 <thead>
-  <tr class="hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors">
+  <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
     {#each header as column (column.field)}
-      <th class="text-muted-foreground h-10 px-2 text-left align-middle font-medium [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]">
+      <th class="h-10 px-2 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]">
         {#if column.snippet}
           {@render column.snippet()}
         {:else}

@@ -71,7 +71,11 @@
 </script>
 
 <div style:height="100vh">
-  <SvelteFlow on:nodedrag={onNodeDrag} {nodes} {edges} {nodeTypes}>
+  <SvelteFlow
+    on:nodedrag={onNodeDrag}
+    {nodes}
+    {edges}
+    {nodeTypes}>
     <Controls />
     <Background />
     <MiniMap />

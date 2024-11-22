@@ -10,9 +10,12 @@ export interface ConfirmOptions {
 
 export const openConfirm = (options: ConfirmOptions): Observable<boolean> => {
   const subject = new Subject<boolean>();
-  modalManager.open({
-    id: "confirm",
-    component: Confirm,
-  }, { options, subject });
+  modalManager.open(
+    {
+      id: "confirm",
+      component: Confirm
+    },
+    { options, subject }
+  );
   return subject;
 };

@@ -10,18 +10,11 @@
 
   type $$Events = PaginationPrimitive.PageEvents;
 
-  interface Props_1 { [key: string]: any }
+  interface Props_1 {
+    [key: string]: any;
+  }
 
-  let {
-    class: className = undefined,
-    page = $bindable(),
-    size = "icon",
-    isActive = false,
-    children,
-    ...rest
-  }: Props_1 = $props();
-
-  
+  let { class: className = undefined, page = $bindable(), size = "icon", isActive = false, children, ...rest }: Props_1 = $props();
 </script>
 
 <PaginationPrimitive.Page

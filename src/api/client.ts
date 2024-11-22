@@ -42,7 +42,7 @@ export class APIClient {
     //   }
     // });
 
-    this.url = "http://localhost:8081"
+    this.url = "http://localhost:8081";
     this.headers.set("Content-Type", "application/json");
     this.headers.set("Authorization", `asdfasdf`);
   }

@@ -15,16 +15,23 @@
 
 <div class="flex h-full flex-col gap-2 bg-zinc-900/50">
   <div class="flex gap-2 border-b">
-    <Input type="email" placeholder="Search documents..." class="h-10 w-full rounded-none border-none" />
+    <Input
+      type="email"
+      placeholder="Search documents..."
+      class="h-10 w-full rounded-none border-none" />
   </div>
   <div class="flex-1 p-1">
     <Tree {data} />
   </div>
   <div class="flex gap-2 p-2">
-    <Button variant="outline" class="w-full text-green-500">Create Document</Button>
+    <Button
+      variant="outline"
+      class="w-full text-green-500">Create Document</Button>
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>
-        <Button variant="outline" class="text-slate-500">
+        <Button
+          variant="outline"
+          class="text-slate-500">
           <Ellipsis class="h-4 w-4" />
         </Button>
       </DropdownMenu.Trigger>

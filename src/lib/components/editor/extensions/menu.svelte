@@ -1,48 +1,46 @@
 <script>
-	//This is the component for the hover drag handles.
+  //This is the component for the hover drag handles.
 
-	let hover_x, hover_y;
-	let hover_menu_visible = false;
+  let hover_x, hover_y;
+  let hover_menu_visible = false;
 
-	function handlePointerover(e) {
-		if (e.target.getAttribute('data-editor')) return (hover_menu_visible = false);
+  function handlePointerover(e) {
+    if (e.target.getAttribute("data-editor")) return (hover_menu_visible = false);
 
-		const path = e.path[0];
+    const path = e.path[0];
 
-		const el = get_element(path);
+    const el = get_element(path);
 
-		const rect = el.getBoundingClientRect();
-		const x = rect.left - 50;
-		const y = rect.top + window.scrollY;
+    const rect = el.getBoundingClientRect();
+    const x = rect.left - 50;
+    const y = rect.top + window.scrollY;
 
-		hover_x = x;
-		hover_y = y;
-		hover_menu_visible = true;
-	}
-	function get_element(el) {
-		if (/^H[1-6]|LI$/.test(el.tagName)) return el;
-		if (el.parentNode.tagName === 'LI') return el.parentNode;
-		if ((el.parentNode.parentNode.tagName = 'LI')) return el.parentNode.parentNode;
-		if ((el.parentNode.parentNode.parentNode.tagName = 'LI'))
-			return el.parentNode.parentNode.parentNode;
+    hover_x = x;
+    hover_y = y;
+    hover_menu_visible = true;
+  }
+  function get_element(el: HTMLElement) {
+    if (/^H[1-6]|LI$/.test(el.tagName)) return el;
+    if (el.parentNode.tagName === "LI") return el.parentNode;
+    if ((el.parentNode.parentNode.tagName = "LI")) return el.parentNode.parentNode;
+    if ((el.parentNode.parentNode.parentNode.tagName = "LI")) return el.parentNode.parentNode.parentNode;
 
-		return el;
-	}
+    return el;
+  }
 </script>
 
 <div on:pointerover={handlePointerover} />
 
 <div
-	class="absolute px-4 {hover_menu_visible ? 'visible' : 'hidden'}"
-	style="top:{hover_y | '0'}px; left:{hover_x | '0'}px"
->
-	<div class="text-lg bg-gray-50 border rounded w-8 h-8 text-center cursor-grab">⋮⋮</div>
+  class="absolute px-4 {hover_menu_visible ? 'visible' : 'hidden'}"
+  style="top:{hover_y | '0'}px; left:{hover_x | '0'}px">
+  <div class="h-8 w-8 cursor-grab rounded border bg-gray-50 text-center text-lg">⋮⋮</div>
 </div>
 
 <style>
-	/* 
+  /*
   This is the css version. This wouldn't be as accessible, so we want to change to a js version.
-  p draggable on the click background or selected. 
+  p draggable on the click background or selected.
 
   :global([draggable="true"]:hover:after) {
     content: "";

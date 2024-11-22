@@ -60,20 +60,22 @@ export class StreamingClient {
     const subject = new Subject<StreamingMessage<R>>();
     msg.correlationId = crypto.randomUUID();
     // console.log("rpc", t, msg);
-    this.messages.pipe(
-      filter((message) => msg.correlationId === message.correlationId),
-      // timeout(timeoutDuration),
-      // catchError((err) => {
-      //   console.log("RPC timeout", err);
-      //   subject.error(new Error(`Request timed out, please contact support.`));
-      //   return throwError(() => err);
-      // }),
-      first()
-    ).subscribe((message) => {
-      // this.logger.debug("rpc.reply", message);
-      subject.next(message as unknown as StreamingMessage<R>);
-      subject.complete();
-    });
+    this.messages
+      .pipe(
+        filter((message) => msg.correlationId === message.correlationId),
+        // timeout(timeoutDuration),
+        // catchError((err) => {
+        //   console.log("RPC timeout", err);
+        //   subject.error(new Error(`Request timed out, please contact support.`));
+        //   return throwError(() => err);
+        // }),
+        first()
+      )
+      .subscribe((message) => {
+        // this.logger.debug("rpc.reply", message);
+        subject.next(message as unknown as StreamingMessage<R>);
+        subject.complete();
+      });
     this.socket.send(JSON.stringify(msg));
     return subject;
   }

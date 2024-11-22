@@ -14,6 +14,7 @@
         block: "nearest",
         behavior: "smooth"
       });
+      elements[selectedIndex]?.focus();
     }
   });
 
@@ -44,10 +45,10 @@
 
 <svelte:window onkeydown={handleKeydown} />
 
-<div class="z-50 h-96 w-96 max-w-full overflow-scroll rounded-lg border bg-white shadow-xl dark:bg-black">
-  <div class="p-2 text-sm text-gray-500">BLOCKS</div>
+<div class="z-50 h-72 w-52 max-w-full overflow-scroll border bg-white shadow-xl dark:bg-black">
+  <div class="p-2 text-sm text-slate-500">BLOCKS</div>
   <ul
-    class="mt-2 divide-y divide-gray-200 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-black"
+    class="mt-2 divide-y divide-gray-800 rounded-md bg-white shadow-lg focus:outline-none dark:bg-black"
     tabindex="-1"
     role="listbox"
     aria-labelledby="slash-command-menu"
@@ -55,10 +56,10 @@
     {#each items as { title, subtitle, command }, i}
       <li>
         <button
-          class="w-full cursor-pointer select-none p-4 text-left text-sm text-gray-900 dark:text-white {i == selectedIndex
-            ? 'bg-gray-100 dark:bg-neutral-900'
-            : 'bg-white dark:bg-black'}"
+          class="dark:slate-500 w-full cursor-pointer select-none p-2.5 text-sm text-gray-900 dark:text-slate-300"
           id="listbox-option-0"
+          class:focus-ring-1={i == selectedIndex}
+          class:focus-ring-indigo-500={i == selectedIndex}
           onmouseenter={() => (selectedIndex = i)}
           onclick={() => {
             command({ editor, range });
@@ -68,7 +69,7 @@
             <div class="flex justify-between">
               <p class="font-normal">{title}</p>
             </div>
-            <p class="mt-2 text-gray-500">{subtitle}</p>
+            <!-- <p class="mt-2 text-gray-500">{subtitle}</p> -->
           </div>
         </button>
       </li>

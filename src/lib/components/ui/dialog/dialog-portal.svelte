@@ -1,12 +1,14 @@
 <script lang="ts">
-	import { Dialog as DialogPrimitive } from "bits-ui";
-	interface Props { [key: string]: any }
+  import { Dialog as DialogPrimitive } from "bits-ui";
+  interface Props {
+    [key: string]: any;
+  }
 
-	let { children, ...rest }: Props = $props();
+  let { children, ...rest }: Props = $props();
 
-	type $$Props = DialogPrimitive.PortalProps;
+  type $$Props = DialogPrimitive.PortalProps;
 </script>
 
 <DialogPrimitive.Portal {...rest}>
-	{@render children?.()}
+  {@render children?.()}
 </DialogPrimitive.Portal>

@@ -14,7 +14,9 @@
 <div class="flex h-full gap-4">
   <div class="flex flex-col gap-3 p-4">
     <div class="flex gap-2">
-      <a href="/" class="flex gap-2 font-semibold text-slate-500">
+      <a
+        href="/"
+        class="flex gap-2 font-semibold text-slate-500">
         <Cog class="h-6 w-6" />
         <span>Settings</span>
       </a>
@@ -22,10 +24,14 @@
     <div class="flex flex-1">
       <nav class="w-48">
         {#each links as link}
-          <a href="##" class="flex items-center justify-between gap-3 rounded-lg px-1 py-1.5 text-sm text-slate-400 transition-all hover:text-primary">
+          <a
+            href="##"
+            class="flex items-center justify-between gap-3 rounded-lg px-1 py-1.5 text-sm text-slate-400 transition-all hover:text-primary">
             <span>{link.name}</span>
             {#if link.count > 0}
-              <Badge variant="outline" class="ml-auto bg-secondary">{link.count}</Badge>
+              <Badge
+                variant="outline"
+                class="ml-auto bg-secondary">{link.count}</Badge>
             {/if}
           </a>
         {/each}
@@ -38,7 +44,9 @@
           <Card.Description>Unlock all features and get unlimited access to our support team.</Card.Description>
         </Card.Header>
         <Card.Content class="p-4">
-          <Button size="sm" class="w-full">Upgrade</Button>
+          <Button
+            size="sm"
+            class="w-full">Upgrade</Button>
         </Card.Content>
       </Card.Root>
     </div>
@@ -53,7 +61,9 @@
         <div class="flex flex-col items-center gap-1 text-center">
           <h3 class="text-2xl font-bold tracking-tight text-indigo-500">You have no connections..</h3>
           <p class="text-sm text-muted-foreground">Add a connection to start tracking your change data and catalog things!</p>
-          <Button class="mt-4" variant="success">Add Connection</Button>
+          <Button
+            class="mt-4"
+            variant="success">Add Connection</Button>
         </div>
       </div>
     </main>

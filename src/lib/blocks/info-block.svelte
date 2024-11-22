@@ -17,11 +17,18 @@
     <div class="grid gap-6">
       <div class="grid gap-3">
         <Label for="name">Name</Label>
-        <Input id="name" type="text" class="w-full" value={$component.name} />
+        <Input
+          id="name"
+          type="text"
+          class="w-full"
+          value={$component.name} />
       </div>
       <div class="grid gap-3">
         <Label for="description">Description</Label>
-        <Textarea id="description" value={$component.description} class="min-h-24" />
+        <Textarea
+          id="description"
+          value={$component.description}
+          class="min-h-24" />
       </div>
     </div>
   </Card.Content>

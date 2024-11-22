@@ -3,6 +3,6 @@ import Create from "./create.svelte";
 
 export const openCreateModal = () => {
   modalManager.open({
-    component: Create,
+    component: Create
   });
 };

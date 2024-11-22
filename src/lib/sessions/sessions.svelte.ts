@@ -57,9 +57,14 @@ class Session {
   }
 
   public login(email: string, password: string): Observable<boolean> {
-    return of(true).pipe(delay(2000), tap(() => {
-      this.register("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE5OTk5OTk5OTl9.0OKxx4Aq9H0v0u4k6Ey7-V0fuxAETl-Z_PAeP8nFLPg");
-    }));
+    return of(true).pipe(
+      delay(2000),
+      tap(() => {
+        this.register(
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE5OTk5OTk5OTl9.0OKxx4Aq9H0v0u4k6Ey7-V0fuxAETl-Z_PAeP8nFLPg"
+        );
+      })
+    );
   }
 
   public register(newToken: string): boolean {

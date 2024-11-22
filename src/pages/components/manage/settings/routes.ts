@@ -20,4 +20,4 @@ export const routes: Route[] = [
     path: "",
     component: General
   }
-]
+];

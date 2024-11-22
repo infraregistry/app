@@ -8,7 +8,7 @@ import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
 import TextAlign from "@tiptap/extension-text-align";
 import Typography from "@tiptap/extension-typography";
-import YouTube from "./custom/youtube";
+import { ListItem } from "./custom/list-item";
 import Slash from "./slash-command";
 import suggestion from "./suggestion";
 
@@ -19,13 +19,13 @@ export const defaultExtensions = [
   }),
   Underline,
   Typography,
+  ListItem,
   TaskList,
   TaskItem,
   TextAlign,
   Placeholder,
   Image,
   Link,
-  YouTube,
   // CodeBlockLowlight.configure({
   // 	// lowlight
   // }),

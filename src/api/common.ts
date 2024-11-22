@@ -1,4 +1,4 @@
-import { Observable, filter } from 'rxjs';
+import { Observable, filter } from "rxjs";
 
 export const waitForLoading = () => {
   return function <T>(source: Observable<APIOperation<T>>) {

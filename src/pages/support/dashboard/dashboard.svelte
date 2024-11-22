@@ -10,7 +10,9 @@
   <Layout.Header>
     <Layout.Left>
       <Layout.Icon tooltip="Components are the building blocks of your service catalog and CMDB such as cloud resources, applications, services, etc.">
-        <IconifyWrapper name="components" size={10} />
+        <IconifyWrapper
+          name="components"
+          size={10} />
       </Layout.Icon>
       <Layout.Titles>
         <Layout.Title>Help & Support</Layout.Title>
@@ -18,7 +20,9 @@
       </Layout.Titles>
     </Layout.Left>
     <Layout.Actions>
-      <Button variant="outline" class="text-green-500">Create</Button>
+      <Button
+        variant="outline"
+        class="text-green-500">Create</Button>
       <DropdownMenu.Root>
         <DropdownMenu.Trigger>
           <Button variant="outline">

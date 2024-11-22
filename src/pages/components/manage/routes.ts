@@ -40,6 +40,5 @@ export const routes: Route[] = [
   {
     path: "",
     component: Overview
-  },
-
-]
+  }
+];

@@ -13,7 +13,10 @@
     <div class="grid flex-1 gap-0.5">
       <Card.Title class="group flex items-center gap-2">
         Oasde31b70H
-        <Button size="icon" variant="outline" class="h-6 w-6 opacity-0 transition-opacity group-hover:opacity-100">
+        <Button
+          size="icon"
+          variant="outline"
+          class="h-6 w-6 opacity-0 transition-opacity group-hover:opacity-100">
           <Copy class="h-3 w-3" />
           <span class="sr-only">Copy Order ID</span>
         </Button>
@@ -23,7 +26,10 @@
     <div class="flex items-center gap-1">
       <DropdownMenu.Root>
         <DropdownMenu.Trigger>
-          <Button size="lg" variant="outline" class="gap-2 px-2 pl-4">
+          <Button
+            size="lg"
+            variant="outline"
+            class="gap-2 px-2 pl-4">
             <span class="lg:sr-only xl:not-sr-only xl:whitespace-nowrap">History</span>
             <EllipsisVertical class="h-3.5 w-3.5" />
           </Button>

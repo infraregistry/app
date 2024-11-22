@@ -4,7 +4,7 @@ import { icons } from "$lib/shared/icons/repo";
 export enum IntegrationCategory {
   CLOUD = "cloud",
   API = "api",
-  WEBHOOK = "webhook",
+  WEBHOOK = "webhook"
 }
 
 export enum IntegrationType {
@@ -12,7 +12,7 @@ export enum IntegrationType {
   CLOUD_GCP = "cloud-gcp",
   CLOUD_AZURE = "cloud-azure",
   API = "api",
-  WEBHOOK = "webhook",
+  WEBHOOK = "webhook"
 }
 
 export interface Integration {
@@ -30,253 +30,253 @@ export const integrations: Integration[] = [
     name: "Amazon Web Services",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_AWS,
-    icon: icons.aws,
+    icon: icons.aws
   },
   {
     id: "gcp",
     name: "Google Cloud Platform",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_GCP,
-    icon: icons.gcp,
+    icon: icons.gcp
   },
   {
     id: "azure",
     name: "Microsoft Azure",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_AZURE,
-    icon: icons.azure,
+    icon: icons.azure
   },
   {
     id: "aws",
     name: "Amazon Web Services",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_AWS,
-    icon: icons.aws,
+    icon: icons.aws
   },
   {
     id: "gcp",
     name: "Google Cloud Platform",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_GCP,
-    icon: icons.gcp,
+    icon: icons.gcp
   },
   {
     id: "azure",
     name: "Microsoft Azure",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_AZURE,
-    icon: icons.azure,
+    icon: icons.azure
   },
   {
     id: "aws",
     name: "Amazon Web Services",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_AWS,
-    icon: icons.aws,
+    icon: icons.aws
   },
   {
     id: "gcp",
     name: "Google Cloud Platform",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_GCP,
-    icon: icons.gcp,
+    icon: icons.gcp
   },
   {
     id: "azure",
     name: "Microsoft Azure",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_AZURE,
-    icon: icons.azure,
+    icon: icons.azure
   },
   {
     id: "aws",
     name: "Amazon Web Services",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_AWS,
-    icon: icons.aws,
+    icon: icons.aws
   },
   {
     id: "gcp",
     name: "Google Cloud Platform",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_GCP,
-    icon: icons.gcp,
+    icon: icons.gcp
   },
   {
     id: "azure",
     name: "Microsoft Azure",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_AZURE,
-    icon: icons.azure,
+    icon: icons.azure
   },
   {
     id: "aws",
     name: "Amazon Web Services",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_AWS,
-    icon: icons.aws,
+    icon: icons.aws
   },
   {
     id: "gcp",
     name: "Google Cloud Platform",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_GCP,
-    icon: icons.gcp,
+    icon: icons.gcp
   },
   {
     id: "azure",
     name: "Microsoft Azure",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_AZURE,
-    icon: icons.azure,
+    icon: icons.azure
   },
   {
     id: "aws",
     name: "Amazon Web Services",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_AWS,
-    icon: icons.aws,
+    icon: icons.aws
   },
   {
     id: "gcp",
     name: "Google Cloud Platform",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_GCP,
-    icon: icons.gcp,
+    icon: icons.gcp
   },
   {
     id: "azure",
     name: "Microsoft Azure",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_AZURE,
-    icon: icons.azure,
+    icon: icons.azure
   },
   {
     id: "aws",
     name: "Amazon Web Services",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_AWS,
-    icon: icons.aws,
+    icon: icons.aws
   },
   {
     id: "gcp",
     name: "Google Cloud Platform",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_GCP,
-    icon: icons.gcp,
+    icon: icons.gcp
   },
   {
     id: "azure",
     name: "Microsoft Azure",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_AZURE,
-    icon: icons.azure,
+    icon: icons.azure
   },
   {
     id: "aws",
     name: "Amazon Web Services",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_AWS,
-    icon: icons.aws,
+    icon: icons.aws
   },
   {
     id: "gcp",
     name: "Google Cloud Platform",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_GCP,
-    icon: icons.gcp,
+    icon: icons.gcp
   },
   {
     id: "azure",
     name: "Microsoft Azure",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_AZURE,
-    icon: icons.azure,
+    icon: icons.azure
   },
   {
     id: "aws",
     name: "Amazon Web Services",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_AWS,
-    icon: icons.aws,
+    icon: icons.aws
   },
   {
     id: "gcp",
     name: "Google Cloud Platform",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_GCP,
-    icon: icons.gcp,
+    icon: icons.gcp
   },
   {
     id: "azure",
     name: "Microsoft Azure",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_AZURE,
-    icon: icons.azure,
+    icon: icons.azure
   },
   {
     id: "aws",
     name: "Amazon Web Services",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_AWS,
-    icon: icons.aws,
+    icon: icons.aws
   },
   {
     id: "gcp",
     name: "Google Cloud Platform",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_GCP,
-    icon: icons.gcp,
+    icon: icons.gcp
   },
   {
     id: "azure",
     name: "Microsoft Azure",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_AZURE,
-    icon: icons.azure,
+    icon: icons.azure
   },
   {
     id: "aws",
     name: "Amazon Web Services",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_AWS,
-    icon: icons.aws,
+    icon: icons.aws
   },
   {
     id: "gcp",
     name: "Google Cloud Platform",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_GCP,
-    icon: icons.gcp,
+    icon: icons.gcp
   },
   {
     id: "azure",
     name: "Microsoft Azure",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_AZURE,
-    icon: icons.azure,
+    icon: icons.azure
   },
   {
     id: "aws",
     name: "Amazon Web Services",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_AWS,
-    icon: icons.aws,
+    icon: icons.aws
   },
   {
     id: "gcp",
     name: "Google Cloud Platform",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_GCP,
-    icon: icons.gcp,
+    icon: icons.gcp
   },
   {
     id: "azure",
     name: "Microsoft Azure",
     category: IntegrationCategory.CLOUD,
     type: IntegrationType.CLOUD_AZURE,
-    icon: icons.azure,
-  },
+    icon: icons.azure
+  }
 ];
 
 export const getIntegrationsByCategory = (category: IntegrationCategory) => {

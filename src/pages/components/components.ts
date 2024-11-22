@@ -27,7 +27,7 @@ export const components: Writable<Component[]> = writable([
     name: "Input",
     description: "An input component",
     type: ComponentType.VIRTUAL_MACHINE
-  },
+  }
 ]);
 
 export const componentTableColumns: TableColumn[] = [
@@ -50,7 +50,7 @@ export const componentTableColumns: TableColumn[] = [
     field: "type",
     header: "Type",
     classes: "[&:is(th)]:text-slate-600"
-  },
+  }
   // {
   //   field: "actions",
   //   classes: "w-24 flex items-center justify-center",

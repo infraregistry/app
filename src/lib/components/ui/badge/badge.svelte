@@ -9,6 +9,10 @@
   let { class: className = undefined, href = undefined, variant = "default", children, ...rest }: Props = $props();
 </script>
 
-<svelte:element this={href ? "a" : "span"} {href} class={cn(badgeVariants({ variant, className }))} {...rest}>
+<svelte:element
+  this={href ? "a" : "span"}
+  {href}
+  class={cn(badgeVariants({ variant, className }))}
+  {...rest}>
   {@render children?.()}
 </svelte:element>

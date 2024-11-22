@@ -4,6 +4,6 @@ import Modal from "./modal.svelte";
 export const openIntegrationsModal = () => {
   modalManager.open({
     id: "integrations",
-    component: Modal,
+    component: Modal
   });
 };

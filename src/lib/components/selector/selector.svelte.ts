@@ -10,8 +10,8 @@ export type SelectorConfig<T> = {
   search?: {
     placeholder?: string;
     onChange?: (value: string) => void;
-  }
-}
+  };
+};
 
 export interface SelectorItem<T> {
   name: string;
@@ -23,10 +23,13 @@ export const openSelector = <T, H>(config: SelectorConfig<T>): Observable<T[]> =
 
   let selections = $state<T[]>([]);
 
-  modalManager.open({
-    id: "selector",
-    component: SelectorModal,
-  }, { config, selections, subject });
+  modalManager.open(
+    {
+      id: "selector",
+      component: SelectorModal
+    },
+    { config, selections, subject }
+  );
 
   return subject;
 };

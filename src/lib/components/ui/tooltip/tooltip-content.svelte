@@ -1,34 +1,31 @@
 <script lang="ts">
-	import { Tooltip as TooltipPrimitive } from "bits-ui";
-	import { cn, flyAndScale } from "$lib/utils.js";
+  import { Tooltip as TooltipPrimitive } from "bits-ui";
+  import { cn, flyAndScale } from "$lib/utils.js";
 
-	type $$Props = TooltipPrimitive.ContentProps;
+  type $$Props = TooltipPrimitive.ContentProps;
 
-	interface Props { [key: string]: any }
+  interface Props {
+    [key: string]: any;
+  }
 
-	let {
-		class: className = undefined,
-		sideOffset = 4,
-		transition = flyAndScale,
-		transitionConfig = {
-		y: 8,
-		duration: 150,
-	},
-		children,
-		...rest
-	}: Props = $props();
-	
+  let {
+    class: className = undefined,
+    sideOffset = 4,
+    transition = flyAndScale,
+    transitionConfig = {
+      y: 8,
+      duration: 150
+    },
+    children,
+    ...rest
+  }: Props = $props();
 </script>
 
 <TooltipPrimitive.Content
-	{transition}
-	{transitionConfig}
-	{sideOffset}
-	class={cn(
-		"z-50 overflow-hidden rounded-md bg-primary px-3 py-1.5 text-xs text-primary-foreground",
-		className
-	)}
-	{...rest}
->
-	{@render children?.()}
+  {transition}
+  {transitionConfig}
+  {sideOffset}
+  class={cn("z-50 overflow-hidden rounded-md bg-primary px-3 py-1.5 text-xs text-primary-foreground", className)}
+  {...rest}>
+  {@render children?.()}
 </TooltipPrimitive.Content>

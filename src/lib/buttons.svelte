@@ -11,18 +11,10 @@
     disabled?: boolean;
     isLoading?: boolean;
     class?: string;
-    children?: import('svelte').Snippet;
+    children?: import("svelte").Snippet;
   }
 
-  let {
-    variant = "default",
-    label = "Save",
-    disabled = false,
-    isLoading = false,
-    class: className = "",
-    children
-  }: Props = $props();
-  
+  let { variant = "default", label = "Save", disabled = false, isLoading = false, class: className = "", children }: Props = $props();
 
   const dispatcher = createEventDispatcher();
 </script>

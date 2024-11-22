@@ -15,7 +15,10 @@
   </ScrollArea.Scrollbar>
 {/snippet}
 
-<ScrollArea.Root bind:ref {...rest} type="always">
+<ScrollArea.Root
+  bind:ref
+  {...rest}
+  type="always">
   <ScrollArea.Viewport class="h-full ">
     {@render children?.()}
   </ScrollArea.Viewport>

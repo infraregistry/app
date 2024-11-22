@@ -1,17 +1,20 @@
 <script lang="ts">
-	import type { HTMLTableAttributes } from "svelte/elements";
-	import { cn } from "$lib/utils.js";
+  import type { HTMLTableAttributes } from "svelte/elements";
+  import { cn } from "$lib/utils.js";
 
-	type $$Props = HTMLTableAttributes;
+  type $$Props = HTMLTableAttributes;
 
-	interface Props { [key: string]: any }
+  interface Props {
+    [key: string]: any;
+  }
 
-	let { class: className = undefined, children, ...rest }: Props = $props();
-	
+  let { class: className = undefined, children, ...rest }: Props = $props();
 </script>
 
 <div class="relative w-full overflow-auto">
-	<table class={cn("w-full caption-bottom text-sm", className)} {...rest}>
-		{@render children?.()}
-	</table>
+  <table
+    class={cn("w-full caption-bottom text-sm", className)}
+    {...rest}>
+    {@render children?.()}
+  </table>
 </div>

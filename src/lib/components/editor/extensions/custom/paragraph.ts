@@ -7,7 +7,7 @@ export const Paragraph = Node.create({
 
   addOptions() {
     return {
-      HTMLAttributes: {},
+      HTMLAttributes: {}
     };
   },
 
@@ -22,11 +22,7 @@ export const Paragraph = Node.create({
   },
 
   renderHTML({ HTMLAttributes }) {
-    return [
-      "p",
-      mergeAttributes(this.options.HTMLAttributes, HTMLAttributes),
-      0,
-    ];
+    return ["p", mergeAttributes(this.options.HTMLAttributes, HTMLAttributes), 0];
   },
 
   addCommands() {
@@ -35,15 +31,15 @@ export const Paragraph = Node.create({
         () =>
         ({ commands }) => {
           return commands.setNode(this.name);
-        },
+        }
     };
   },
 
   addKeyboardShortcuts() {
     return {
-      "Mod-Alt-0": () => this.editor.commands.setParagraph(),
+      "Mod-Alt-0": () => this.editor.commands.setParagraph()
     };
-  },
+  }
 });
 
 export default Paragraph;

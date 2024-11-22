@@ -18,7 +18,7 @@ const createHeader = (name: string, subtext: string, type: ComponentType) => {
             subtext,
             type
           }
-        })
+        });
       }
     };
   });

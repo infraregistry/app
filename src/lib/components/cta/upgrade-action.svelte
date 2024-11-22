@@ -14,6 +14,8 @@
     <Card.Description class="max-w-40 text-xs text-slate-400">Unlock all features and get unlimited access to your infraregistry.</Card.Description>
   </Card.Header>
   <Card.Content class="flex justify-end px-3">
-    <Button size="sm" class="w-full bg-sky-600 text-white">Free 30-day trial</Button>
+    <Button
+      size="sm"
+      class="w-full bg-sky-600 text-white">Free 30-day trial</Button>
   </Card.Content>
 </Card.Root>

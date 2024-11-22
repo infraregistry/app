@@ -16,7 +16,9 @@
 {/snippet}
 
 {#snippet body(columns: TableColumn[], data: any[])}
-  <Body {columns} {data} />
+  <Body
+    {columns}
+    {data} />
 {/snippet}
 
 <table class="w-full caption-bottom text-sm">

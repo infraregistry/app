@@ -16,4 +16,6 @@
   };
 </script>
 
-<Badge variant="outline" class={styles[type]}>{type}</Badge>
+<Badge
+  variant="outline"
+  class={styles[type]}>{type}</Badge>
