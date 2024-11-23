@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Editor, type Range } from "@tiptap/core";
-  import type { CommandItem } from "./extensions/suggestion";
+  import type { CommandItem } from "../../extensions/suggestion";
 
   type Props = { editor: Editor; range: Range; items: CommandItem[] };
 

@@ -3,7 +3,7 @@ import type { BlockType } from "./block-type";
 export class Block {
   id: string;
   type: BlockType;
-  content: string;
+  content: string = $state("");
   editable?: boolean;
 
   constructor(obj: Block) {

@@ -1,18 +1,31 @@
 <script lang="ts">
   import Icon from "@iconify/svelte";
-  import type { Block } from "./api";
+  import type { Block } from "./blocks/block.svelte";
+  import TiptapEditor from "./tiptap-editor/tiptap-editor.svelte";
 
   type Props = {
     block: Block;
+    showToolbar?: boolean;
   };
-  let { block }: Props = $props();
+
+  let { block, showToolbar = true }: Props = $props();
+
+  const onFullscreen = (opening: boolean) => {
+    console.log(opening);
+  };
 </script>
 
-<div class="flex gap-1 hover:bg-zinc-900">
+<div class="flex gap-1 rounded hover:bg-zinc-800/30">
   <div class="p-1.5">
-    <Icon icon="mi:reorder-alt" />
+    <Icon
+      icon="mi:reorder-alt"
+      class="text-slate-500 dark:text-slate-700" />
   </div>
   <div class="flex-1">
-    {block.content}
+    <TiptapEditor
+      class="max-h-[400px] min-h-[100px]"
+      {block}
+      {showToolbar}
+      {onFullscreen} />
   </div>
 </div>

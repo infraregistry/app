@@ -7,7 +7,7 @@
   interface Props {
     class?: string;
     size?: number;
-    name: keyof typeof iconStatics;
+    name: keyof typeof iconStatics | string;
     children?: Snippet;
   }
 
@@ -16,7 +16,13 @@
 
 <div class={twMerge("flex items-center gap-1.5", className)}>
   {@render children?.()}
-  <Icon
-    icon={iconStatics[name].value}
-    class={twMerge(iconStatics[name].classes, `h-${size} w-${size}`)} />
+  {#if typeof name === "string"}
+    <Icon
+      icon={name}
+      class={twMerge(`h-${size} w-${size}`, className)} />
+  {:else}
+    <Icon
+      icon={iconStatics[name as keyof typeof iconStatics].value || name}
+      class={twMerge(iconStatics[name as keyof typeof iconStatics].classes, `h-${size} w-${size}`, className)} />
+  {/if}
 </div>

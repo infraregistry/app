@@ -1,7 +1,7 @@
 import type { Editor, Range } from "@tiptap/core";
 import { mount, unmount } from "svelte";
 import tippy, { type GetReferenceClientRect } from "tippy.js";
-import Slash from "../slash.svelte";
+import Slash from "../tiptap-editor/custom/slash.svelte";
 
 export interface SlashProps {
   editor: Editor;

@@ -1,7 +1,13 @@
 <script lang="ts">
-  import Editor from "../editor/editor-wrapper.svelte";
+  import Editor from "../editor/blocks.svelte";
   import type { TreeItem } from "../tree/types";
   import Navigator from "./navigator.svelte";
+
+  type Props = {
+    context: string;
+  };
+
+  let { context }: Props = $props();
 
   let data: TreeItem[] = [
     {
