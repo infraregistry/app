@@ -38,8 +38,13 @@
   {#each $blocks as b, i (b.id)}
     <Separator click={() => createBlock(i)} />
     <div
-      use:draggable={{ container: "list", dragData: b }}
-      onclick={() => (block = b)}>
+      class="w-full"
+      role="textbox"
+      tabindex="-1"
+      onclick={() => (block = b)}
+      onkeypress={(e) => {
+        if (e.key === "Enter") block = b;
+      }}>
       <BlockWrapper
         block={b}
         showToolbar={b === block} />
