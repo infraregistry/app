@@ -12,7 +12,8 @@ RUN apk add git
 COPY package.json .
 COPY package-lock.json .
 
-RUN echo "//registry.npmjs.org/:_authToken=${GITHUB_TOKEN}" > ~/.npmrc
+RUN echo "@infraregistry:registry=https://npm.pkg.github.com" > /root/.npmrc
+RUN echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" >> /root/.npmrc
 
 RUN npm install --force
 
