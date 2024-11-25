@@ -6,6 +6,7 @@
   import { DropinTable } from "@mateothegreat/svelte5-table";
   import type { Subject } from "rxjs";
   import { onMount } from "svelte";
+  import { writable } from "svelte/store";
   import Badge from "../ui/badge/badge.svelte";
   import { Button } from "../ui/button";
   import { closeSelector, type SelectorConfig } from "./selector.svelte";
@@ -19,7 +20,7 @@
 
   let inputRef: HTMLInputElement;
   let { config, subject }: Props = $props();
-  let selections = $state([]);
+  let selections = writable<T[]>([]);
 
   onMount(() => {
     inputRef.focus();
