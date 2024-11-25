@@ -19,7 +19,7 @@
 <div class="flex gap-1 rounded hover:bg-zinc-800/30">
   <div
     class="p-1.5"
-    use:draggable={{ container: "list" }}>
+    use:draggable={{ container: "list", dragData: block }}>
     <Icon
       icon="mi:reorder-alt"
       class="text-slate-500 dark:text-slate-700" />
