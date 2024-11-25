@@ -17,11 +17,21 @@ export const getBlocks = (documentId: string): Writable<Block[]> => {
       type: BlockType.Paragraph,
       content: "b"
     }),
-    // new Block({
-    //   id: new Date().getTime().toString(),
-    //   type: BlockType.Paragraph,
-    //   content: "c"
-    // }),
+    new Block({
+      id: new Date().getTime().toString(),
+      type: BlockType.Paragraph,
+      content: "c"
+    }),
+    new Block({
+      id: new Date().getTime().toString(),
+      type: BlockType.Paragraph,
+      content: "d"
+    }),
+    new Block({
+      id: new Date().getTime().toString(),
+      type: BlockType.Paragraph,
+      content: "e"
+    })
   ]);
 
   return blocks;
@@ -31,7 +41,7 @@ export const createBlock = (index: number): Block => {
   const block = new Block({
     id: new Date().getTime().toString(),
     type: BlockType.Paragraph,
-    content: "",
+    content: ""
   });
 
   blocks.update((blocks) => [...blocks.slice(0, index), block, ...blocks.slice(index)]);
@@ -43,6 +53,6 @@ export const createBlock = (index: number): Block => {
 export const openFullscreen = (opening: boolean) => {
   modalManager.open({
     id: "block",
-    component: Block,
-  })
+    component: Block
+  });
 };
