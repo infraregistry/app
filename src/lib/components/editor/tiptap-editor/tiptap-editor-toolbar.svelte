@@ -21,12 +21,12 @@
   let fullscreen = $state(false);
 
   const toggleFullscreen = () => {
-    console.log("toggleFullscreen", fullscreen);
     fullscreen = !fullscreen;
     onFullscreen?.(fullscreen);
   };
 </script>
 
+{editor}
 <div class="flex items-center overflow-auto border-b p-1 *:mx-1">
   <Default
     {editor}

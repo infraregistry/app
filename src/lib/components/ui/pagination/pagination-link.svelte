@@ -1,32 +1,41 @@
 <script lang="ts">
-  import { type Props, buttonVariants } from "$lib/components/ui/button/index.js";
-  import { cn } from "$lib/utils.js";
-  import { Pagination as PaginationPrimitive } from "bits-ui";
+	import { Pagination as PaginationPrimitive, type WithoutChild } from "bits-ui";
+	import {
+		type Props as ButtonProps,
+		buttonVariants,
+	} from "$lib/components/ui/button/index.js";
+	import { cn } from "$lib/utils.js";
 
-  type $$Props = PaginationPrimitive.PageProps &
-    Props & {
-      isActive: boolean;
-    };
+	type Props = WithoutChild<PaginationPrimitive.PageProps> &
+		ButtonProps & {
+			isActive?: boolean;
+		};
 
-  type $$Events = PaginationPrimitive.PageEvents;
-
-  interface Props_1 {
-    [key: string]: any;
-  }
-
-  let { class: className = undefined, page = $bindable(), size = "icon", isActive = false, children, ...rest }: Props_1 = $props();
+	let {
+		ref = $bindable(null),
+		class: className,
+		size = "icon",
+		isActive = false,
+		page,
+		children,
+		...restProps
+	}: Props = $props();
 </script>
 
+{#snippet Fallback()}
+	{page.value}
+{/snippet}
+
 <PaginationPrimitive.Page
-  bind:page
-  class={cn(
-    buttonVariants({
-      variant: isActive ? "outline" : "ghost",
-      size
-    }),
-    className
-  )}
-  {...rest}
-  on:click>
-  {#if children}{@render children()}{:else}{page.value}{/if}
-</PaginationPrimitive.Page>
+	{page}
+	bind:ref
+	class={cn(
+		buttonVariants({
+			variant: isActive ? "outline" : "ghost",
+			size,
+		}),
+		className
+	)}
+	{...restProps}
+	children={children || Fallback}
+/>

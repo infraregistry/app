@@ -12,7 +12,7 @@
 </script>
 
 <div
-  class={cn("rounded-xl border bg-card text-card-foreground shadow", className)}
+  class={cn("rounded-xl border-2 border-slate-800 bg-card text-card-foreground shadow", className)}
   {...rest}>
   {@render children?.()}
 </div>

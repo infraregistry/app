@@ -1,17 +1,14 @@
 <script lang="ts">
-  import type { HTMLAttributes } from "svelte/elements";
-  import { cn } from "$lib/utils.js";
+	import type { HTMLLiAttributes } from "svelte/elements";
+	import type { WithElementRef } from "bits-ui";
 
-  type $$Props = HTMLAttributes<HTMLLIElement>;
-  interface Props {
-    [key: string]: any;
-  }
-
-  let { class: className = undefined, children, ...rest }: Props = $props();
+	let {
+		ref = $bindable(null),
+		children,
+		...restProps
+	}: WithElementRef<HTMLLiAttributes> = $props();
 </script>
 
-<li
-  class={cn("", className)}
-  {...rest}>
-  {@render children?.()}
+<li bind:this={ref} {...restProps}>
+	{@render children?.()}
 </li>

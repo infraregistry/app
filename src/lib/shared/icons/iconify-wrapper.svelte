@@ -18,8 +18,8 @@
   {@render children?.()}
   {#if typeof name === "string"}
     <Icon
-      icon={name}
-      class={twMerge(`h-${size} w-${size}`, className)} />
+      icon={iconStatics[name as keyof typeof iconStatics].value || name}
+      class={twMerge(`h-${size} w-${size}`, iconStatics[name as keyof typeof iconStatics].classes)} />
   {:else}
     <Icon
       icon={iconStatics[name as keyof typeof iconStatics].value || name}

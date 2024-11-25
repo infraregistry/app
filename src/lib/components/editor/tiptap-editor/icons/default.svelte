@@ -25,14 +25,16 @@
           console.log("clicked");
           onclick();
         }}
-        class={cn("min-w-[30px] px-1", editor.isActive(icon) && "bg-muted")}>
+        class={cn("min-w-[30px] bg-red-500 px-1", editor.isActive(icon) && "bg-muted")}>
         <IconifyWrapper
           name={icon}
           size={4} />
       </Button>
     </Tooltip.Trigger>
-    <Tooltip.Content>
-      {tooltip}
-    </Tooltip.Content>
+    {#if tooltip}
+      <Tooltip.Content>
+        {tooltip}
+      </Tooltip.Content>
+    {/if}
   </Tooltip.Root>
 </Tooltip.Provider>

@@ -1,32 +1,24 @@
 <script lang="ts">
-  import { Pagination as PaginationPrimitive } from "bits-ui";
-  import { cn } from "$lib/utils.js";
+	import { Pagination as PaginationPrimitive } from "bits-ui";
+	import { cn } from "$lib/utils.js";
 
-  type $$Props = PaginationPrimitive.Props;
-  type $$Events = PaginationPrimitive.Events;
-
-  interface Props {
-    [key: string]: any;
-  }
-
-  let { class: className = undefined, count = 0, perPage = 10, page = $bindable(1), siblingCount = 1, children, ...rest }: Props = $props();
-
-  let currentPage = $derived(page);
+	let {
+		ref = $bindable(null),
+		class: className,
+		count = 0,
+		perPage = 10,
+		page = $bindable(1),
+		siblingCount = 1,
+		...restProps
+	}: PaginationPrimitive.RootProps = $props();
 </script>
 
 <PaginationPrimitive.Root
-  {count}
-  {perPage}
-  {siblingCount}
-  bind:page
-  let:builder
-  let:pages
-  let:range
-  asChild
-  {...rest}>
-  <nav
-    {...builder}
-    class={cn("mx-auto flex w-full flex-col items-center", className)}>
-    {@render children?.({ pages, range, currentPage })}
-  </nav>
-</PaginationPrimitive.Root>
+	bind:ref
+	class={cn("mx-auto flex w-full flex-col items-center", className)}
+	{count}
+	{perPage}
+	{siblingCount}
+	bind:page
+	{...restProps}
+/>

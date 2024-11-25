@@ -30,7 +30,7 @@
         href="/">
         <IconifyWrapper
           name="logo"
-          size={10} />
+          size={8} />
       </a>
     </div>
     <div class="h-px w-full bg-zinc-800"></div>
@@ -45,7 +45,7 @@
               href={l.href}>
               <IconifyWrapper
                 name={l.icon}
-                size={7} />
+                size={6} />
             </a>
           </Tooltip.Trigger>
           <Tooltip.Content
@@ -76,7 +76,7 @@
             <DropdownMenu.Trigger>
               <IconifyWrapper
                 name="help"
-                size={7} />
+                size={6} />
             </DropdownMenu.Trigger>
             <DropdownMenu.Content>
               <DropdownMenu.Group>
@@ -116,7 +116,7 @@
             href="/settings">
             <IconifyWrapper
               name="settings"
-              size={7} />
+              size={6} />
           </a>
         </Tooltip.Trigger>
         <Tooltip.Content
@@ -146,7 +146,7 @@
             <DropdownMenu.Trigger>
               <IconifyWrapper
                 name="user"
-                size={8} />
+                size={7} />
             </DropdownMenu.Trigger>
             <DropdownMenu.Content>
               <DropdownMenu.Group>
