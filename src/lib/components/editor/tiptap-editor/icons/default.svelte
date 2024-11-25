@@ -1,8 +1,8 @@
 <script lang="ts">
   import { Button } from "$lib/components/ui/button/index.js";
   import * as Tooltip from "$lib/components/ui/tooltip/index.js";
-  import IconifyWrapper from "$lib/shared/icons/iconify-wrapper.svelte";
   import { cn } from "$lib/utils.js";
+  import Icon from "@iconify/svelte";
   import { type Editor } from "@tiptap/core";
 
   type Props = {
@@ -21,14 +21,14 @@
       <Button
         variant="ghost"
         size="sm"
-        on:click={() => {
+        onclick={() => {
           console.log("clicked");
           onclick();
         }}
-        class={cn("min-w-[30px] bg-red-500 px-1", editor.isActive(icon) && "bg-muted")}>
-        <IconifyWrapper
-          name={icon}
-          size={4} />
+        class={cn("min-w-[30px] px-1", editor.isActive(icon) && "bg-muted")}>
+        <Icon
+          {icon}
+          class="h-4 w-4" />
       </Button>
     </Tooltip.Trigger>
     {#if tooltip}

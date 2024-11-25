@@ -26,7 +26,6 @@
   };
 </script>
 
-{editor}
 <div class="flex items-center overflow-auto border-b p-1 *:mx-1">
   <Default
     {editor}
@@ -48,7 +47,6 @@
     class="h-7"
     orientation="vertical" />
   <TextAlign {editor} />
-  <Link {editor} />
   <Default
     {editor}
     icon="lucide:code"
