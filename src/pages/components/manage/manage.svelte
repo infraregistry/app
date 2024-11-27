@@ -4,7 +4,7 @@
   import { Button } from "$lib/components/ui/button/index.js";
   import * as Tabs from "$lib/components/ui/tabs";
   import Icon from "@iconify/svelte";
-  import { goto, Router } from "@mateothegreat/svelte5-router";
+  import { goto, route, Router } from "@mateothegreat/svelte5-router";
   import { Pane, PaneGroup, PaneResizer } from "paneforge";
   import { deleteComponent, loadComponent } from "./api.svelte";
   import Feed from "./feed.svelte";
@@ -101,9 +101,11 @@
           console.log("selected");
         }}>
         <Tabs.List class="">
-          <Tabs.Trigger
-            onclick={() => goto(`/components/${component.id}/overview`)}
-            value="overview">Overview</Tabs.Trigger>
+          <Tabs.Trigger value="overview">
+            <a
+              use:route
+              href={`/components/${component.id}/overview`}>Overview</a>
+          </Tabs.Trigger>
           <Tabs.Trigger
             onclick={() => goto(`/components/${component.id}/documentation`)}
             value="documentation">Documentation</Tabs.Trigger>
@@ -134,7 +136,7 @@
       </div>
     </PaneResizer>
     <Pane
-      defaultSize={50}
+      defaultSize={15}
       minSize={2}
       collapsible={true}
       collapsedSize={2}
