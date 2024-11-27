@@ -1,5 +1,6 @@
 import { Observable } from "rxjs";
 import { APIClient } from "./client";
+import type { APIOperation } from "./common";
 
 export interface TagCreate {
   name: string;
@@ -12,7 +13,7 @@ export interface Tag {
 }
 
 export class TagsClient extends APIClient {
-  create(tag: TagCreate): Observable<Tag> {
+  create(tag: TagCreate): Observable<APIOperation<Tag>> {
     return this._post<Tag>("tags", tag);
   }
 }
