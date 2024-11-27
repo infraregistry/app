@@ -10,7 +10,9 @@
   };
 
   let { params }: Props = $props();
-  console.log(params);
+
+  $inspect(params);
+
   const component = getComponent();
   interface ComponentSettings {
     name: string;

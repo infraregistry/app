@@ -17,9 +17,17 @@
   let { params }: Props = $props();
 
   const component = loadComponent(params[0]);
-  const tab = $state<string>(params[1] || "overview");
+  const tab = $derived(params[1] || "overview");
 
   const onSyncClick = () => {};
+
+  const navigate = (path: string) => {
+    /*
+    const route = `/components/${component.id}/${path}`;
+    if (window.location.pathname === route) return;
+    goto(route);
+    */
+  };
 
   const onDeleteClick = () => {
     openConfirm({
@@ -38,7 +46,7 @@
 <div class="flex items-end gap-4">
   <div class="flex flex-1 items-center gap-3 px-3 py-2">
     <Button
-      on:click={() => goto("/components")}
+      onclick={() => goto("/components")}
       variant="outline"
       size="icon"
       class="">
@@ -78,7 +86,7 @@
       </DropdownMenu.Root> -->
     </div>
     <Button
-      on:click={() => goto("/components")}
+      onclick={() => goto("/components")}
       variant="outline"
       size="icon"
       class="">
@@ -101,22 +109,20 @@
           console.log("selected");
         }}>
         <Tabs.List class="">
-          <Tabs.Trigger value="overview">
-            <a
-              use:route
-              href={`/components/${component.id}/overview`}>Overview</a>
-          </Tabs.Trigger>
           <Tabs.Trigger
-            onclick={() => goto(`/components/${component.id}/documentation`)}
+            onclick={navigate("overview")}
+            value="overview">Overview</Tabs.Trigger>
+          <Tabs.Trigger
+            onclick={navigate("documentation")}
             value="documentation">Documentation</Tabs.Trigger>
           <Tabs.Trigger
-            onclick={() => goto(`/components/${component.id}/dependencies`)}
+            onclick={navigate("dependencies")}
             value="dependencies">Dependencies</Tabs.Trigger>
           <Tabs.Trigger
-            onclick={() => goto(`/components/${component.id}/monitoring`)}
+            onclick={navigate("monitoring")}
             value="monitoring">Monitoring</Tabs.Trigger>
           <Tabs.Trigger
-            onclick={() => goto(`/components/${component.id}/settings`)}
+            onclick={navigate("settings")}
             value="settings">Settings</Tabs.Trigger>
         </Tabs.List>
       </Tabs.Root>

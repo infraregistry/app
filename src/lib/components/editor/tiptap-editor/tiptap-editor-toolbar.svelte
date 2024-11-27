@@ -89,7 +89,7 @@
     {editor}
     icon="gridicons:fullscreen"
     onclick={() => {
-      console.log("fullscreen");
+      $inspect("fullscreen");
       toggleFullscreen();
     }} />
 </div>
