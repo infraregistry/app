@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { draggable } from "@thisux/sveltednd";
   import Icon from "@iconify/svelte";
   import type { Block } from "./blocks/block.svelte";
   import TiptapEditor from "./tiptap-editor/tiptap-editor.svelte";
@@ -16,7 +17,9 @@
 </script>
 
 <div class="flex gap-1 rounded hover:bg-zinc-800/30">
-  <div class="p-1.5">
+  <div
+    class="p-1.5"
+    use:draggable={{ container: "list", dragData: block }}>
     <Icon
       icon="mi:reorder-alt"
       class="text-slate-500 dark:text-slate-700" />

@@ -26,7 +26,7 @@
   };
 </script>
 
-<div class="flex items-center overflow-auto border-b p-1 *:mx-1">
+<div class="flex flex-wrap items-center gap-1 overflow-auto border-b p-1">
   <Default
     {editor}
     icon="lucide:bold"
