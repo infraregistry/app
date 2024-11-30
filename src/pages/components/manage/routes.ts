@@ -1,7 +1,4 @@
 import type { Route } from "@mateothegreat/svelte5-router";
-import Dependencies from "./dependencies/dependencies.svelte";
-import Documentation from "./documentation/documentation.svelte";
-import Monitoring from "./monioring/monitoring.svelte";
 import Overview from "./overview/overview.svelte";
 import Settings from "./settings/settings.svelte";
 
@@ -30,15 +27,15 @@ export const routes: Route[] = [
   },
   {
     path: "documentation",
-    component: Documentation
+    component: async () => import("./documentation/documentation.svelte")
   },
   {
     path: "dependencies",
-    component: Dependencies
+    component: async () => import("./dependencies/dependencies.svelte")
   },
   {
     path: "monitoring",
-    component: Monitoring
+    component: async () => import("./monitoring/monitoring.svelte")
   },
   {
     path: "settings",
