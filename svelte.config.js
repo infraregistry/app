@@ -8,5 +8,8 @@ export default {
     // disable a11y warnings
     if (warning.code.startsWith('a11y-')) return;
     handler(warning);
-  }
+  },
+  // vitePlugin: {
+  //   prebundleSvelteLibraries: false
+  // }
 }

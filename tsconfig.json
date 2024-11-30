@@ -1,6 +1,7 @@
 {
   "extends": "@tsconfig/svelte/tsconfig.json",
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "ESNext",
     "moduleResolution": "Bundler",
     "useDefineForClassFields": true,
@@ -38,7 +39,10 @@
       "$pages/*": [
         "./src/pages/*"
       ],
-    }
+    },
+    "types": [
+      "svelte",
+    ]
   },
   "include": [
     "src/**/*.ts",
