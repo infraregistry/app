@@ -85,8 +85,6 @@
     </Button>
   </div>
 </div>
-{$inspect(component)}
-
 <div class="px-3">
   <PaneGroup
     autoSaveId={`${component.id}-pane-group`}
