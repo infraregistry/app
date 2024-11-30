@@ -7,7 +7,7 @@ import Manage from "./manage/manage.svelte";
 //   "/components/:id/:tab?": Manage,
 //   "/components/:id/*": Manage,
 //   "/components": Dashboard
-// }
+// }    path: "^/components/(?<id>[a-z0-9]{25})/(?<tab>.*)?$",
 
 export const routes: Route[] = [
   {
@@ -15,11 +15,11 @@ export const routes: Route[] = [
     component: Catalog
   },
   {
-    path: "/components/(.*?)$",
+    path: "^/components/(?<id>[a-z0-9]{25})(?:/(?<tab>.*))?$",
     component: Manage
   },
   {
-    path: "",
+    path: "/components/?",
     component: Dashboard
-  }
+  },
 ];

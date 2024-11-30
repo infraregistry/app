@@ -16,6 +16,13 @@ import Settings from "./settings/settings.svelte";
 
 // }
 
+export type RouteProps = {
+  params: {
+    id: string;
+    tab: string;
+  };
+};
+
 export const routes: Route[] = [
   {
     path: "overview",

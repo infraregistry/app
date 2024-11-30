@@ -7,8 +7,8 @@ let component = $state<Component>();
 export const loadComponent = (id: string): Component => {
   component = {
     id,
-    name: "Button",
-    description: "A button component",
+    name: "My Component",
+    description: "My component description",
     type: ComponentType.VIRTUAL_MACHINE
   };
 

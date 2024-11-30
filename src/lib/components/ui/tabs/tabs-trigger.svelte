@@ -1,26 +1,15 @@
 <script lang="ts">
-  import { Tabs as TabsPrimitive } from "bits-ui";
   import { cn } from "$lib/utils.js";
+  import { Tabs as TabsPrimitive } from "bits-ui";
 
-  type $$Props = TabsPrimitive.TriggerProps;
-  type $$Events = TabsPrimitive.TriggerEvents;
-
-  interface Props {
-    [key: string]: any;
-  }
-
-  let { class: className = undefined, value, children, ...rest }: Props = $props();
+  let { ref = $bindable(null), class: className, value, ...restProps }: TabsPrimitive.TriggerProps = $props();
 </script>
 
 <TabsPrimitive.Trigger
+  bind:ref
   class={cn(
-    "inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow",
+    "duration-400 inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all hover:mx-1 hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow data-[state=active]:ring-2 data-[state=active]:ring-indigo-800",
     className
   )}
   {value}
-  {...rest}
-  on:click
-  on:keydown
-  on:focus>
-  {@render children?.()}
-</TabsPrimitive.Trigger>
+  {...restProps} />

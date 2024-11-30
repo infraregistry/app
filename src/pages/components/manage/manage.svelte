@@ -4,21 +4,18 @@
   import { Button } from "$lib/components/ui/button/index.js";
   import * as Tabs from "$lib/components/ui/tabs";
   import Icon from "@iconify/svelte";
-  import { goto, route, Router } from "@mateothegreat/svelte5-router";
+  import { goto, Router } from "@mateothegreat/svelte5-router";
   import { Pane, PaneGroup, PaneResizer } from "paneforge";
   import { deleteComponent, loadComponent } from "./api.svelte";
   import Feed from "./feed.svelte";
-  import { routes } from "./routes";
+  import { routes, type RouteProps } from "./routes";
 
-  type Props = {
-    params: string[];
-  };
+  let { params }: RouteProps = $props();
 
-  let { params }: Props = $props();
+  const component = loadComponent(params.id);
+  const tab = $state<string>(params.tab || "overview");
 
-  const component = loadComponent(params[0]);
-  const tab = $state<string>(params[1] || "overview");
-
+  console.log(component);
   const onSyncClick = () => {};
 
   const onDeleteClick = () => {
@@ -38,7 +35,7 @@
 <div class="flex items-end gap-4">
   <div class="flex flex-1 items-center gap-3 px-3 py-2">
     <Button
-      on:click={() => goto("/components")}
+      onclick={() => goto("/components")}
       variant="outline"
       size="icon"
       class="">
@@ -78,7 +75,7 @@
       </DropdownMenu.Root> -->
     </div>
     <Button
-      on:click={() => goto("/components")}
+      onclick={() => goto("/components")}
       variant="outline"
       size="icon"
       class="">
@@ -88,6 +85,8 @@
     </Button>
   </div>
 </div>
+{$inspect(component)}
+
 <div class="px-3">
   <PaneGroup
     autoSaveId={`${component.id}-pane-group`}
@@ -95,17 +94,11 @@
     <Pane
       defaultSize={50}
       class=" flex flex-col gap-3 px-4 pb-2">
-      <Tabs.Root
-        value={tab}
-        on:selected={() => {
-          console.log("selected");
-        }}>
+      <Tabs.Root value={tab}>
         <Tabs.List class="">
-          <Tabs.Trigger value="overview">
-            <a
-              use:route
-              href={`/components/${component.id}/overview`}>Overview</a>
-          </Tabs.Trigger>
+          <Tabs.Trigger
+            onclick={() => goto(`/components/${component.id}/overview`)}
+            value="overview">Overview</Tabs.Trigger>
           <Tabs.Trigger
             onclick={() => goto(`/components/${component.id}/documentation`)}
             value="documentation">Documentation</Tabs.Trigger>

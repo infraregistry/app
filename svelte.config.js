@@ -9,7 +9,4 @@ export default {
     if (warning.code.startsWith('a11y-')) return;
     handler(warning);
   },
-  // vitePlugin: {
-  //   prebundleSvelteLibraries: false
-  // }
 }

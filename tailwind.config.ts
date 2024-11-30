@@ -3,7 +3,7 @@ import { fontFamily } from "tailwindcss/defaultTheme";
 
 const config: Config = {
 	darkMode: ["class"],
-	content: ["./src/**/*.{html,js,svelte,ts}", "./node_modules/@mateothegreat/svelte5-table/**/*.svelte", "./node_modules/@mateothegreat/svelte5-forms/**/*.svelte"],
+	content: ["./src/**/*.{html,js,svelte,ts}"],
 	safelist: ["dark"],
 	theme: {
 		container: {
