@@ -1,36 +1,30 @@
 import type { Route } from "@mateothegreat/svelte5-router";
-import Catalog from "./catalog/catalog.svelte";
-import Cmdb from "./cmdb/cmdb.svelte";
-import Components from "./components/components.svelte";
 import Dashboard from "./dashboard/dashboard.svelte";
-import Integrations from "./integrations/integrations.svelte";
-import Settings from "./settings/settings.svelte";
-import Support from "./support/support.svelte";
 
 export const routes: Route[] = [
   {
     path: "/catalog",
-    component: Catalog
+    component: async () => import("./catalog/catalog.svelte")
   },
   {
     path: "/components",
-    component: Components
+    component: async () => import("./components/components.svelte")
   },
   {
     path: "/cmdb",
-    component: Cmdb
+    component: async () => import("./cmdb/cmdb.svelte")
   },
   {
     path: "/integrations",
-    component: Integrations
+    component: async () => import("./integrations/integrations.svelte")
   },
   {
     path: "/settings",
-    component: Settings
+    component: async () => import("./settings/settings.svelte")
   },
   {
     path: "/support",
-    component: Support
+    component: async () => import("./support/support.svelte")
   },
   {
     path: "",
