@@ -1,13 +1,13 @@
 <script lang="ts">
   import Switcher from "$lib/components/switcher/switcher.svelte";
   import * as Breadcrumb from "$lib/components/ui/breadcrumb/index.js";
-  import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
   import { Input } from "$lib/components/ui/input";
   import { Share2 } from "lucide-svelte";
   import Particles from "svelte-particles";
   import PlusCircled from "svelte-radix/PlusCircled.svelte";
   import { toast } from "svelte-sonner";
   import { loadSlim } from "tsparticles-slim";
+  import { crumbs } from "./state";
 
   const groups = [
     {
@@ -82,26 +82,31 @@
             <Breadcrumb.Link href="/">Home</Breadcrumb.Link>
           </Breadcrumb.Item>
           <Breadcrumb.Separator />
-          <Breadcrumb.Item>
+          <!-- <Breadcrumb.Item>
             <DropdownMenu.Root>
               <DropdownMenu.Trigger class="flex items-center gap-1">
                 <Breadcrumb.Ellipsis class="h-4 w-4" />
               </DropdownMenu.Trigger>
               <DropdownMenu.Content align="start">
-                <DropdownMenu.Item>Documentation</DropdownMenu.Item>
-                <DropdownMenu.Item>Themes</DropdownMenu.Item>
-                <DropdownMenu.Item>GitHub</DropdownMenu.Item>
+                <DropdownMenu.Item>
+                  <Breadcrumb.Link href="/components">components</Breadcrumb.Link>
+                </DropdownMenu.Item>
+                <DropdownMenu.Item>
+                  <Breadcrumb.Link href="/themes">themes</Breadcrumb.Link>
+                </DropdownMenu.Item>
               </DropdownMenu.Content>
             </DropdownMenu.Root>
-          </Breadcrumb.Item>
-          <Breadcrumb.Separator />
-          <Breadcrumb.Item>
-            <Breadcrumb.Link href="/docs/components">Components</Breadcrumb.Link>
-          </Breadcrumb.Item>
-          <Breadcrumb.Separator />
-          <Breadcrumb.Item>
-            <Breadcrumb.Page>Breadcrumb</Breadcrumb.Page>
-          </Breadcrumb.Item>
+          </Breadcrumb.Item> -->
+          {#each $crumbs as crumb, i}
+            {#if i < $crumbs.length - 1}
+              <Breadcrumb.Item>
+                <Breadcrumb.Link href={crumb.href}>{crumb.label}</Breadcrumb.Link>
+              </Breadcrumb.Item>
+              <Breadcrumb.Separator />
+            {:else}
+              <Breadcrumb.Page>{crumb.label}</Breadcrumb.Page>
+            {/if}
+          {/each}
         </Breadcrumb.List>
       </Breadcrumb.Root>
     </div>

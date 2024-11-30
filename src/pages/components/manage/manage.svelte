@@ -1,5 +1,6 @@
 <script lang="ts">
   import { openConfirm } from "$lib/components/confirm/confirm";
+  import { crumbs } from "$lib/components/nav/state";
   import { Badge } from "$lib/components/ui/badge/index.js";
   import { Button } from "$lib/components/ui/button/index.js";
   import * as Tabs from "$lib/components/ui/tabs";
@@ -13,9 +14,36 @@
   let { params }: RouteProps = $props();
 
   const component = loadComponent(params.id);
-  const tab = $state<string>(params.tab || "overview");
 
-  console.log(component);
+  type Tab = {
+    label: string;
+    href: string;
+  };
+
+  const navigate = (t: Tab) => {
+    goto(`/components/${component.id}/${t.href}`);
+  };
+
+  const tabs: Tab[] = [
+    { label: "Overview", href: "overview" },
+    { label: "Documentation", href: "documentation" },
+    { label: "Dependencies", href: "dependencies" },
+    { label: "Monitoring", href: "monitoring" },
+    { label: "Settings", href: "settings" }
+  ];
+
+  if (!params.tab) {
+    navigate(tabs[0]);
+  }
+
+  let tab = $state<Tab>(tabs.find((t) => t.href === params.tab) || tabs[0]);
+
+  crumbs.set([
+    { label: "Components", href: "/components" },
+    { label: component.name, href: `/components/${component.id}` },
+    { label: tab.label, href: tab.href }
+  ]);
+
   const onSyncClick = () => {};
 
   const onDeleteClick = () => {
@@ -92,23 +120,17 @@
     <Pane
       defaultSize={50}
       class=" flex flex-col gap-3 px-4 pb-2">
-      <Tabs.Root value={tab}>
-        <Tabs.List class="">
-          <Tabs.Trigger
-            onclick={() => goto(`/components/${component.id}/overview`)}
-            value="overview">Overview</Tabs.Trigger>
-          <Tabs.Trigger
-            onclick={() => goto(`/components/${component.id}/documentation`)}
-            value="documentation">Documentation</Tabs.Trigger>
-          <Tabs.Trigger
-            onclick={() => goto(`/components/${component.id}/dependencies`)}
-            value="dependencies">Dependencies</Tabs.Trigger>
-          <Tabs.Trigger
-            onclick={() => goto(`/components/${component.id}/monitoring`)}
-            value="monitoring">Monitoring</Tabs.Trigger>
-          <Tabs.Trigger
-            onclick={() => goto(`/components/${component.id}/settings`)}
-            value="settings">Settings</Tabs.Trigger>
+      <Tabs.Root value={tab.href}>
+        <Tabs.List>
+          {#each tabs as tab}
+            <Tabs.Trigger
+              onclick={() => {
+                navigate(tab);
+              }}
+              value={tab.href}>
+              {tab.label}
+            </Tabs.Trigger>
+          {/each}
         </Tabs.List>
       </Tabs.Root>
       <Router {routes} />
