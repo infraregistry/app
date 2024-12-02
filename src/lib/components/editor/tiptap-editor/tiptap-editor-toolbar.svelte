@@ -9,14 +9,17 @@
   import Table from "./icons/table.svelte";
   import TextAlign from "./icons/text-align.svelte";
   import Textcolor from "./icons/text-color.svelte";
+  import { removeBlock } from "../api.svelte";
+  import type { Block } from "../blocks/block.svelte";
 
   interface Props {
     editor: Editor;
+    block: Block;
     showFullscreen?: boolean;
     onFullscreen?: (opening: boolean) => void;
   }
 
-  let { editor, showFullscreen = true, onFullscreen }: Props = $props();
+  let { editor, block, showFullscreen = true, onFullscreen }: Props = $props();
 
   let fullscreen = $state(false);
 
@@ -91,5 +94,11 @@
     onclick={() => {
       $inspect("fullscreen");
       toggleFullscreen();
+    }} />
+  <Default
+    {editor}
+    icon="gridicons:trash"
+    onclick={() => {
+      removeBlock(block.id);
     }} />
 </div>

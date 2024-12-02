@@ -9,7 +9,7 @@
 </script>
 
 <div
-  class="flex h-5 items-center opacity-0 hover:opacity-100"
+  class="my-1 flex h-5 items-center opacity-0 hover:opacity-100"
   aria-label="block separator"
   role="separator">
   <button

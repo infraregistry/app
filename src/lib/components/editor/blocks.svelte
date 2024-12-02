@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { droppable, type DragDropState } from "@thisux/sveltednd";
+  import { draggable, droppable, type DragDropState } from "@thisux/sveltednd";
   import { createBlock, getBlocks } from "./api.svelte";
   import { default as BlockWrapper } from "./block.svelte";
   import { Block } from "./blocks/block.svelte";
@@ -9,11 +9,7 @@
 
   let block = $state<Block>();
 
-  blocks.subscribe((blocks) => {
-    console.log(blocks);
-  });
-
-  function handleDrop(state: DragDropState<Block>) {
+  function onDrop(state: DragDropState<Block>) {
     console.log(state);
     const { draggedItem, sourceContainer, targetContainer } = state;
     const sourceIndex = $blocks.findIndex((block) => block.id === draggedItem.id);
@@ -32,13 +28,13 @@
   }
 </script>
 
-<div
-  use:droppable={{ container: "list", callbacks: { onDrop: handleDrop } }}
-  class="h-full w-full overflow-y-auto">
+<div class="h-full w-full overflow-y-auto">
   {#each $blocks as b, i (b.id)}
     <Separator onclick={() => createBlock(i)} />
     <div
       class="w-full"
+      use:draggable={{ container: b.id, disabled: b === block, dragData: block }}
+      use:droppable={{ container: b.id, callbacks: { onDrop } }}
       role="textbox"
       tabindex="-1"
       onclick={() => (block = b)}

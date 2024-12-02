@@ -139,6 +139,7 @@
   {#if editor && showToolbar}
     <TiptapEditorToolbar
       {editor}
+      {block}
       {onFullscreen} />
   {/if}
   <div

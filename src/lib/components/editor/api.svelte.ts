@@ -35,6 +35,10 @@ export const createBlock = (index: number): Block => {
   return block;
 };
 
+export const removeBlock = (id: string): void => {
+  blocks.update((blocks) => blocks.filter((b) => b.id !== id));
+};
+
 export const openFullscreen = (opening: boolean) => {
   modalManager.open({
     id: "block",
