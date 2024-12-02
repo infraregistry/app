@@ -1,38 +1,36 @@
 <script lang="ts">
-  import { run } from "svelte/legacy";
-
-  import type { HTMLAnchorAttributes } from "svelte/elements";
   import { cn } from "$lib/utils.js";
+  import { route } from "@mateothegreat/svelte5-router";
+  import type { WithElementRef } from "bits-ui";
+  import type { Snippet } from "svelte";
+  import type { HTMLAnchorAttributes } from "svelte/elements";
 
-  type $$Props = HTMLAnchorAttributes & {
-    el?: HTMLAnchorElement;
-    asChild?: boolean;
-  };
+  let {
+    ref = $bindable(null),
+    class: className,
+    href,
+    child,
+    children,
+    ...restProps
+  }: WithElementRef<HTMLAnchorAttributes> & {
+    child?: Snippet<[{ props: HTMLAnchorAttributes }]>;
+    href?: string;
+  } = $props();
 
-  interface Props {
-    [key: string]: any;
-  }
-
-  let { href = undefined, el = $bindable(undefined), asChild = false, class: className = undefined, children, ...rest }: Props = $props();
-
-  let attrs: Record<string, unknown> = $state();
-
-  run(() => {
-    attrs = {
-      class: cn("transition-colors hover:text-foreground", className),
-      href,
-      ...rest
-    };
+  const attrs = $derived({
+    class: cn("hover:text-foreground transition-colors", className),
+    href,
+    ...restProps
   });
 </script>
 
-{#if asChild}
-  {@render children?.({ attrs })}
+{#if child}
+  {@render child({ props: attrs })}
 {:else}
   <a
-    bind:this={el}
-    {...attrs}
-    {href}>
-    {@render children?.({ attrs })}
+    use:route
+    bind:this={ref}
+    {...attrs}>
+    {@render children?.()}
   </a>
 {/if}

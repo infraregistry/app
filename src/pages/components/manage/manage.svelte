@@ -1,23 +1,48 @@
 <script lang="ts">
   import { openConfirm } from "$lib/components/confirm/confirm";
+  import { crumbs } from "$lib/components/nav/state";
   import { Badge } from "$lib/components/ui/badge/index.js";
   import { Button } from "$lib/components/ui/button/index.js";
   import * as Tabs from "$lib/components/ui/tabs";
   import Icon from "@iconify/svelte";
-  import { goto, route, Router } from "@mateothegreat/svelte5-router";
+  import { goto, Router } from "@mateothegreat/svelte5-router";
   import { Pane, PaneGroup, PaneResizer } from "paneforge";
   import { deleteComponent, loadComponent } from "./api.svelte";
   import Feed from "./feed.svelte";
-  import { routes } from "./routes";
+  import { routes, type RouteProps } from "./routes";
 
-  type Props = {
-    params: string[];
+  let { params }: RouteProps = $props();
+
+  const component = loadComponent(params.id);
+
+  type Tab = {
+    label: string;
+    href: string;
   };
 
-  let { params }: Props = $props();
+  const navigate = (t: Tab) => {
+    goto(`/components/${component.id}/${t.href}`);
+  };
 
-  const component = loadComponent(params[0]);
-  const tab = $derived(params[1] || "overview");
+  const tabs: Tab[] = [
+    { label: "Overview", href: "overview" },
+    { label: "Documentation", href: "documentation" },
+    { label: "Dependencies", href: "dependencies" },
+    { label: "Monitoring", href: "monitoring" },
+    { label: "Settings", href: "settings" }
+  ];
+
+  if (!params.tab) {
+    navigate(tabs[0]);
+  }
+
+  let tab = $state<Tab>(tabs.find((t) => t.href === params.tab) || tabs[0]);
+
+  crumbs.set([
+    { label: "Components", href: "/components" },
+    { label: component.name, href: `/components/${component.id}` },
+    { label: tab.label, href: tab.href }
+  ]);
 
   const onSyncClick = () => {};
 
@@ -103,27 +128,17 @@
     <Pane
       defaultSize={50}
       class=" flex flex-col gap-3 px-4 pb-2">
-      <Tabs.Root
-        value={tab}
-        on:selected={() => {
-          console.log("selected");
-        }}>
-        <Tabs.List class="">
-          <Tabs.Trigger
-            onclick={navigate("overview")}
-            value="overview">Overview</Tabs.Trigger>
-          <Tabs.Trigger
-            onclick={navigate("documentation")}
-            value="documentation">Documentation</Tabs.Trigger>
-          <Tabs.Trigger
-            onclick={navigate("dependencies")}
-            value="dependencies">Dependencies</Tabs.Trigger>
-          <Tabs.Trigger
-            onclick={navigate("monitoring")}
-            value="monitoring">Monitoring</Tabs.Trigger>
-          <Tabs.Trigger
-            onclick={navigate("settings")}
-            value="settings">Settings</Tabs.Trigger>
+      <Tabs.Root value={tab.href}>
+        <Tabs.List>
+          {#each tabs as tab}
+            <Tabs.Trigger
+              onclick={() => {
+                navigate(tab);
+              }}
+              value={tab.href}>
+              {tab.label}
+            </Tabs.Trigger>
+          {/each}
         </Tabs.List>
       </Tabs.Root>
       <Router {routes} />

@@ -1,7 +1,7 @@
 import type { Route } from "@mateothegreat/svelte5-router";
 import Dependencies from "./dependencies/dependencies.svelte";
 import Documentation from "./documentation/documentation.svelte";
-import Monitoring from "./monioring/monitoring.svelte";
+import Monitoring from "./monitoring/monitoring.svelte";
 import Overview from "./overview/overview.svelte";
 import Settings from "./settings/settings.svelte";
 
@@ -15,6 +15,13 @@ import Settings from "./settings/settings.svelte";
 //   "/components/:id": Documentation
 
 // }
+
+export type RouteProps = {
+  params: {
+    id: string;
+    tab: string;
+  };
+};
 
 export const routes: Route[] = [
   {
