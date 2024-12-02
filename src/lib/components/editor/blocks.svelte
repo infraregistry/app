@@ -50,4 +50,5 @@
         showToolbar={b === block} />
     </div>
   {/each}
+  <Separator onclick={() => createBlock($blocks.length)} />
 </div>
