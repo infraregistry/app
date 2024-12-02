@@ -16,21 +16,6 @@ export const getBlocks = (documentId: string): Writable<Block[]> => {
       id: new Date().getTime().toString(),
       type: BlockType.Paragraph,
       content: "b"
-    }),
-    new Block({
-      id: new Date().getTime().toString(),
-      type: BlockType.Paragraph,
-      content: "c"
-    }),
-    new Block({
-      id: new Date().getTime().toString(),
-      type: BlockType.Paragraph,
-      content: "d"
-    }),
-    new Block({
-      id: new Date().getTime().toString(),
-      type: BlockType.Paragraph,
-      content: "e"
     })
   ]);
 
@@ -44,7 +29,7 @@ export const createBlock = (index: number): Block => {
     content: ""
   });
 
-  blocks.update((blocks) => [...blocks.slice(0, index), block, ...blocks.slice(index)]);
+  blocks.update((blocks) => blocks.splice(index, 0, block));
 
   console.log(blocks);
   return block;

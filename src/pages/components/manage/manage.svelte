@@ -46,14 +46,6 @@
 
   const onSyncClick = () => {};
 
-  const navigate = (path: string) => {
-    /*
-    const route = `/components/${component.id}/${path}`;
-    if (window.location.pathname === route) return;
-    goto(route);
-    */
-  };
-
   const onDeleteClick = () => {
     openConfirm({
       title: "Delete Component",

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { draggable, droppable, type DragDropState } from "@thisux/sveltednd";
+  import { droppable, type DragDropState } from "@thisux/sveltednd";
   import { createBlock, getBlocks } from "./api.svelte";
   import { default as BlockWrapper } from "./block.svelte";
   import { Block } from "./blocks/block.svelte";
@@ -36,7 +36,7 @@
   use:droppable={{ container: "list", callbacks: { onDrop: handleDrop } }}
   class="h-full w-full overflow-y-auto">
   {#each $blocks as b, i (b.id)}
-    <Separator click={() => createBlock(i)} />
+    <Separator onclick={() => createBlock(i)} />
     <div
       class="w-full"
       role="textbox"
