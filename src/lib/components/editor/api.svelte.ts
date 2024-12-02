@@ -1,5 +1,5 @@
 import { modalManager } from "$lib/shared/modals";
-import { writable, type Writable } from "svelte/store";
+import { get, writable, type Writable } from "svelte/store";
 import { BlockType } from "./blocks/block-type";
 import { Block } from "./blocks/block.svelte";
 
@@ -29,7 +29,7 @@ export const createBlock = (index: number): Block => {
     content: ""
   });
 
-  blocks.update((blocks) => blocks.splice(index, 0, block));
+  blocks.update((blocks) => blocks.toSpliced(index, 0, block));
 
   console.log(blocks);
   return block;
