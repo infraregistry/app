@@ -34,22 +34,22 @@ export const componentTableColumns: TableColumn[] = [
   {
     field: "id",
     header: "ID",
-    classes: "[&:is(th)]:text-slate-600"
+    class: "[&:is(th)]:text-slate-600"
   },
   {
     field: "name",
     header: "Name",
-    classes: "[&:is(th)]:text-slate-600"
+    class: "[&:is(th)]:text-slate-600"
   },
   {
     field: "description",
     header: "Description",
-    classes: "[&:is(th)]:text-slate-600"
+    class: "[&:is(th)]:text-slate-600"
   },
   {
     field: "type",
     header: "Type",
-    classes: "[&:is(th)]:text-slate-600"
+    class: "[&:is(th)]:text-slate-600"
   }
   // {
   //   field: "actions",
