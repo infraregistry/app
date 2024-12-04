@@ -4,16 +4,15 @@
   import * as Pagination from "$lib/components/ui/pagination/index.js";
   import ChevronLeft from "lucide-svelte/icons/chevron-left";
   import ChevronRight from "lucide-svelte/icons/chevron-right";
-  import { components, componentTableColumns, type Component } from "$pages/components/components";
+  import { components, componentTableColumns } from "$pages/components/components";
   import { MediaQuery } from "runed";
   import Icon from "@iconify/svelte";
-  import type { TableColumn } from "@mateothegreat/svelte5-table";
   import { DropinTable } from "@mateothegreat/svelte5-table";
   import { writable } from "svelte/store";
 
   const items = Array.from({ length: 25 }).map((_, i) => i);
 
-  let selections = writable<string[]>([]);
+  let selections = $state(writable<string[]>([]));
 
   const isDesktop = new MediaQuery("(min-width: 768px)");
 

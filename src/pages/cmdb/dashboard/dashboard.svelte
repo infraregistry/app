@@ -67,8 +67,11 @@
     }
   ];
 
-  let selections = writable<string[]>([]);
-  selections.set([getChanges()[0].id]);
+  let selections = $state(writable<string[]>([]));
+
+  $effect(() => {
+    selections.set([getChanges()[0].id]);
+  });
 
   const isDesktop = new MediaQuery("(min-width: 768px)");
 
