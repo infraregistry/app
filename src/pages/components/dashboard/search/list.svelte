@@ -4,7 +4,7 @@
   import * as Pagination from "$lib/components/ui/pagination/index.js";
   import ChevronLeft from "lucide-svelte/icons/chevron-left";
   import ChevronRight from "lucide-svelte/icons/chevron-right";
-  import { components, type Component } from "$pages/components/components";
+  import { components, componentTableColumns, type Component } from "$pages/components/components";
   import { MediaQuery } from "runed";
   import Icon from "@iconify/svelte";
   import type { TableColumn } from "@mateothegreat/svelte5-table";
@@ -12,43 +12,6 @@
   import { writable } from "svelte/store";
 
   const items = Array.from({ length: 25 }).map((_, i) => i);
-
-  const columns: TableColumn[] = [
-    {
-      field: "id",
-      header: {
-        value: "ID",
-        class: "text-slate-600"
-      },
-      class: "w-4 text-slate-500"
-    },
-    {
-      field: "name",
-      header: {
-        value: "Name",
-        class: "text-slate-600"
-      },
-      renderer: nameColumn,
-      class: "w-20 text-slate-500"
-    },
-    {
-      field: "description",
-      header: {
-        value: "Description",
-        class: "text-slate-600"
-      },
-      class: "text-slate-500"
-    },
-    {
-      field: "type",
-      header: {
-        value: "Type",
-        class: "text-slate-600"
-      },
-      renderer: typeColumn,
-      class: "text-slate-500"
-    }
-  ];
 
   let selections = writable<string[]>([]);
 
@@ -60,6 +23,8 @@
   const siblingCount = $derived(isDesktop.matches ? 1 : 0);
 </script>
 
+<!--
+
 {#snippet nameColumn(component: Component)}
   <p>{component.name}</p>
 {/snippet}
@@ -69,6 +34,7 @@
     <p>{component.type}</p>
   </div>
 {/snippet}
+-->
 
 <div class="mx-3 rounded-lg border-2 border-slate-800">
   <div class="flex items-center">
@@ -85,9 +51,9 @@
   </div>
   <DropinTable
     config={{}}
-    {columns}
+    columns={componentTableColumns}
     id="id"
-    data={components}
+    data={$components}
     bind:selections />
   <div class="m-2 flex justify-end">
     <Pagination.Root

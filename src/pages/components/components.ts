@@ -33,23 +33,35 @@ export const components: Writable<Component[]> = writable([
 export const componentTableColumns: TableColumn[] = [
   {
     field: "id",
-    header: "ID",
-    class: "[&:is(th)]:text-slate-600"
+    header: {
+      value: "ID",
+      class: "text-slate-600"
+    },
+    class: "w-4 text-slate-500"
   },
   {
     field: "name",
-    header: "Name",
-    class: "[&:is(th)]:text-slate-600"
+    header: {
+      value: "Name",
+      class: "text-slate-600"
+    },
+    class: "w-20 text-slate-500"
   },
   {
     field: "description",
-    header: "Description",
-    class: "[&:is(th)]:text-slate-600"
+    header: {
+      value: "Description",
+      class: "text-slate-600"
+    },
+    class: "text-slate-500"
   },
   {
     field: "type",
-    header: "Type",
-    class: "[&:is(th)]:text-slate-600"
+    header: {
+      value: "Type",
+      class: "text-slate-600"
+    },
+    class: "text-slate-500"
   }
   // {
   //   field: "actions",
