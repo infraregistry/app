@@ -88,6 +88,7 @@ class Session {
       this.startExpirationCheck();
       return true;
     } catch (e) {
+      console.error(e);
       return false;
     }
   }

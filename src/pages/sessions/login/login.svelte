@@ -37,7 +37,7 @@
   <div class="mx-auto lg:p-8">
     <div class="absolute right-12 top-10">
       <Button
-        href="/#/register"
+        href="/register"
         variant="ghost"
         size="sm">Register</Button>
     </div>
@@ -72,7 +72,7 @@
               </Form.Group>
             </Form.Root>
             <Button
-              disabled={!form!.valid || !form!.values.email || isLoading}
+              disabled={!form!.valid || !form!.values.email || Boolean(isLoading)}
               onclick={login}>
               {#if isLoading}
                 <LoaderCircleIcon class="mr-2 h-4 w-4 animate-spin" />
@@ -92,7 +92,7 @@
             <Button
               variant="outline"
               type="button"
-              disabled={isLoading}>
+              disabled={Boolean(isLoading)}>
               {#if isLoading === "google"}
                 <LoaderCircleIcon class="mr-2 h-4 w-4 animate-spin" />
               {:else}
@@ -103,7 +103,7 @@
             <Button
               variant="outline"
               type="button"
-              disabled={isLoading}>
+              disabled={Boolean(isLoading)}>
               {#if isLoading === "github"}
                 <LoaderCircleIcon class="mr-2 h-4 w-4 animate-spin" />
               {:else}
