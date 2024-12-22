@@ -95,7 +95,7 @@
     "rxjs": "^7.8.1",
     "sass": "^1.81.0",
     "shadcn-svelte": "^1.0.0-next.4",
-    "svelte": "^5.2.9",
+    "svelte": "^5.2.12",
     "svelte-awesome-color-picker": "^3.1.4",
     "svelte-check": "^4.1.0",
     "svelte-confetti": "^2.2.0",
